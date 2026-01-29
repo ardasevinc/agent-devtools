@@ -1,7 +1,7 @@
 ---
 name: mattermost-cli
 description: This skill should be used when the user asks to "check my mattermost messages", "fetch DMs", "what did X say", "check messages from coworker", "read mattermost", or mentions mattermost conversations, chat history, or finding tasks mentioned in chat.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Mattermost CLI
@@ -34,7 +34,10 @@ The `mm` CLI must be installed and configured:
 mm channels
 ```
 
-If it fails, user needs to set `MM_URL` and `MM_TOKEN` (env vars or `.env` file).
+If it fails, configure credentials using one of:
+1. Config file: `mm config --init` then edit `~/.config/mattermost-cli/config.toml`
+2. Environment variables: `MM_URL` and `MM_TOKEN`
+3. CLI flags: `--url` and `--token`
 
 ## Commands
 
@@ -54,6 +57,13 @@ mm dms --since 30d --limit 100  # More history
 mm dms --json                 # For parsing
 ```
 
+### Manage Configuration
+```bash
+mm config                # Show config status
+mm config --init         # Create config file with template
+mm config --path         # Print config file path
+```
+
 ### Quick Reference
 
 | Task | Command |
@@ -63,6 +73,7 @@ mm dms --json                 # For parsing
 | All channels list | `mm channels` |
 | JSON for processing | `mm dms --json` |
 | Extended history | `mm dms --since 30d --limit 200` |
+| Setup config | `mm config --init` |
 
 ## Output Formats
 
@@ -71,6 +82,18 @@ mm dms --json                 # For parsing
 | Terminal (TTY) | Pretty | Reading directly |
 | Piped/non-TTY | Markdown | Passing to tools |
 | `--json` flag | JSON | Parsing, analysis |
+
+### Date/Time Display
+
+Dates use European format (DD Mon YYYY) and 24-hour time.
+
+**Under AI agents**, relative time is enabled by default ("2 days ago" instead of "29 Jan 2026"). Override with `--no-relative` if needed.
+
+```bash
+mm channels              # "2 days ago" (under agent)
+mm channels --no-relative  # "29 Jan 2026"
+mm channels --relative   # Force relative time
+```
 
 ## Security
 
@@ -83,12 +106,19 @@ Example: `ghp_abc123xyz789secret` → `ghp_...cret`
 
 Output is safe to include in context or pass to other LLMs.
 
+## Configuration Priority
+
+Credentials are resolved in this order:
+1. CLI flags (`--url`, `--token`)
+2. Environment variables (`MM_URL`, `MM_TOKEN`)
+3. Config file (`~/.config/mattermost-cli/config.toml`)
+
 ## Error Handling
 
 | Error | Cause | Solution |
 |-------|-------|----------|
-| "Mattermost URL required" | `MM_URL` not set | `export MM_URL="https://..."` or add to `.env` |
-| "Mattermost token required" | `MM_TOKEN` not set | `export MM_TOKEN="..."` or add to `.env` |
+| "Mattermost URL required" | Not configured | Run `mm config --init` or set `MM_URL` |
+| "Mattermost token required" | Not configured | Edit config file or set `MM_TOKEN` |
 | "Could not find DM channel" | User doesn't exist or no DM history | Check username spelling |
 | Connection errors | Network/server issues | Verify URL is correct and accessible |
 
