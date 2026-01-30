@@ -42,5 +42,3 @@ ln -sf /path/to/agent-devtools/claudecode/statusline.ts ~/.claude/statusline.ts
 - **Git**: Branch, worktree (⎇), dirty (*), ahead (↑n), behind (↓n)
 - **Context**: Usage percentage from session files
 - **Time**: dd.mm.yyyy HH:MM format
-
-Note: macOS only (uses BSD date for timestamp parsing)
