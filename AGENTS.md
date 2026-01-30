@@ -81,6 +81,7 @@ Real scenarios showing the skill in action.
 ### statusline.ts
 
 Custom statusline showing:
+- Hostname
 - Current directory (last 2 path components)
 - Git info: branch, worktree indicator (⎇), dirty (*), ahead (↑n), behind (↓n)
 - Context usage percentage (parsed from session JSONL)
@@ -95,7 +96,7 @@ Custom statusline showing:
 }
 ```
 
-**Dependencies:** Bun runtime, macOS (date parsing is platform-specific)
+**Dependencies:** Bun runtime
 
 ## Conventions
 

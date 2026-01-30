@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { homedir } from "os"
+import { homedir, hostname } from "os"
 import { mkdir, readFile, readdir, rename, stat, writeFile } from "fs/promises"
 import { basename, dirname, join } from "path"
 import { $ } from "bun"
@@ -290,10 +290,19 @@ function getDateTime(): string {
   return `${day}.${month}.${year} ${hour}:${min}`
 }
 
+// --- Hostname ---
+
+function getHostname(): string {
+  return hostname()
+}
+
 // --- Main ---
 
 async function main() {
   const parts: string[] = []
+
+  // Hostname
+  parts.push(getHostname())
 
   // Directory
   parts.push(getShortDir())

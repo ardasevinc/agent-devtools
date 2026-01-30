@@ -9,10 +9,10 @@ My personal AI Agent devtools/dev UX set.
 
 ## Statusline
 
-Custom statusline for Claude Code CLI showing directory, git status, context usage, and time.
+Custom statusline for Claude Code CLI showing hostname, directory, git status, context usage, and time.
 
 ```
-anthropics/claude-code │ ⎇ main*↑1 │ ctx:52% │ 30.01.2026 16:00
+macbook │ anthropics/claude-code │ ⎇ main*↑1 │ ctx:52% │ 30.01.2026 16:00
 ```
 
 ### Setup
@@ -38,6 +38,7 @@ ln -sf /path/to/agent-devtools/claudecode/statusline.ts ~/.claude/statusline.ts
 
 ### Features
 
+- **Hostname**: Machine name
 - **Directory**: Last 2 path components
 - **Git**: Branch, worktree (⎇), dirty (*), ahead (↑n), behind (↓n)
 - **Context**: Usage percentage from session files
