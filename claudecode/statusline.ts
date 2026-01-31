@@ -157,21 +157,11 @@ async function findSessionFileForThisProcess(
   const candidates = (withStats.filter(Boolean) as { path: string; mtimeMs: number }[])
     .sort((a, b) => b.mtimeMs - a.mtimeMs)
 
-  // Heuristic 1 (best): for new/resumed sessions, the chosen session file tends to get written
-  // immediately after the Claude process starts.
+  // Heuristic 1 (best): session creation timestamp closest to shell start.
+  // Creation time is stable (set once when session starts) and should be within seconds
+  // of when `claude` was launched - much stronger signal than mtime for multi-session scenarios.
   let picked: string | null = null
   if (parentStartTimeMs !== null) {
-    const windowMs = 2 * 60 * 1000
-    const afterStart = candidates
-      .map((c) => ({ ...c, deltaMs: c.mtimeMs - parentStartTimeMs }))
-      .filter((c) => c.deltaMs >= 0 && c.deltaMs <= windowMs)
-      .sort((a, b) => a.deltaMs - b.deltaMs)
-
-    picked = afterStart[0]?.path ?? null
-  }
-
-  // Heuristic 2: match file creation timestamp to process start time.
-  if (!picked && parentStartTimeMs !== null) {
     const createdTimes = await Promise.all(
       candidates.slice(0, 25).map(async (c) => {
         const createdMs = await getSessionCreatedTimeMs(c.path)
@@ -179,10 +169,23 @@ async function findSessionFileForThisProcess(
       })
     )
 
-    const created = (createdTimes.filter(Boolean) as { path: string; createdMs: number }[]).sort(
-      (a, b) => Math.abs(a.createdMs - parentStartTimeMs) - Math.abs(b.createdMs - parentStartTimeMs)
-    )
+    const created = (createdTimes.filter(Boolean) as { path: string; createdMs: number }[])
+      .filter((c) => Math.abs(c.createdMs - parentStartTimeMs) < 60_000) // within 1 min
+      .sort((a, b) => Math.abs(a.createdMs - parentStartTimeMs) - Math.abs(b.createdMs - parentStartTimeMs))
+
     picked = created[0]?.path ?? null
+  }
+
+  // Heuristic 2: file modified within 2min of shell start (fallback for resumed sessions
+  // where creation time is old but mtime is fresh).
+  if (!picked && parentStartTimeMs !== null) {
+    const windowMs = 2 * 60 * 1000
+    const afterStart = candidates
+      .map((c) => ({ ...c, deltaMs: c.mtimeMs - parentStartTimeMs }))
+      .filter((c) => c.deltaMs >= 0 && c.deltaMs <= windowMs)
+      .sort((a, b) => a.deltaMs - b.deltaMs)
+
+    picked = afterStart[0]?.path ?? null
   }
 
   // Heuristic 3 (fallback): most recently modified.
