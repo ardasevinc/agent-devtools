@@ -236,6 +236,38 @@ function calcContextPercent(usage: Usage): number {
   return Math.round((total / 200_000) * 100)
 }
 
+// --- Model Info ---
+
+async function getLastModel(sessionFile: string): Promise<string | null> {
+  try {
+    const tail = (await $`tail -n 500 ${sessionFile}`.text()).trim()
+    if (!tail) return null
+    const lines = tail.split("\n")
+
+    for (let i = lines.length - 1; i >= 0; i--) {
+      try {
+        const entry = JSON.parse(lines[i])
+        if (entry.message?.model) {
+          return entry.message.model
+        }
+      } catch {
+        continue
+      }
+    }
+  } catch {}
+  return null
+}
+
+function formatModel(model: string): string {
+  // "claude-opus-4-5-20251101" → "opus-4.5"
+  // "claude-sonnet-4-20250514" → "sonnet-4"
+  // "claude-haiku-4-5-20251001" → "haiku-4.5"
+  const match = model.match(/claude-(\w+)-(\d+)(?:-(\d+))?/)
+  if (!match) return model
+  const [, name, major, minor] = match
+  return minor ? `${name}-${major}.${minor}` : `${name}-${major}`
+}
+
 // --- Git Info ---
 
 async function getGitInfo(): Promise<string> {
@@ -311,7 +343,7 @@ async function main() {
   const git = await getGitInfo()
   if (git) parts.push(git)
 
-  // Context
+  // Context + Model
   const { projectDir, projectSlug } = getProjectDir()
   const sessionFile = await findSessionFileForThisProcess(projectDir, projectSlug)
   if (sessionFile) {
@@ -319,6 +351,10 @@ async function main() {
     if (usage) {
       const pct = calcContextPercent(usage)
       parts.push(`ctx:${pct}%`)
+    }
+    const model = await getLastModel(sessionFile)
+    if (model) {
+      parts.push(formatModel(model))
     }
   }
 
