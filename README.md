@@ -18,7 +18,7 @@ bunx skills add https://github.com/ardasevinc/agent-devtools --skill <skill-name
 # also works: npx skills add ... / pnpx skills add ...
 ```
 
-**mattermost-cli** also requires the CLI tool: `npm i -g mattermost-cli` ([npm](https://www.npmjs.com/package/mattermost-cli))
+**mattermost-cli** also requires the CLI tool: `bun i -g mattermost-cli` (or npm/pnpm) ([npm](https://www.npmjs.com/package/mattermost-cli))
 
 ---
 
