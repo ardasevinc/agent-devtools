@@ -10,7 +10,8 @@ agent-devtools/
 ├── CLAUDE.md           # Project instructions (includes this file)
 ├── README.md           # Human-facing overview
 ├── claudecode/         # Claude Code customizations
-│   └── statusline.ts   # Custom statusline script (bun)
+│   ├── statusline.ts   # Custom statusline script (bun)
+│   └── claude-tasks.ts # Task list picker/launcher (bun + fzf)
 ├── skills/             # Custom skills for Claude Code
 │   └── <skill-name>/
 │       └── SKILL.md    # Skill definition
@@ -98,6 +99,18 @@ Custom statusline showing:
 ```
 
 **Dependencies:** Bun runtime
+
+### claude-tasks.ts
+
+Interactive picker to browse and resume Claude sessions by task lists:
+- Scans `~/.claude/tasks` for session task lists
+- Resolves project paths from session JSONL files
+- fzf interface with task preview (✓/→/○ status)
+- Launches Claude with `CLAUDE_CODE_TASK_LIST_ID` for task resumption
+
+**Setup:** Symlink to PATH (e.g., `~/.local/bin/claude-tasks`)
+
+**Dependencies:** Bun runtime, fzf
 
 ## Conventions
 
