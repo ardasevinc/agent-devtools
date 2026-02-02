@@ -2,10 +2,25 @@
 
 My personal AI Agent devtools/dev UX set.
 
-## Contents
+## Skills Catalog
 
-- **skills/** - Custom Claude Code skills (mattermost-cli, etc.)
-- **claudecode/** - Claude Code customizations
+Custom skills for Claude Code that extend its capabilities.
+
+| Skill | Description | Trigger Examples |
+|-------|-------------|------------------|
+| **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
+| **mattermost-cli** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. Requires [`mattermost-cli`](https://github.com/ardasevinc/mattermost-cli). | "check my messages", "what did alice say about X", `/mattermost` |
+
+### Installation
+
+```bash
+bunx skills add https://github.com/ardasevinc/agent-devtools --skill <skill-name>
+# also works: npx skills add ... / pnpx skills add ...
+```
+
+**mattermost-cli** also requires the CLI tool: `npm i -g mattermost-cli` ([npm](https://www.npmjs.com/package/mattermost-cli))
+
+---
 
 ## Statusline
 
