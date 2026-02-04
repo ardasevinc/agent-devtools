@@ -27,7 +27,7 @@ bunx skills add https://github.com/ardasevinc/agent-devtools --skill <skill-name
 Custom statusline for Claude Code CLI showing hostname, directory, git status, context usage, model, and time.
 
 ```
-macbook │ anthropics/claude-code │ ⎇ main*↑1 │ ctx:52% │ opus-4.5 │ 30.01.2026 16:00
+macbook │ anthropics/claude-code │ ⎇ main*↑1 │ ctx:52% │ opus-4.5 │ 20260130 16:00
 ```
 
 ### Setup
@@ -58,7 +58,7 @@ ln -sf /path/to/agent-devtools/claudecode/statusline.ts ~/.claude/statusline.ts
 - **Git**: Branch, worktree (⎇), dirty (*), ahead (↑n), behind (↓n)
 - **Context**: Usage percentage from session files
 - **Model**: Current Claude model (opus-4.5, sonnet-4, etc.)
-- **Time**: dd.mm.yyyy HH:MM format
+- **Time**: yyyymmdd HH:MM format
 
 ---
 

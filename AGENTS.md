@@ -87,7 +87,7 @@ Custom statusline showing:
 - Git info: branch, worktree indicator (⎇), dirty (*), ahead (↑n), behind (↓n)
 - Context usage percentage (parsed from session JSONL)
 - Model name (e.g., opus-4.5, sonnet-4)
-- DateTime (dd.mm.yyyy HH:MM)
+- DateTime (yyyymmdd HH:MM)
 
 **Setup:** Symlink to `~/.claude/statusline.ts` and configure in settings:
 ```json
