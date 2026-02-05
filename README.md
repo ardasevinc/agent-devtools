@@ -9,6 +9,7 @@ Custom skills for Claude Code that extend its capabilities.
 | Skill | Description | Trigger Examples |
 |-------|-------------|------------------|
 | **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
+| **lazy-skill** | On-demand skill loader to reduce context bloat. Browse and load skills from `~/.claude/lazy-skills/` only when needed. | `/lazy-skill`, `/lazy-skill docker` |
 | **mattermost-cli** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. Requires [`mattermost-cli`](https://github.com/ardasevinc/mattermost-cli). | "check my messages", "what did alice say about X", `/mattermost` |
 
 ### Installation
@@ -97,3 +98,41 @@ claude-tasks --resume     # Pass flags through to claude
 - **Task preview**: Shows tasks with status (✓ done, → in progress, ○ pending)
 - **Recency sorting**: Most recent sessions first
 - **Seamless launch**: Opens Claude in the correct directory with task context
+
+---
+
+## Lazy Skill System
+
+Reduce context bloat by loading skills on-demand instead of always injecting them. Skills in `~/.claude/lazy-skills/` are only read when you invoke `/lazy-skill`.
+
+### Setup
+
+```bash
+# Create the lazy skills directory
+mkdir -p ~/.claude/lazy-skills
+
+# Install the meta-skill
+bunx skills add https://github.com/ardasevinc/agent-devtools --skill lazy-skill
+```
+
+### Adding Lazy Skills
+
+1. Place skill file at `~/.claude/lazy-skills/<name>.md` or clone a skill repo to `~/.claude/lazy-skills/<name>/`
+2. Edit the index in the installed skill (`~/.claude/skills/lazy-skill/SKILL.md`):
+
+```markdown
+## Index
+- **skillname**: keyword1, keyword2 - "Brief description"
+```
+
+### Supported Structures
+
+```
+~/.claude/lazy-skills/
+├── dokploy.md              # single file
+├── stripe.md               # single file
+└── threejs/                # cloned skill repo
+    └── SKILL.md
+```
+
+Claude auto-detects: tries `<name>.md` first, then `<name>/SKILL.md`.
