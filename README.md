@@ -123,16 +123,23 @@ bunx skills add https://github.com/ardasevinc/agent-devtools --skill lazy-skill
 ```markdown
 ## Index
 - **skillname**: keyword1, keyword2 - "Brief description"
+- **reponame** [collection]: keywords - "Description"  # for skill repos
 ```
 
 ### Supported Structures
 
 ```
 ~/.claude/lazy-skills/
-├── dokploy.md              # single file
-├── stripe.md               # single file
-└── threejs/                # cloned skill repo
-    └── SKILL.md
+├── stripe.md                    # single file
+├── dokploy/                     # single skill repo
+│   └── SKILL.md
+└── threejs-skills/              # skill collection (multiple skills)
+    ├── README.md                # shows available skills
+    └── skills/
+        ├── threejs-fundamentals/
+        │   └── SKILL.md
+        └── ...
 ```
 
-Claude auto-detects: tries `<name>.md` first, then `<name>/SKILL.md`.
+- **Single skills**: auto-detects `<name>.md` or `<name>/SKILL.md`
+- **Collections**: mark with `[collection]` in index, reads README first
