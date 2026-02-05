@@ -13,10 +13,11 @@ On-demand skill loading to reduce context bloat. Skills in `~/.claude/lazy-skill
 
 Skills available for lazy loading (name: keywords - description):
 
-- **dokploy**: docker, paas, deploy, compose - "Self-hosted PaaS for docker-compose deployments"
+- **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 
-<!-- Add more entries as needed:
+<!-- Add more entries:
 - **name**: keyword1, keyword2 - "Brief description"
+- **name** [collection]: keywords - "Description" (for skill repos with multiple skills)
 -->
 
 ## Behavior
@@ -28,11 +29,16 @@ Skills available for lazy loading (name: keywords - description):
 3. **Always ask user** which skill to load before reading - never read all skills
 4. Use Read tool to load the selected skill file
 
-### Path Resolution (Auto-detect)
+### Path Resolution
 
-Try paths in order:
-1. `~/.claude/lazy-skills/<name>.md` (single file)
-2. `~/.claude/lazy-skills/<name>/SKILL.md` (cloned skill repo)
+**Single skills** - try in order:
+1. `~/.claude/lazy-skills/<name>.md`
+2. `~/.claude/lazy-skills/<name>/SKILL.md`
+
+**Collections** (marked with `[collection]` in index):
+1. Read `~/.claude/lazy-skills/<name>/README.md` to show available skills
+2. Ask user which specific skill to load
+3. Read `~/.claude/lazy-skills/<name>/skills/<skill-name>/SKILL.md`
 
 ### After Loading
 
@@ -51,20 +57,50 @@ Then place the skill file at either:
 - `~/.claude/lazy-skills/skillname.md` (single file)
 - `~/.claude/lazy-skills/skillname/SKILL.md` (full skill folder, e.g., cloned repo)
 
-## Example
+## Examples
 
+**Single skill:**
 ```
-User: /lazy-skill docker
+User: /lazy-skill stripe
 
 Claude: Found 1 matching skill:
-- **dokploy**: docker, paas, deploy, compose - "Self-hosted PaaS for docker-compose deployments"
+- **stripe**: payments, billing, checkout - "Stripe API operations"
 
-Want me to load dokploy?
+Want me to load it?
 
 User: yes
 
-Claude: [Reads ~/.claude/lazy-skills/dokploy.md]
-Loaded dokploy skill. I now have knowledge about Dokploy deployments. What would you like to do?
+Claude: [Reads ~/.claude/lazy-skills/stripe.md]
+Loaded stripe skill. What would you like to do?
+```
+
+**Collection:**
+```
+User: /lazy-skill threejs
+
+Claude: Found 1 matching collection:
+- **threejs-skills** [collection]: threejs, 3d, webgl - "Three.js skills (10 skills)"
+
+Want me to show the available skills in this collection?
+
+User: yes
+
+Claude: [Reads ~/.claude/lazy-skills/threejs-skills/README.md]
+
+Available skills in threejs-skills:
+| Skill | Description |
+|-------|-------------|
+| threejs-fundamentals | Scene setup, cameras, renderer |
+| threejs-geometry | Shapes, BufferGeometry, instancing |
+| threejs-materials | PBR, shader materials |
+... (7 more)
+
+Which one should I load?
+
+User: fundamentals
+
+Claude: [Reads ~/.claude/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
+Loaded threejs-fundamentals. Ready to help with Three.js scene setup.
 ```
 
 <instructions>$ARGUMENTS</instructions>
