@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { hostname } from "os"
+import { hostname as osHostname } from "os"
 import { $ } from "bun"
 
 $.throws(false)
@@ -111,13 +111,28 @@ function getDateTime(): string {
   return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`
 }
 
+// --- Hostname ---
+
+async function getHostname(): Promise<string> {
+  if (process.platform === "darwin") {
+    // scutil returns stable user-set name on macOS (immune to DHCP)
+    const name = (await $`scutil --get ComputerName`.text()).trim()
+    if (name) return name
+  } else if (process.platform === "linux") {
+    // static hostname is stable, dynamic one can change
+    const name = (await $`hostnamectl --static`.text()).trim()
+    if (name) return name
+  }
+  return osHostname()
+}
+
 // --- Main ---
 
 async function main() {
   const input = await readStdin() ?? {}
   const parts: string[] = []
 
-  parts.push(hostname())
+  parts.push(await getHostname())
   parts.push(getShortDir(input))
 
   const git = await getGitInfo()
