@@ -74,25 +74,38 @@ function getShortDir(input: ClaudeInput): string {
 // --- Git ---
 
 async function getGitInfo(): Promise<string> {
-  const isRepo = await $`git rev-parse --is-inside-work-tree`.text()
-  if (!isRepo.includes("true")) return ""
+  // 2 lock-free git calls in parallel (down from 7 sequential calls)
+  const [statusOut, revParseOut] = await Promise.all([
+    $`git --no-optional-locks status --porcelain=v2 --branch --ahead-behind`.text(),
+    $`git --no-optional-locks rev-parse --git-dir --git-common-dir`.text(),
+  ])
 
-  const branch = (await $`git branch --show-current`.text()).trim()
-  if (!branch) return ""
+  if (!statusOut) return ""
 
-  // worktree detection
-  const gitDir = (await $`git rev-parse --git-dir`.text()).trim()
-  const gitCommon = (await $`git rev-parse --git-common-dir`.text()).trim()
-  const isWorktree = gitDir !== gitCommon
+  let branch = ""
+  let ahead = 0
+  let behind = 0
+  let dirty = false
 
-  // status
-  const porcelain = await $`git status --porcelain`.text()
-  const dirty = porcelain.length > 0
+  for (const line of statusOut.split("\n")) {
+    if (line.startsWith("# branch.head ")) {
+      branch = line.slice(14)
+    } else if (line.startsWith("# branch.ab ")) {
+      const match = line.match(/\+(\d+) -(\d+)/)
+      if (match) {
+        ahead = parseInt(match[1])
+        behind = parseInt(match[2])
+      }
+    } else if (line.length > 0 && !line.startsWith("#")) {
+      dirty = true
+    }
+  }
 
-  const aheadStr = (await $`git rev-list --count @{u}..HEAD`.text()).trim()
-  const behindStr = (await $`git rev-list --count HEAD..@{u}`.text()).trim()
-  const ahead = parseInt(aheadStr) || 0
-  const behind = parseInt(behindStr) || 0
+  if (!branch || branch === "(detached)") return ""
+
+  // worktree: git-dir differs from git-common-dir
+  const revLines = revParseOut.trim().split("\n")
+  const isWorktree = revLines.length === 2 && revLines[0] !== revLines[1]
 
   let result = isWorktree ? "⎇ " : ""
   result += branch
