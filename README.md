@@ -10,16 +10,18 @@ Custom skills for Claude Code that extend its capabilities.
 |-------|-------------|------------------|
 | **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
 | **lazy-skill** | On-demand skill loader to reduce context bloat. Browse and load skills from `~/.claude/lazy-skills/` only when needed. | `/lazy-skill`, `/lazy-skill docker` |
-| **mattermost-cli** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. Requires [`mattermost-cli`](https://github.com/ardasevinc/mattermost-cli). | "check my messages", "what did alice say about X", `/mattermost` |
+| **[mattermost-cli](https://github.com/ardasevinc/mattermost-cli)** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. **Maintained in its own repo.** | "check my messages", "what did alice say about X", `/mattermost` |
 
 ### Installation
 
 ```bash
-bunx skills add https://github.com/ardasevinc/agent-devtools --skill <skill-name>
-# also works: npx skills add ... / pnpx skills add ...
-```
+# Skills from this repo
+bunx skills@latest add ardasevinc/agent-devtools --skill <skill-name>
 
-**mattermost-cli** also requires the CLI tool: `bun i -g mattermost-cli` (or npm/pnpm) ([npm](https://www.npmjs.com/package/mattermost-cli))
+# mattermost-cli is maintained separately
+bunx skills@latest add ardasevinc/mattermost-cli --skill mattermost-cli
+bun i -g mattermost-cli  # also requires the CLI tool (npm/pnpm also work)
+```
 
 ---
 
@@ -112,7 +114,7 @@ Reduce context bloat by loading skills on-demand instead of always injecting the
 mkdir -p ~/.claude/lazy-skills
 
 # Install the meta-skill
-bunx skills add https://github.com/ardasevinc/agent-devtools --skill lazy-skill
+bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 ```
 
 ### Adding Lazy Skills
