@@ -9,7 +9,7 @@ Custom skills for Claude Code that extend its capabilities.
 | Skill | Description | Trigger Examples |
 |-------|-------------|------------------|
 | **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
-| **lazy-skill** | On-demand skill loader to reduce context bloat. Browse and load skills from `~/.claude/lazy-skills/` only when needed. | `/lazy-skill`, `/lazy-skill docker` |
+| **lazy-skill** | On-demand skill loader to reduce routing ambiguity. Browse and load skills from `~/.agents/lazy-skills/` only when explicitly needed. | `/lazy-skill`, `/lazy-skill docker` |
 | **[mattermost-cli](https://github.com/ardasevinc/mattermost-cli)** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. **Maintained in its own repo.** | "check my messages", "what did alice say about X", `/mattermost` |
 
 ### Installation
@@ -105,13 +105,15 @@ claude-tasks --resume     # Pass flags through to claude
 
 ## Lazy Skill System
 
-Reduce context bloat by loading skills on-demand instead of always injecting them. Skills in `~/.claude/lazy-skills/` are only read when you invoke `/lazy-skill`.
+Reduce semantic overload by loading skills on demand instead of exposing every skill name and description to the base agent. Skills in `~/.agents/lazy-skills/` are only read when you invoke `/lazy-skill`.
+
+This is different from progressive disclosure. Even when an agent only sees each installed skill's name, description, and path, a large always-visible skill list creates routing ambiguity. The lazy skill is an anti-router: keep the default skill surface small, then explicitly summon heavy or niche workflows when they matter.
 
 ### Setup
 
 ```bash
-# Create the lazy skills directory
-mkdir -p ~/.claude/lazy-skills
+# Create the central lazy skills directory
+mkdir -p ~/.agents/lazy-skills
 
 # Install the meta-skill
 bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
@@ -119,7 +121,7 @@ bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 
 ### Adding Lazy Skills
 
-1. Place skill file at `~/.claude/lazy-skills/<name>.md` or clone a skill repo to `~/.claude/lazy-skills/<name>/`
+1. Place skill file at `~/.agents/lazy-skills/<name>.md` or clone a skill repo to `~/.agents/lazy-skills/<name>/`
 2. Edit the index in the installed skill (`~/.claude/skills/lazy-skill/SKILL.md`):
 
 ```markdown
@@ -128,10 +130,12 @@ bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 - **reponame** [collection]: keywords - "Description"  # for skill repos
 ```
 
+Keep the index sparse. It should work like a card catalog, not a second always-loaded skill registry with long trigger rules.
+
 ### Supported Structures
 
 ```
-~/.claude/lazy-skills/
+~/.agents/lazy-skills/
 ├── stripe.md                    # single file
 ├── dokploy/                     # single skill repo
 │   └── SKILL.md

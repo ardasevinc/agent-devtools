@@ -1,17 +1,21 @@
 ---
 name: lazy-skill
-description: Browse and load skills on-demand from ~/.claude/lazy-skills/. Use when you need a skill that isn't always loaded.
+description: Browse and load skills on-demand from ~/.agents/lazy-skills without exposing every skill description to the base agent. Use when the user explicitly asks for a lazy skill or a capability that should be loaded only on demand.
 argument-hint: [search query or blank to browse]
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Lazy Skill Loader
 
-On-demand skill loading to reduce context bloat. Skills in `~/.claude/lazy-skills/` are only read when explicitly requested.
+On-demand skill loading to reduce routing ambiguity, not just context bloat.
+
+Agent runtimes may use progressive disclosure, where the model initially sees only each installed skill's name, description, and path. That still creates semantic overload when many always-installed skills have overlapping descriptions. `lazy-skill` keeps the always-visible skill surface small and lets the user explicitly summon heavier or niche skills only when needed.
+
+The canonical lazy skill library is `~/.agents/lazy-skills/`. `~/.claude/lazy-skills/` is a legacy fallback only.
 
 ## Index
 
-Skills available for lazy loading (name: keywords - description):
+Skills available for lazy loading (name: sparse keywords - short description):
 
 - **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 
@@ -19,6 +23,8 @@ Skills available for lazy loading (name: keywords - description):
 - **name**: keyword1, keyword2 - "Brief description"
 - **name** [collection]: keywords - "Description" (for skill repos with multiple skills)
 -->
+
+Keep this index sparse. It is a card catalog, not mini documentation. Avoid long trigger lists, exhaustive "use when" rules, or overlapping descriptions that recreate the same routing noise this skill is meant to avoid.
 
 ## Behavior
 
@@ -31,14 +37,20 @@ Skills available for lazy loading (name: keywords - description):
 
 ### Path Resolution
 
+Resolve the lazy skills root in this order:
+
+1. `$AGENTS_LAZY_SKILLS_DIR`, if set
+2. `~/.agents/lazy-skills`
+3. `~/.claude/lazy-skills` (legacy fallback)
+
 **Single skills** - try in order:
-1. `~/.claude/lazy-skills/<name>.md`
-2. `~/.claude/lazy-skills/<name>/SKILL.md`
+1. `<lazy-root>/<name>.md`
+2. `<lazy-root>/<name>/SKILL.md`
 
 **Collections** (marked with `[collection]` in index):
-1. Read `~/.claude/lazy-skills/<name>/README.md` to show available skills
+1. Read `<lazy-root>/<name>/README.md` to show available skills
 2. Ask user which specific skill to load
-3. Read `~/.claude/lazy-skills/<name>/skills/<skill-name>/SKILL.md`
+3. Read `<lazy-root>/<name>/skills/<skill-name>/SKILL.md`
 
 ### After Loading
 
@@ -54,8 +66,9 @@ Edit this file's Index section:
 ```
 
 Then place the skill file at either:
-- `~/.claude/lazy-skills/skillname.md` (single file)
-- `~/.claude/lazy-skills/skillname/SKILL.md` (full skill folder, e.g., cloned repo)
+- `~/.agents/lazy-skills/skillname.md` (single file)
+- `~/.agents/lazy-skills/skillname/SKILL.md` (full skill folder, e.g., cloned repo)
+- or a custom root via `$AGENTS_LAZY_SKILLS_DIR`
 
 ## Examples
 
@@ -70,7 +83,7 @@ Want me to load it?
 
 User: yes
 
-Claude: [Reads ~/.claude/lazy-skills/stripe.md]
+Claude: [Reads ~/.agents/lazy-skills/stripe.md]
 Loaded stripe skill. What would you like to do?
 ```
 
@@ -85,7 +98,7 @@ Want me to show the available skills in this collection?
 
 User: yes
 
-Claude: [Reads ~/.claude/lazy-skills/threejs-skills/README.md]
+Claude: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
 
 Available skills in threejs-skills:
 | Skill | Description |
@@ -99,7 +112,7 @@ Which one should I load?
 
 User: fundamentals
 
-Claude: [Reads ~/.claude/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
+Claude: [Reads ~/.agents/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
 Loaded threejs-fundamentals. Ready to help with Three.js scene setup.
 ```
 
