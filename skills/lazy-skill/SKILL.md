@@ -18,6 +18,12 @@ The canonical lazy skill library is `~/.agents/lazy-skills/`. `~/.claude/lazy-sk
 Skills available for lazy loading (name: sparse keywords - short description):
 
 - **taste-skill** [collection]: taste, frontend, imagegen - Anti-generic frontend design, image-to-code, and premium UI direction
+- **shadcn-ui** [collection]: shadcn, components, registry - Official shadcn/ui component and registry workflow
+- **next-skills** [collection]: nextjs, rsc, cache - Next.js best practices, upgrades, and Cache Components
+- **vercel-agent-skills** [collection]: react, vercel, performance - Vercel React/Next/RN performance and composition guidance
+- **callstack-react-native-skills** [collection]: react-native, callstack, mobile - React Native performance, upgrades, brownfield, and CI artifacts
+- **expo-skills** [collection]: expo, eas, mobile - Expo SDK, EAS, dev-client, deployment, modules, and native UI workflows
+- **wshobson-agents** [collection]: patterns, architecture, mobile - Broad engineering pattern library including React Native design and architecture
 - **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 
 <!-- Add more entries:
@@ -53,7 +59,7 @@ Resolve the lazy skills root in this order:
 2. Ask user which specific skill to load
 3. Resolve the selected skill by either:
    - folder path: `<lazy-root>/<name>/skills/<skill-name>/SKILL.md`
-   - frontmatter name: search `<lazy-root>/<name>/skills/*/SKILL.md` for `name: <skill-name>`
+   - frontmatter name: recursively search `<lazy-root>/<name>/**/SKILL.md` for `name: <skill-name>`
 4. Read the resolved `SKILL.md`
 
 ### After Loading
