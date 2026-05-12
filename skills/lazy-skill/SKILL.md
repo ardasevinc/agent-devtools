@@ -31,6 +31,7 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **payload-skills** [collection]: payload, cms, migrations - Payload CMS development and migration guidance
 - **remotion-skills** [collection]: remotion, video, react - Remotion video creation best practices
 - **inference-video-skills** [collection]: video, generation, storyboard - Curated video generation, storyboard, ad spec, and render workflows
+- **mattpocock-skills** [collection]: prd, tdd, diagnose - Matt Pocock's engineering, productivity, writing, and workflow skills
 
 <!-- Add more entries:
 - **name**: keyword1, keyword2 - "Brief description"
