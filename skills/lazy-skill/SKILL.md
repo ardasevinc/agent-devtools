@@ -32,6 +32,9 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **remotion-skills** [collection]: remotion, video, react - Remotion video creation best practices
 - **inference-video-skills** [collection]: video, generation, storyboard - Curated video generation, storyboard, ad spec, and render workflows
 - **mattpocock-skills** [collection]: prd, tdd, diagnose - Matt Pocock's engineering, productivity, writing, and workflow skills
+- **bun-runtime**: bun, runtime, test - Bun runtime, package manager, bundler, and test runner guidance
+- **hono**: hono, api, middleware - Hono API, routing, middleware, testing, and Cloudflare-style app guidance
+- **architecture-wise-tree** [collection]: architecture, ddd, system-design - Durable architecture, DDD, ADR, refactoring, and system-design judgment
 
 <!-- Add more entries:
 - **name**: keyword1, keyword2 - "Brief description"
