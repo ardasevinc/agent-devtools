@@ -17,6 +17,7 @@ The canonical lazy skill library is `~/.agents/lazy-skills/`. `~/.claude/lazy-sk
 
 Skills available for lazy loading (name: sparse keywords - short description):
 
+- **taste-skill** [collection]: taste, frontend, imagegen - Anti-generic frontend design, image-to-code, and premium UI direction
 - **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 
 <!-- Add more entries:
@@ -50,7 +51,10 @@ Resolve the lazy skills root in this order:
 **Collections** (marked with `[collection]` in index):
 1. Read `<lazy-root>/<name>/README.md` to show available skills
 2. Ask user which specific skill to load
-3. Read `<lazy-root>/<name>/skills/<skill-name>/SKILL.md`
+3. Resolve the selected skill by either:
+   - folder path: `<lazy-root>/<name>/skills/<skill-name>/SKILL.md`
+   - frontmatter name: search `<lazy-root>/<name>/skills/*/SKILL.md` for `name: <skill-name>`
+4. Read the resolved `SKILL.md`
 
 ### After Loading
 
