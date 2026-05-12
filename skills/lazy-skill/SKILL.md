@@ -25,6 +25,12 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **expo-skills** [collection]: expo, eas, mobile - Expo SDK, EAS, dev-client, deployment, modules, and native UI workflows
 - **wshobson-agents** [collection]: patterns, architecture, mobile - Broad engineering pattern library including React Native design and architecture
 - **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
+- **astro**: astro, ssr, islands - Astro project and framework guidance
+- **cloudflare-skills** [collection]: cloudflare, workers, pages - Official Cloudflare Workers, Pages, storage, Wrangler, and platform guidance
+- **cloudflare-opennext**: opennext, cloudflare, pages - Deploy OpenNext applications on Cloudflare
+- **payload-skills** [collection]: payload, cms, migrations - Payload CMS development and migration guidance
+- **remotion-skills** [collection]: remotion, video, react - Remotion video creation best practices
+- **inference-video-skills** [collection]: video, generation, storyboard - Curated video generation, storyboard, ad spec, and render workflows
 
 <!-- Add more entries:
 - **name**: keyword1, keyword2 - "Brief description"
