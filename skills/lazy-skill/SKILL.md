@@ -34,6 +34,8 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **mattpocock-skills** [collection]: prd, tdd, diagnose - Matt Pocock's engineering, productivity, writing, and workflow skills
 - **bun-runtime**: bun, runtime, test - Bun runtime, package manager, bundler, and test runner guidance
 - **hono**: hono, api, middleware - Hono API, routing, middleware, testing, and Cloudflare-style app guidance
+- **golang-skills** [collection]: go, golang, backend - Go style, testing, concurrency, performance, security, and production patterns
+- **rust-skills** [collection]: rust, cargo, systems - Rust ownership, errors, concurrency, unsafe review, ecosystem, and domain patterns
 - **architecture-wise-tree** [collection]: architecture, ddd, system-design - Durable architecture, DDD, ADR, refactoring, and system-design judgment
 - **quality-constitution**: quality, mutation, complexity - Agent-operable quality gates for duplication, CRAP risk, mutation, and review queues
 
