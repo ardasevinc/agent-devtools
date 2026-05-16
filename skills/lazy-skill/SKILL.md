@@ -18,6 +18,7 @@ The canonical lazy skill library is `~/.agents/lazy-skills/`. `~/.claude/lazy-sk
 Skills available for lazy loading (name: sparse keywords - short description):
 
 - **taste-skill** [collection]: taste, frontend, imagegen - Anti-generic frontend design, image-to-code, and premium UI direction
+- **emil-design-eng**: emil, design, animation - Emil Kowalski UI polish, component craft, and animation judgment
 - **shadcn-ui** [collection]: shadcn, components, registry - Official shadcn/ui component and registry workflow
 - **next-skills** [collection]: nextjs, rsc, cache - Next.js best practices, upgrades, and Cache Components
 - **vercel-agent-skills** [collection]: react, vercel, performance - Vercel React/Next/RN performance and composition guidance
