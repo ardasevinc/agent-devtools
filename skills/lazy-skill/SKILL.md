@@ -39,6 +39,7 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **rust-skills** [collection]: rust, cargo, systems - Rust ownership, errors, concurrency, unsafe review, ecosystem, and domain patterns
 - **architecture-wise-tree** [collection]: architecture, ddd, system-design - Durable architecture, DDD, ADR, refactoring, and system-design judgment
 - **quality-constitution**: quality, mutation, complexity - Agent-operable quality gates for duplication, CRAP risk, mutation, and review queues
+- **ardasevinc** [collection]: dashboard, ux, ops, research - Arda's custom lazy skills, including dense dashboard UX review
 
 <!-- Add more entries:
 - **name**: keyword1, keyword2 - "Brief description"

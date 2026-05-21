@@ -122,7 +122,7 @@ bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 ### Adding Lazy Skills
 
 1. Place skill file at `~/.agents/lazy-skills/<name>.md` or clone a skill repo to `~/.agents/lazy-skills/<name>/`
-2. Edit the index in the installed skill (`~/.claude/skills/lazy-skill/SKILL.md`):
+2. Edit the index in the installed skill (`~/.agents/skills/lazy-skill/SKILL.md`; `~/.claude/skills/lazy-skill/SKILL.md` on legacy installs):
 
 ```markdown
 ## Index
@@ -149,3 +149,11 @@ Keep the index sparse. It should work like a card catalog, not a second always-l
 
 - **Single skills**: auto-detects `<name>.md` or `<name>/SKILL.md`
 - **Collections**: mark with `[collection]` in index, reads README first
+
+### Custom Lazy Skills
+
+This repo also stores Arda-specific lazy skills under `lazy-skills/ardasevinc/`. Sync that folder to `~/.agents/lazy-skills/ardasevinc/` and add this sparse index entry to the installed `lazy-skill`:
+
+```markdown
+- **ardasevinc** [collection]: dashboard, ux, ops, research - Arda's custom lazy skills, including dense dashboard UX review
+```
