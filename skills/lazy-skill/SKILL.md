@@ -24,6 +24,11 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **vercel-agent-skills** [collection]: react, vercel, performance - Vercel React/Next/RN performance and composition guidance
 - **callstack-react-native-skills** [collection]: react-native, callstack, mobile - React Native performance, upgrades, brownfield, and CI artifacts
 - **expo-skills** [collection]: expo, eas, mobile - Expo SDK, EAS, dev-client, deployment, modules, and native UI workflows
+- **swiftui-pro**: swiftui, ios, apple - Modern SwiftUI review and implementation guidance
+- **swift-concurrency-pro**: swift, concurrency, async - Swift concurrency correctness and migration guidance
+- **swift-testing-pro**: swift, testing, xctest - Swift Testing patterns, reviews, and XCTest migration
+- **swiftdata-pro**: swiftdata, persistence, cloudkit - SwiftData modeling, predicates, migrations, and CloudKit
+- **app-store-connect-cli-skills** [collection]: appstoreconnect, asc, testflight - asc CLI workflows for App Store shipping
 - **wshobson-agents** [collection]: patterns, architecture, mobile - Broad engineering pattern library including React Native design and architecture
 - **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 - **astro**: astro, ssr, islands - Astro project and framework guidance

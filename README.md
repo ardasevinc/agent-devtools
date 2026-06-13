@@ -121,8 +121,17 @@ bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 
 ### Adding Lazy Skills
 
-1. Place skill file at `~/.agents/lazy-skills/<name>.md` or clone a skill repo to `~/.agents/lazy-skills/<name>/`
-2. Edit the index in the installed skill (`~/.agents/skills/lazy-skill/SKILL.md`; `~/.claude/skills/lazy-skill/SKILL.md` on legacy installs):
+1. Place the skill file at `~/.agents/lazy-skills/<name>.md` or clone/copy a skill repo to `~/.agents/lazy-skills/<name>/`.
+2. Edit the durable index in this repo: `skills/lazy-skill/SKILL.md`.
+3. Commit and push this repo, then refresh the installed meta-skill:
+
+```bash
+bunx skills@latest update lazy-skill -g -y
+```
+
+Avoid treating the installed copy (`~/.agents/skills/lazy-skill/SKILL.md`; `~/.claude/skills/lazy-skill/SKILL.md` on legacy installs) as the source of truth. Direct installed-copy edits are local only and will be overwritten by updates.
+
+Index entries look like this:
 
 ```markdown
 ## Index
