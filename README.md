@@ -8,7 +8,6 @@ Custom skills for Claude Code that extend its capabilities.
 
 | Skill | Description | Trigger Examples |
 |-------|-------------|------------------|
-| **emil-design-eng** | Emil Kowalski design-engineering guidance for UI polish, component craft, animation judgment, and interface feel. | "review this UI polish", "make this interaction feel better", "check these animations" |
 | **web-animation-design** | Focused animations.dev guidance for web motion, easing, timing, performance, and reduced-motion support. | "this animation feels janky", "which easing should I use", "review this modal transition" |
 | **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
 | **lazy-skill** | On-demand skill loader to reduce routing ambiguity. Browse and load skills from `~/.agents/lazy-skills/` only when explicitly needed. | `/lazy-skill`, `/lazy-skill docker` |
