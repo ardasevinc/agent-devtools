@@ -1,0 +1,268 @@
+version = 1
+
+[runtime]
+root = "~/.agents/lazy-skills"
+source_cache = "~/.agents/lazy-skill-sources"
+managed_by = "agent-devtools.lazy-skills"
+
+[defaults]
+update_policy = "track-ref"
+include = [
+  "README*",
+  "LICENSE*",
+  "CLAUDE.md",
+  "AGENTS.md",
+  "GEMINI.md",
+  "CONTEXT.md",
+  "CHANGELOG.md",
+  "UPSTREAM-README.md",
+  "SKILL.md",
+  "skills/**/SKILL.md",
+  "skills/**/*.md",
+  "skills/**/README*",
+  "skills/**/references/**",
+  "skills/**/rules/**",
+  "skills/**/assets/**",
+  "skills/**/scripts/**",
+  "plugins/**/skills/**/SKILL.md",
+  "plugins/**/skills/**/*.md",
+  "plugins/**/skills/**/references/**",
+  "plugins/**/skills/**/rules/**",
+  "plugins/**/skills/**/assets/**",
+  "plugins/**/skills/**/scripts/**",
+  "references/**",
+  "rules/**",
+  "assets/**",
+  "scripts/**",
+  "docs/**",
+  "_meta/**",
+  "agents/**",
+  "cache/**",
+  "tests/**",
+  "metadata.json",
+  "test-triggers.*"
+]
+exclude = [
+  ".git/**",
+  ".github/**",
+  "node_modules/**",
+  ".venv/**",
+  "venv/**",
+  "dist/**",
+  "build/**",
+  ".next/**",
+  "coverage/**",
+  "target/**",
+  ".turbo/**",
+  ".cache/**"
+]
+
+[[source]]
+name = "app-store-connect-cli-skills"
+kind = "collection"
+repo = "https://github.com/rorkai/app-store-connect-cli-skills.git"
+ref = "main"
+runtime_path = "app-store-connect-cli-skills"
+
+[[source]]
+name = "architecture-wise-tree"
+kind = "local-adopted"
+runtime_path = "architecture-wise-tree"
+note = "Curated collection. Keep adopted until every source part is declared."
+
+[[source]]
+name = "ardasevinc"
+kind = "local"
+source_path = "lazy-skills/ardasevinc"
+runtime_path = "ardasevinc"
+
+[[source]]
+name = "astro"
+kind = "single"
+repo = "https://github.com/astrolicious/agent-skills.git"
+ref = "main"
+runtime_path = "astro"
+source_path = "skills/astro"
+
+[[source]]
+name = "bun-runtime"
+kind = "single"
+repo = "https://github.com/affaan-m/everything-claude-code.git"
+ref = "main"
+runtime_path = "bun-runtime"
+source_path = ".agents/skills/bun-runtime"
+
+[[source]]
+name = "callstack-react-native-skills"
+kind = "collection"
+repo = "https://github.com/callstackincubator/agent-skills.git"
+ref = "main"
+runtime_path = "callstack-react-native-skills"
+
+[[source]]
+name = "cloudflare-opennext"
+kind = "single"
+repo = "https://github.com/null-shot/cloudflare-skills.git"
+ref = "main"
+runtime_path = "cloudflare-opennext"
+source_path = "cloudflare-opennext"
+
+[[source]]
+name = "cloudflare-skills"
+kind = "collection"
+repo = "https://github.com/cloudflare/skills.git"
+ref = "main"
+runtime_path = "cloudflare-skills"
+
+[[source]]
+name = "emil-design-eng"
+kind = "single"
+repo = "https://github.com/emilkowalski/skill.git"
+ref = "main"
+runtime_path = "emil-design-eng"
+source_path = "skills/emil-design-eng"
+
+[[source]]
+name = "expo-skills"
+kind = "collection"
+repo = "https://github.com/expo/skills.git"
+ref = "main"
+runtime_path = "expo-skills"
+source_path = "plugins/expo"
+
+[[source]]
+name = "golang-skills"
+kind = "collection"
+repo = "https://github.com/samber/cc-skills-golang.git"
+ref = "main"
+runtime_path = "golang-skills"
+
+[[source]]
+name = "hono"
+kind = "single"
+repo = "https://github.com/yusukebe/hono-skill.git"
+ref = "main"
+runtime_path = "hono"
+source_path = "skills/hono"
+
+[[source]]
+name = "inference-video-skills"
+kind = "curated"
+repo = "https://github.com/inference-sh/skills.git"
+ref = "main"
+runtime_path = "inference-video-skills"
+include = [
+  "README.md",
+  "UPSTREAM-README.md",
+  "guides/prompting/video-prompting-guide/**",
+  "guides/video/**",
+  "tools/video/**"
+]
+note = "Curated video subset from inference-sh/skills."
+
+[[source]]
+name = "mattpocock-skills"
+kind = "collection"
+repo = "https://github.com/mattpocock/skills.git"
+ref = "main"
+runtime_path = "mattpocock-skills"
+
+[[source]]
+name = "next-skills"
+kind = "local-adopted"
+runtime_path = "next-skills"
+note = "Confirmed 2026-07-09: vercel-labs/next-skills moved to vercel/next.js/tree/canary/skills. Old next-best-practices and next-upgrade no longer ship as skills; current runtime remains adopted until intentionally migrated."
+
+[[source]]
+name = "payload-skills"
+kind = "collection"
+repo = "https://github.com/payloadcms/skills.git"
+ref = "main"
+runtime_path = "payload-skills"
+
+[[source]]
+name = "quality-constitution"
+kind = "local"
+source_path = "lazy-skills/quality-constitution"
+runtime_path = "quality-constitution"
+note = "Local seed skill from Agent Devtools quality research."
+
+[[source]]
+name = "remotion-skills"
+kind = "collection"
+repo = "https://github.com/remotion-dev/skills.git"
+ref = "main"
+runtime_path = "remotion-skills"
+
+[[source]]
+name = "rust-skills"
+kind = "collection"
+repo = "https://github.com/actionbook/rust-skills.git"
+ref = "main"
+runtime_path = "rust-skills"
+
+[[source]]
+name = "shadcn-ui"
+kind = "collection"
+repo = "https://github.com/shadcn-ui/ui.git"
+ref = "main"
+runtime_path = "shadcn-ui"
+include = [
+  "README.md",
+  "LICENSE*",
+  "skills/shadcn/**"
+]
+note = "Official shadcn/ui skill source."
+
+[[source]]
+name = "swift-concurrency-pro"
+kind = "single"
+repo = "https://github.com/twostraws/Swift-Concurrency-Agent-Skill.git"
+ref = "main"
+runtime_path = "swift-concurrency-pro"
+source_path = "swift-concurrency-pro"
+
+[[source]]
+name = "swift-testing-pro"
+kind = "single"
+repo = "https://github.com/twostraws/Swift-Testing-Agent-Skill.git"
+ref = "main"
+runtime_path = "swift-testing-pro"
+source_path = "swift-testing-pro"
+
+[[source]]
+name = "swiftdata-pro"
+kind = "single"
+repo = "https://github.com/twostraws/SwiftData-Agent-Skill.git"
+ref = "main"
+runtime_path = "swiftdata-pro"
+source_path = "swiftdata-pro"
+
+[[source]]
+name = "swiftui-pro"
+kind = "single"
+repo = "https://github.com/twostraws/SwiftUI-Agent-Skill.git"
+ref = "main"
+runtime_path = "swiftui-pro"
+source_path = "swiftui-pro"
+
+[[source]]
+name = "taste-skill"
+kind = "collection"
+repo = "https://github.com/leonxlnx/taste-skill.git"
+ref = "main"
+runtime_path = "taste-skill"
+
+[[source]]
+name = "vercel-agent-skills"
+kind = "collection"
+repo = "https://github.com/vercel-labs/agent-skills.git"
+ref = "main"
+runtime_path = "vercel-agent-skills"
+
+[[source]]
+name = "wshobson-agents"
+kind = "collection"
+repo = "https://github.com/wshobson/agents.git"
+ref = "main"
+runtime_path = "wshobson-agents"

@@ -141,6 +141,38 @@ Index entries look like this:
 
 Keep the index sparse. It should work like a card catalog, not a second always-loaded skill registry with long trigger rules.
 
+### Syncing Lazy Skills
+
+Lazy skill runtime copies are generated artifacts. Source provenance and update
+state live in:
+
+- `lazy-skills.manifest.toml`
+- `lazy-skills.lock.json`
+- `scripts/sync-lazy-skills.ts`
+- `docs/lazy-skills-covenant.md`
+
+Check current state:
+
+```bash
+bun scripts/sync-lazy-skills.ts status
+```
+
+Preview upstream updates:
+
+```bash
+bun scripts/sync-lazy-skills.ts --dry-run --all
+bun scripts/sync-lazy-skills.ts --dry-run --only hono
+```
+
+Apply managed updates:
+
+```bash
+bun scripts/sync-lazy-skills.ts --all
+```
+
+The runtime directory `~/.agents/lazy-skills/` should stay `.git`-free. Source
+mirrors live under `~/.agents/lazy-skill-sources/`.
+
 ### Supported Structures
 
 ```
