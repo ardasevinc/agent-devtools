@@ -2,7 +2,7 @@
 name: lazy-skill
 description: Browse and load skills on-demand from ~/.agents/lazy-skills without exposing every skill description to the base agent. Use when the user explicitly asks for a lazy skill or a capability that should be loaded only on demand.
 argument-hint: [search query or blank to browse]
-version: 1.1.0
+version: 1.2.1
 ---
 
 # Lazy Skill Loader
@@ -18,7 +18,6 @@ The canonical lazy skill library is `~/.agents/lazy-skills/`. `~/.claude/lazy-sk
 Skills available for lazy loading (name: sparse keywords - short description):
 
 - **taste-skill** [collection]: taste, frontend, imagegen - Anti-generic frontend design, image-to-code, and premium UI direction
-- **emil-design-eng**: emil, design, animation - Emil Kowalski UI polish, component craft, and animation judgment
 - **shadcn-ui** [collection]: shadcn, components, registry - Official shadcn/ui component and registry workflow
 - **next-skills** [collection]: nextjs, rsc, cache - Next.js best practices, upgrades, and Cache Components
 - **vercel-agent-skills** [collection]: react, vercel, performance - Vercel React/Next/RN performance and composition guidance

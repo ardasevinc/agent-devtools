@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "2026-07-09T15:53:57.288Z",
+  "generated_at": "2026-07-09T19:25:24.853Z",
   "runtime_root": "~/.agents/lazy-skills",
-  "manifest_digest": "sha256:a145c223298d1ab88718ad55052adbf5f45309784cb8649f6215520afadc9e5b",
+  "manifest_digest": "sha256:f55969508a95b8e8647007d1967ee88c33f3d40e17b130063d507f57182a01ee",
   "entries": [
     {
       "name": "app-store-connect-cli-skills",
@@ -135,11 +135,13 @@
     },
     {
       "name": "architecture-wise-tree",
-      "kind": "local-adopted",
+      "kind": "curated",
+      "resolved_commit": "local:lazy-skills/architecture-wise-tree,https://github.com/addyosmani/agent-skills.git#b76534301587b9e75ad9cf5fdc1cd6cbe6318da3,https://github.com/anthropics/knowledge-work-plugins.git#3b5ba51bb892a5145a8d4049c085f044a57ce9dd,https://github.com/github/awesome-copilot.git#44ffa65c503feee850fad4186b21ab5c913777a9,https://github.com/wondelai/skills.git#4d322538be8b9ce98fca29b0eef26d67bff1fe82",
       "runtime_path": "architecture-wise-tree",
-      "runtime_tree_digest": "sha256:f1752a6995f7e1e3f3bc11fd42e0d8ca510956f5fc799d365b9642bf8da08ce7",
+      "source_tree_digest": "sha256:7945e8b5b61ad491d16fc396ce5adbedc57773e71da1e7acd16b687a59698b11",
+      "runtime_tree_digest": "sha256:4a1cd17df87bd3756b28ab87198380e75950e8780e974b21eb8dc817b84bfa7b",
       "file_count": 71,
-      "byte_count": 807848,
+      "byte_count": 808377,
       "skill_leaves": [
         {
           "name": "code-simplification",
@@ -227,7 +229,7 @@
           "digest": "sha256:aae74791e2509a10325bf77e60e31b4adb3cdabd42b981a123336e93e0efeb55"
         }
       ],
-      "note": "Curated collection. Keep adopted until every source part is declared."
+      "note": "Curated architecture bundle from declared upstream sources plus a local wrapper README."
     },
     {
       "name": "ardasevinc",
@@ -441,25 +443,6 @@
           "name": "wrangler",
           "path": "cloudflare-skills/skills/wrangler/SKILL.md",
           "digest": "sha256:42abe11ba6c0cb0c135deed1d591d844838fe0b61fc8c6d675a832435508a61b"
-        }
-      ]
-    },
-    {
-      "name": "emil-design-eng",
-      "kind": "single",
-      "repo": "https://github.com/emilkowalski/skill.git",
-      "ref": "main",
-      "resolved_commit": "f76beceb7d3fc8c43309cefad5a095a206103a4e",
-      "runtime_path": "emil-design-eng",
-      "source_tree_digest": "sha256:c151d1c4a15a03c3da10f7b1b967c3ec6e9a84fd64a50f1ccd3b990d0bda11e4",
-      "runtime_tree_digest": "sha256:b0de2e1f145d77de5aacdc422826b867dbf8722e4be9f48f88545fda0a44b0e4",
-      "file_count": 4,
-      "byte_count": 31292,
-      "skill_leaves": [
-        {
-          "name": "emil-design-eng",
-          "path": "emil-design-eng/SKILL.md",
-          "digest": "sha256:433b5a239cda18e0576e4e558532e7e53512e21fafe5b85db4894c28ec399b72"
         }
       ]
     },
@@ -1131,11 +1114,15 @@
     },
     {
       "name": "next-skills",
-      "kind": "local-adopted",
+      "kind": "collection",
+      "repo": "https://github.com/vercel-labs/next-skills.git",
+      "ref": "dc1de9caf7612d73f56a8dec3cb1bd6c9ec096b9",
+      "resolved_commit": "dc1de9caf7612d73f56a8dec3cb1bd6c9ec096b9",
       "runtime_path": "next-skills",
-      "runtime_tree_digest": "sha256:5c318439872540c5339de1e528072e6f7cce4570ca85b40e3358f9c98930c2fa",
+      "source_tree_digest": "sha256:7ce6ee6db4f6c783bdb73d96cdd2337f961a432fe876454108be15f562874703",
+      "runtime_tree_digest": "sha256:3d09a58f30365a370dacae9e3310e9cb8ef329ac1e862fa557cd1d6aa7355e9d",
       "file_count": 26,
-      "byte_count": 96854,
+      "byte_count": 97099,
       "skill_leaves": [
         {
           "name": "next-best-practices",
@@ -1153,7 +1140,7 @@
           "digest": "sha256:562f9834d7c55c37498e0787fe431061f4bb766cd1dd6bb52441790593c7e1a8"
         }
       ],
-      "note": "Confirmed 2026-07-09: vercel-labs/next-skills moved to vercel/next.js/tree/canary/skills. Old next-best-practices and next-upgrade no longer ship as skills; current runtime remains adopted until intentionally migrated."
+      "note": "Pinned legacy source. Confirmed 2026-07-09: current Vercel skills moved to vercel/next.js/tree/canary/skills; old next-best-practices and next-upgrade no longer ship as direct replacements."
     },
     {
       "name": "payload-skills",

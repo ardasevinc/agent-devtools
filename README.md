@@ -8,6 +8,7 @@ Custom skills for Claude Code that extend its capabilities.
 
 | Skill | Description | Trigger Examples |
 |-------|-------------|------------------|
+| **emil-design-eng** | Emil Kowalski design-engineering guidance for UI polish, component craft, animation judgment, and interface feel. | "review this UI polish", "make this interaction feel better", "check these animations" |
 | **interview** | Socratic interviewer for requirements elicitation. Probes blind spots, challenges assumptions, synthesizes understanding. | `/interview auth system`, "help me think through this feature", vague requirements |
 | **lazy-skill** | On-demand skill loader to reduce routing ambiguity. Browse and load skills from `~/.agents/lazy-skills/` only when explicitly needed. | `/lazy-skill`, `/lazy-skill docker` |
 | **[mattermost-cli](https://github.com/ardasevinc/mattermost-cli)** | Fetch and search Mattermost messages. Auto-redacts secrets for safe LLM processing. **Maintained in its own repo.** | "check my messages", "what did alice say about X", `/mattermost` |
@@ -121,7 +122,7 @@ bunx skills@latest add ardasevinc/agent-devtools --skill lazy-skill
 
 ### Adding Lazy Skills
 
-1. Place the skill file at `~/.agents/lazy-skills/<name>.md` or clone/copy a skill repo to `~/.agents/lazy-skills/<name>/`.
+1. Add the skill to `lazy-skills.manifest.toml` and sync it into `~/.agents/lazy-skills/`.
 2. Edit the durable index in this repo: `skills/lazy-skill/SKILL.md`.
 3. Commit and push this repo, then refresh the installed meta-skill:
 

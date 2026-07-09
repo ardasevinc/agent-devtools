@@ -66,9 +66,64 @@ runtime_path = "app-store-connect-cli-skills"
 
 [[source]]
 name = "architecture-wise-tree"
-kind = "local-adopted"
+kind = "curated"
 runtime_path = "architecture-wise-tree"
-note = "Curated collection. Keep adopted until every source part is declared."
+note = "Curated architecture bundle from declared upstream sources plus a local wrapper README."
+
+[[source.parts]]
+source_path = "lazy-skills/architecture-wise-tree"
+from = "."
+to = "."
+include = ["README.md"]
+
+[[source.parts]]
+repo = "https://github.com/addyosmani/agent-skills.git"
+ref = "b76534301587b9e75ad9cf5fdc1cd6cbe6318da3"
+from = "skills"
+to = "addyosmani"
+include = [
+  "code-simplification/**",
+  "documentation-and-adrs/**",
+  "incremental-implementation/**",
+  "planning-and-task-breakdown/**",
+  "source-driven-development/**"
+]
+
+[[source.parts]]
+repo = "https://github.com/anthropics/knowledge-work-plugins.git"
+ref = "main"
+from = "engineering/skills"
+to = "anthropics"
+include = [
+  "architecture/**",
+  "tech-debt/**",
+  "testing-strategy/**"
+]
+
+[[source.parts]]
+repo = "https://github.com/github/awesome-copilot.git"
+ref = "main"
+from = "skills"
+to = "github"
+include = [
+  "architecture-blueprint-generator/**",
+  "cloud-design-patterns/**"
+]
+
+[[source.parts]]
+repo = "https://github.com/wondelai/skills.git"
+ref = "4d322538be8b9ce98fca29b0eef26d67bff1fe82"
+from = "."
+to = "wondelai"
+include = [
+  "clean-architecture/**",
+  "ddia-systems/**",
+  "domain-driven-design/**",
+  "pragmatic-programmer/**",
+  "refactoring-patterns/**",
+  "software-design-philosophy/**",
+  "system-design/**"
+]
 
 [[source]]
 name = "ardasevinc"
@@ -113,14 +168,6 @@ kind = "collection"
 repo = "https://github.com/cloudflare/skills.git"
 ref = "main"
 runtime_path = "cloudflare-skills"
-
-[[source]]
-name = "emil-design-eng"
-kind = "single"
-repo = "https://github.com/emilkowalski/skill.git"
-ref = "main"
-runtime_path = "emil-design-eng"
-source_path = "skills/emil-design-eng"
 
 [[source]]
 name = "expo-skills"
@@ -169,9 +216,12 @@ runtime_path = "mattpocock-skills"
 
 [[source]]
 name = "next-skills"
-kind = "local-adopted"
+kind = "collection"
+repo = "https://github.com/vercel-labs/next-skills.git"
+ref = "dc1de9caf7612d73f56a8dec3cb1bd6c9ec096b9"
 runtime_path = "next-skills"
-note = "Confirmed 2026-07-09: vercel-labs/next-skills moved to vercel/next.js/tree/canary/skills. Old next-best-practices and next-upgrade no longer ship as skills; current runtime remains adopted until intentionally migrated."
+update_policy = "frozen-legacy"
+note = "Pinned legacy source. Confirmed 2026-07-09: current Vercel skills moved to vercel/next.js/tree/canary/skills; old next-best-practices and next-upgrade no longer ship as direct replacements."
 
 [[source]]
 name = "payload-skills"

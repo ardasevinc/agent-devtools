@@ -46,6 +46,7 @@ interface ManifestEntry {
 interface ManifestPart {
   repo?: string;
   ref?: string;
+  source_path?: string;
   from: string;
   to: string;
   include?: string[];
@@ -298,6 +299,17 @@ function repoCachePath(sourceCache: string, repo: string): string {
   return join(sourceCache, url.hostname, `${cleanPath}.git`);
 }
 
+function sourceRepos(entries: ManifestEntry[]): string[] {
+  return [
+    ...new Set(
+      entries.flatMap((entry) => [
+        ...(entry.repo ? [entry.repo] : []),
+        ...(entry.parts ?? []).flatMap((part) => part.repo ?? []),
+      ]),
+    ),
+  ].sort();
+}
+
 async function ensureMirror(entry: ManifestEntry, sourceCache: string, offline: boolean): Promise<string> {
   if (!entry.repo) throw new Error(`${entry.name}: missing repo`);
   const mirror = repoCachePath(sourceCache, entry.repo);
@@ -338,13 +350,20 @@ async function stageEntry(
   if (entry.parts?.length) {
     const commits: string[] = [];
     for (const part of entry.parts) {
-      const partRepo = part.repo ?? entry.repo;
-      const partRef = part.ref ?? entry.ref;
-      if (!partRepo || !partRef) throw new Error(`${entry.name}: curated part missing repo/ref`);
-      const mirror = await ensureMirror({ ...entry, repo: partRepo }, sourceCache, offline);
-      const checkout = await checkoutMirror(mirror, partRef, await mkdtemp(join(tmpdir(), `lazy-skill-${entry.name}-part-`)));
-      commits.push(`${partRepo}#${checkout.commit}`);
-      const sourceRoot = join(checkout.root, part.from);
+      let sourceBase: string;
+      if (part.source_path) {
+        sourceBase = join(REPO_ROOT, part.source_path);
+        commits.push(`local:${part.source_path}`);
+      } else {
+        const partRepo = part.repo ?? entry.repo;
+        const partRef = part.ref ?? entry.ref;
+        if (!partRepo || !partRef) throw new Error(`${entry.name}: curated part missing repo/ref`);
+        const mirror = await ensureMirror({ ...entry, repo: partRepo }, sourceCache, offline);
+        const checkout = await checkoutMirror(mirror, partRef, await mkdtemp(join(tmpdir(), `lazy-skill-${entry.name}-part-`)));
+        commits.push(`${partRepo}#${checkout.commit}`);
+        sourceBase = checkout.root;
+      }
+      const sourceRoot = join(sourceBase, part.from);
       if (!(await pathExists(sourceRoot))) throw new Error(`${entry.name}: curated part missing: ${part.from}`);
       const partDest = join(stagedRoot, part.to);
       await mkdir(partDest, { recursive: true });
@@ -558,14 +577,21 @@ async function commandStatus(manifest: Manifest, lock: Lockfile | null) {
   const runtimeEntries = await Promise.all(entries.map((entry) => currentRuntimeEntry(runtimeRoot, entry)));
   const runtimeLeaves = runtimeEntries.reduce((sum, entry) => sum + (entry?.skill_leaves.length ?? 0), 0);
   const cachedSources = await Promise.all(
-    entries
-      .filter((entry) => entry.repo)
-      .map(async (entry) => ((await pathExists(repoCachePath(sourceCache, entry.repo!))) ? 1 : 0)),
+    sourceRepos(entries).map(async (repo) => ((await pathExists(repoCachePath(sourceCache, repo))) ? 1 : 0)),
   );
+  const managedRuntimePaths = new Set(entries.map((entry) => entry.runtime_path));
+  const unmanagedRuntimeEntries = (await readdir(runtimeRoot, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory() && !managedRuntimePaths.has(entry.name))
+    .map((entry) => entry.name)
+    .sort();
 
   let dirtyRuntime = false;
   if (lock) {
     const lockByName = new Map(lock.entries.map((entry) => [entry.name, entry]));
+    const manifestNames = new Set(entries.map((entry) => entry.name));
+    if (lock.entries.some((entry) => !manifestNames.has(entry.name))) {
+      dirtyRuntime = true;
+    }
     for (const runtimeEntry of runtimeEntries) {
       if (!runtimeEntry) {
         dirtyRuntime = true;
@@ -580,6 +606,11 @@ async function commandStatus(manifest: Manifest, lock: Lockfile | null) {
 
   console.log(`managed entries: ${entries.length}`);
   console.log(`runtime leaves: ${runtimeLeaves}`);
+  console.log(
+    `unmanaged runtime entries: ${
+      unmanagedRuntimeEntries.length ? unmanagedRuntimeEntries.join(", ") : "none"
+    }`,
+  );
   console.log(`dirty runtime: ${lock ? (dirtyRuntime ? "yes" : "no") : "unknown (no lockfile)"}`);
   console.log(`sources cached: ${cachedSources.reduce((a, b) => a + b, 0)}/${cachedSources.length}`);
   console.log(`lock matches runtime: ${lock ? (dirtyRuntime ? "no" : "yes") : "no lockfile"}`);
@@ -635,7 +666,9 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
   const json = args.has("--json");
   const entries = selectedEntries(manifest);
   const oldLockByName = new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
-  const nextLockByName = new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
+  const nextLockByName = args.has("--all")
+    ? new Map<string, LockEntry>()
+    : new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
   const report: unknown[] = [];
   let replaced = 0;
 
