@@ -12,6 +12,9 @@ agent-devtools/
 ├── claudecode/         # Claude Code customizations
 │   ├── statusline.ts   # Custom statusline script (bun)
 │   └── claude-tasks.ts # Task list picker/launcher (bun + fzf)
+├── codex/              # Codex CLI customizations
+│   └── hooks/
+│       └── home-guard/ # Native catastrophic-filesystem guard
 ├── skills/             # Custom skills for Claude Code
 │   └── <skill-name>/
 │       └── SKILL.md    # Skill definition

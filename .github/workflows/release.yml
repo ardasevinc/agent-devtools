@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            target: aarch64-apple-darwin
+            executable: codex-home-guard
+          - os: macos-15-intel
+            target: x86_64-apple-darwin
+            executable: codex-home-guard
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            executable: codex-home-guard
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+            executable: codex-home-guard
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            executable: codex-home-guard.exe
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: codex/hooks/home-guard
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Test
+        run: cargo test --locked
+      - name: Build
+        run: cargo build --release --locked
+      - name: Package Unix
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          mkdir -p package
+          cp "target/release/${{ matrix.executable }}" package/codex-home-guard
+          tar -czf "codex-home-guard-${{ matrix.target }}.tar.gz" -C package codex-home-guard
+      - name: Package Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force package
+          Copy-Item "target/release/${{ matrix.executable }}" "package/codex-home-guard.exe"
+          Compress-Archive -Path "package/codex-home-guard.exe" -DestinationPath "codex-home-guard-${{ matrix.target }}.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: codex-home-guard-${{ matrix.target }}
+          path: codex/hooks/home-guard/codex-home-guard-${{ matrix.target }}.*
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v5
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Generate checksums
+        working-directory: dist
+        run: sha256sum codex-home-guard-* > checksums.txt
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes \
+            --verify-tag
