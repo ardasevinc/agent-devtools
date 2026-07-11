@@ -34,7 +34,9 @@ pub fn evaluate(input: &HookInput) -> Decision {
     let Some(command) = input.tool_input.command.as_deref() else {
         return Decision::Allow;
     };
-    let home = env::var_os("HOME").map(PathBuf::from);
+    let home = env::var_os("HOME")
+        .or_else(|| env::var_os("USERPROFILE"))
+        .map(PathBuf::from);
     evaluate_command(command, &input.cwd, home.as_deref(), 0)
 }
 

@@ -101,7 +101,9 @@ fn allows_normal_development_work() {
 #[test]
 fn blocks_git_clean_from_home_or_root() {
     assert!(matches!(check("git clean -fdx", "/"), Decision::Block(_)));
-    let home = std::env::var("HOME").unwrap();
+    let home = std::env::var("HOME")
+        .or_else(|_| std::env::var("USERPROFILE"))
+        .unwrap();
     assert!(matches!(check("git clean -fdx", &home), Decision::Block(_)));
 }
 
