@@ -29,37 +29,64 @@ fn allowed(command: &str) {
 
 #[test]
 fn blocks_catastrophic_rm_targets() {
+    let home = std::env::var("HOME")
+        .or_else(|_| std::env::var("USERPROFILE"))
+        .unwrap();
+    let home_parent = PathBuf::from(&home).parent().unwrap().display().to_string();
     for command in [
-        "rm -rf /",
-        "rm -rf /*",
-        "sudo rm --recursive --force /System",
-        "sudo -u root rm -rf /",
-        "command rm -r /Users",
-        "env LC_ALL=C rm -rf /etc",
-        "env -u TMPDIR rm -rf /var",
-        "rm -rf ~",
-        "rm -rf ~/",
-        "rm -rf $HOME",
-        "rm -rf ${HOME}/*",
-        "rm -rf /Users/arda/project/../..",
-        "bash -c 'rm -rf /'",
-        "echo ok && sudo /bin/rm -rf /var",
-        "rmdir /etc",
+        "rm -rf /".into(),
+        "rm -rf /*".into(),
+        "sudo -u root rm -rf /".into(),
+        format!("command rm -r {home_parent}"),
+        "rm -rf ~".into(),
+        "rm -rf ~/".into(),
+        "rm -rf $HOME".into(),
+        "rm -rf ${HOME}/*".into(),
+        format!("rm -rf {home}/project/../.."),
+        "bash -c 'rm -rf /'".into(),
     ] {
-        blocked(command);
+        blocked(&command);
     }
 }
 
 #[test]
-fn blocks_credential_deletion() {
+fn blocks_credential_roots_but_allows_scoped_changes() {
+    for command in [
+        "rm -rf ~/.ssh",
+        "rm -rf $HOME/.gnupg/*",
+        "find ~/.aws -delete",
+    ] {
+        blocked(command);
+    }
+
     for command in [
         "rm ~/.ssh/id_ed25519",
-        "rm -rf $HOME/.gnupg",
+        "rm -rf ~/.ssh/old-keys",
         "unlink ~/.aws/credentials",
         "truncate -s 0 ~/.kube/config",
         "mv ~/.ssh /tmp/old-ssh",
     ] {
+        allowed(command);
+    }
+}
+
+#[test]
+fn blocks_unresolved_indirection_for_broad_operations() {
+    for command in [
+        "rm -rf $TARGET",
+        "rm -rf ${TARGET}",
+        "rm -rf ${HOME:?}",
+        "rm -rf $(resolve-target)",
+        "rm -rf `resolve-target`",
+        "rm -rf ~another-user",
+        "find $TARGET -delete",
+        "rsync -a --delete empty/ $TARGET",
+    ] {
         blocked(command);
+    }
+
+    for command in ["rm -f $TARGET", "mv $TARGET /tmp/old-target"] {
+        allowed(command);
     }
 }
 
@@ -93,6 +120,15 @@ fn allows_normal_development_work() {
         "printf '%s' 'diskutil eraseDisk'",
         "rm ~/Downloads/old.zip",
         "rm -rf ~/.cache/my-tool",
+        "rm -rf $HOME/project/dist",
+        "rm -rf ${HOME}/project/build/*",
+        "rm -rf /Applications",
+        "rm -rf /Library",
+        "rm -rf /System",
+        "rm -rf /etc",
+        "rm -rf /opt",
+        "rm -rf /var",
+        "rmdir /etc",
     ] {
         allowed(command);
     }

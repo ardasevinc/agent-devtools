@@ -208,7 +208,11 @@ fn command_index(words: &[&str]) -> Option<usize> {
 
 fn classify_target(target: &str, cwd: &Path, home: Option<&Path>, broad: bool) -> Option<String> {
     let expanded = expand_home(target, home);
-    let globbed = has_glob(&expanded);
+    if broad && has_unresolved_indirection(&expanded) {
+        return Some(format!(
+            "target {target:?} uses unresolved shell indirection; resolve it to an explicit path and retry"
+        ));
+    }
     let prefix = glob_prefix(&expanded);
     let path = normalize(if Path::new(prefix).is_absolute() {
         PathBuf::from(prefix)
@@ -224,22 +228,20 @@ fn classify_target(target: &str, cwd: &Path, home: Option<&Path>, broad: bool) -
         if path == home {
             return Some(format!("target {target:?} resolves to the user home"));
         }
+        if broad && home.starts_with(&path) {
+            return Some(format!(
+                "target {target:?} resolves to an ancestor of the user home"
+            ));
+        }
         for credential_dir in [".ssh", ".gnupg", ".aws", ".kube"] {
             let protected = home.join(credential_dir);
-            if path == protected || path.starts_with(&protected) {
+            if broad && path == protected {
                 return Some(format!(
-                    "target {target:?} is inside {}",
+                    "target {target:?} resolves to credential root {}",
                     protected.display()
                 ));
             }
         }
-    }
-
-    if (broad || globbed) && is_system_root(&path) {
-        return Some(format!(
-            "target {target:?} resolves to system root {}",
-            path.display()
-        ));
     }
     None
 }
@@ -264,33 +266,6 @@ fn dangerous_cwd(cwd: &Path, home: Option<&Path>) -> bool {
     cwd == Path::new("/") || home.is_some_and(|home| cwd == normalize(home.to_path_buf()))
 }
 
-fn is_system_root(path: &Path) -> bool {
-    [
-        "/Applications",
-        "/Library",
-        "/System",
-        "/Users",
-        "/Volumes",
-        "/bin",
-        "/boot",
-        "/dev",
-        "/etc",
-        "/home",
-        "/opt",
-        "/private",
-        "/proc",
-        "/root",
-        "/run",
-        "/sbin",
-        "/srv",
-        "/sys",
-        "/usr",
-        "/var",
-    ]
-    .iter()
-    .any(|root| path == Path::new(root))
-}
-
 fn expand_home(target: &str, home: Option<&Path>) -> String {
     let Some(home) = home else {
         return target.to_owned();
@@ -305,6 +280,10 @@ fn expand_home(target: &str, home: Option<&Path>) -> String {
         }
     }
     target.to_owned()
+}
+
+fn has_unresolved_indirection(target: &str) -> bool {
+    target.contains('$') || target.contains('`') || target.starts_with('~')
 }
 
 fn normalize(path: PathBuf) -> PathBuf {

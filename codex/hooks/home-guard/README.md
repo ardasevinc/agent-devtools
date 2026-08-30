@@ -3,26 +3,30 @@
 A fast, deterministic Codex CLI `PreToolUse` hook that blocks catastrophic
 filesystem commands before they run.
 
-Home Guard is deliberately narrower than a shell security product. It protects
-high-consequence filesystem boundaries while leaving ordinary repository work
-alone.
+Home Guard is deliberately narrower than a shell security product. It acts as
+a fuse for provably catastrophic commands while leaving explicit, scoped
+filesystem work alone.
 
 ## What it blocks
 
-- recursive or globbed deletion of `/`, the current user's home, and common
-  macOS/Linux system roots
-- deletion, truncation, or moves inside `~/.ssh`, `~/.gnupg`, `~/.aws`,
-  and `~/.kube`
+- recursive or globbed deletion of `/`, the current user's home, or an ancestor
+  of the current user's home
+- recursive deletion of the exact `~/.ssh`, `~/.gnupg`, `~/.aws`, and `~/.kube`
+  roots, while allowing scoped changes inside them
+- broad destructive commands whose target uses unresolved shell indirection,
+  such as `rm -rf "$TARGET"`; resolve the target to an explicit path and retry
 - destructive `find`, recursive permission changes, and `rsync --delete`
-  aimed at protected roots
+  aimed at the same protected targets
 - `git clean` when Codex is running directly from `/` or the user's home
 - raw-disk writes through `dd`, `mkfs*`, and destructive macOS `diskutil`
   operations
 - nested destructive commands passed through `sh -c`, `bash -c`, or
   `zsh -c`
 
-Commands such as `rm -rf target`, `find . -name '*.tmp' -delete`, and
-`git clean -fdx` inside an ordinary project remain allowed.
+Commands such as `rm -rf target`, `rm -rf /var`, `rm -rf "$HOME/project/dist"`,
+`rm ~/.ssh/known_hosts`, `find . -name '*.tmp' -delete`, and `git clean -fdx`
+inside an ordinary project remain allowed. The policy blocks ambiguous blast
+radius, not force flags or privileged-looking paths.
 
 ## Install
 
