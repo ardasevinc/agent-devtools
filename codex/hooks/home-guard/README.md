@@ -41,7 +41,7 @@ curl --proto '=https' --tlsv1.2 -fsSL \
 The installer detects the host architecture, verifies the release checksum,
 and writes `~/.local/bin/codex-home-guard`. Set
 `CODEX_HOME_GUARD_INSTALL_DIR` to choose another directory or
-`CODEX_HOME_GUARD_VERSION=v1.4.0` to pin a release.
+`CODEX_HOME_GUARD_VERSION=v1.4.1` to pin a release.
 
 ### Build from source
 

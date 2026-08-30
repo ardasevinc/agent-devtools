@@ -29,23 +29,19 @@ fn allowed(command: &str) {
 
 #[test]
 fn blocks_catastrophic_rm_targets() {
-    let home = std::env::var("HOME")
-        .or_else(|_| std::env::var("USERPROFILE"))
-        .unwrap();
-    let home_parent = PathBuf::from(&home).parent().unwrap().display().to_string();
     for command in [
-        "rm -rf /".into(),
-        "rm -rf /*".into(),
-        "sudo -u root rm -rf /".into(),
-        format!("command rm -r {home_parent}"),
-        "rm -rf ~".into(),
-        "rm -rf ~/".into(),
-        "rm -rf $HOME".into(),
-        "rm -rf ${HOME}/*".into(),
-        format!("rm -rf {home}/project/../.."),
-        "bash -c 'rm -rf /'".into(),
+        "rm -rf /",
+        "rm -rf /*",
+        "sudo -u root rm -rf /",
+        "command rm -r $HOME/..",
+        "rm -rf ~",
+        "rm -rf ~/",
+        "rm -rf $HOME",
+        "rm -rf ${HOME}/*",
+        "rm -rf $HOME/project/../..",
+        "bash -c 'rm -rf /'",
     ] {
-        blocked(&command);
+        blocked(command);
     }
 }
 
@@ -92,21 +88,17 @@ fn blocks_unresolved_indirection_for_broad_operations() {
 
 #[test]
 fn blocks_other_catastrophic_operators() {
-    let home = std::env::var("HOME")
-        .or_else(|_| std::env::var("USERPROFILE"))
-        .unwrap();
-    let home_parent = PathBuf::from(home).parent().unwrap().display().to_string();
     for command in [
-        "find / -delete".into(),
-        "find $HOME -delete".into(),
-        "chmod -R 000 /".into(),
-        format!("chown --recursive root {home_parent}"),
-        "rsync -a --delete empty/ /".into(),
-        "dd if=/dev/zero of=/dev/disk0".into(),
-        "mkfs.ext4 /dev/sda".into(),
-        "diskutil eraseDisk APFS Empty /dev/disk3".into(),
+        "find / -delete",
+        "find $HOME -delete",
+        "chmod -R 000 /",
+        "chown --recursive root $HOME/..",
+        "rsync -a --delete empty/ /",
+        "dd if=/dev/zero of=/dev/disk0",
+        "mkfs.ext4 /dev/sda",
+        "diskutil eraseDisk APFS Empty /dev/disk3",
     ] {
-        blocked(&command);
+        blocked(command);
     }
 }
 
