@@ -6,8 +6,9 @@ My personal AI Agent devtools/dev UX set.
 
 [Codex Home Guard](codex/hooks/home-guard) is a native Rust `PreToolUse` hook
 that blocks catastrophic filesystem commands before Codex runs them. It guards
-filesystem root, the user's home, common system roots, credential directories,
-and raw disks while allowing normal cleanup inside repositories.
+filesystem root, the user's home and its ancestors, exact credential roots,
+unresolved destructive targets, and raw disks while allowing explicit scoped
+cleanup elsewhere.
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fsSL \
