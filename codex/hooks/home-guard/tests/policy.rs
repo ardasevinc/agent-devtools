@@ -92,17 +92,21 @@ fn blocks_unresolved_indirection_for_broad_operations() {
 
 #[test]
 fn blocks_other_catastrophic_operators() {
+    let home = std::env::var("HOME")
+        .or_else(|_| std::env::var("USERPROFILE"))
+        .unwrap();
+    let home_parent = PathBuf::from(home).parent().unwrap().display().to_string();
     for command in [
-        "find / -delete",
-        "find $HOME -delete",
-        "chmod -R 000 /",
-        "chown --recursive root /Users",
-        "rsync -a --delete empty/ /",
-        "dd if=/dev/zero of=/dev/disk0",
-        "mkfs.ext4 /dev/sda",
-        "diskutil eraseDisk APFS Empty /dev/disk3",
+        "find / -delete".into(),
+        "find $HOME -delete".into(),
+        "chmod -R 000 /".into(),
+        format!("chown --recursive root {home_parent}"),
+        "rsync -a --delete empty/ /".into(),
+        "dd if=/dev/zero of=/dev/disk0".into(),
+        "mkfs.ext4 /dev/sda".into(),
+        "diskutil eraseDisk APFS Empty /dev/disk3".into(),
     ] {
-        blocked(command);
+        blocked(&command);
     }
 }
 
