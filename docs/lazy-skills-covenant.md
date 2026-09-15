@@ -52,7 +52,10 @@ the entry has incomplete provenance.
 
 ## Safety Rules
 
-- Runtime updates are staged, validated, then swapped.
+- The entire selected batch is staged and validated before any runtime entry is swapped.
+  Source or validation failures leave installed entries and the lock untouched.
+- Swaps are per entry, not a crash-atomic transaction across the batch. A filesystem
+  failure during installation can still require recovery before another sync.
 - The lockfile is written last.
 - `.git` is rejected in runtime output.
 - Symlinks may not escape the staged/runtime root.

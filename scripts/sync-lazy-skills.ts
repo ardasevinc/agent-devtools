@@ -671,6 +671,7 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
     : new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
   const report: unknown[] = [];
   let replaced = 0;
+  const stages: StagedEntry[] = [];
 
   for (const entry of entries) {
     await assertRuntimeClean(lock, runtimeRoot, entry, repair || dryRun);
@@ -711,8 +712,16 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
       console.log(`  removed: ${diff.removed.length ? diff.removed.slice(0, 8).join(", ") : "none"}`);
     }
 
-    if (!dryRun) {
-      const current = await currentRuntimeEntry(runtimeRoot, entry);
+    stages.push(stage);
+  }
+
+  // Validate the entire batch before replacing any installed entry.
+  if (!dryRun) {
+    for (const stage of stages) {
+      await assertRuntimeClean(lock, runtimeRoot, stage.entry, repair);
+    }
+    for (const stage of stages) {
+      const current = await currentRuntimeEntry(runtimeRoot, stage.entry);
       if (current?.runtime_tree_digest !== stage.runtimeDigest) {
         await replaceRuntimeEntry(runtimeRoot, stage);
         replaced += 1;

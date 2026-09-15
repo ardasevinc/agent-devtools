@@ -52,3 +52,41 @@ test("test fixture cleanup works", async () => {
   await writeFile(join(root, "note.md"), "ok\n");
   expect(await readFile(join(root, "note.md"), "utf8")).toBe("ok\n");
 });
+
+
+test("a later staging failure leaves earlier runtime entries and lock untouched", async () => {
+  const root = await tempDir();
+  await mkdir(join(root, "scripts"));
+  await writeFile(join(root, "scripts/sync-lazy-skills.ts"),
+    await readFile(join(import.meta.dir, "sync-lazy-skills.ts")));
+  await mkdir(join(root, "source"));
+  await writeFile(join(root, "source/SKILL.md"), "---\nname: first\n---\nnew\n");
+  await mkdir(join(root, "runtime/first"), { recursive: true });
+  await writeFile(join(root, "runtime/first/SKILL.md"), "old\n");
+  const lock = JSON.stringify({ version: 1, entries: [] });
+  await writeFile(join(root, "lazy-skills.lock.json"), lock);
+  await writeFile(join(root, "lazy-skills.manifest.toml"), `
+version = 1
+[runtime]
+root = "${root}/runtime"
+source_cache = "${root}/cache"
+[defaults]
+include = ["**"]
+[[source]]
+name = "first"
+kind = "local"
+source_path = "source"
+runtime_path = "first"
+[[source]]
+name = "second"
+kind = "local"
+source_path = "missing"
+runtime_path = "second"
+`);
+  const proc = Bun.spawn([process.execPath, join(root, "scripts/sync-lazy-skills.ts"), "--all"],
+    { stdout: "pipe", stderr: "pipe" });
+  await Promise.all([new Response(proc.stdout).text(), new Response(proc.stderr).text()]);
+  expect(await proc.exited).not.toBe(0);
+  expect(await readFile(join(root, "runtime/first/SKILL.md"), "utf8")).toBe("old\n");
+  expect(await readFile(join(root, "lazy-skills.lock.json"), "utf8")).toBe(lock);
+});
