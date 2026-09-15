@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "2026-09-15T12:04:48.752Z",
+  "generated_at": "2026-09-15T12:24:03.323Z",
   "runtime_root": "~/.agents/lazy-skills",
-  "manifest_digest": "sha256:9fdf432a7f2dfa8769360b9721bab7b6f06948c77ad03c320c525bba769ca6cc",
+  "manifest_digest": "sha256:8b02a96cfa7e85c282d23f23b6975b8419e6423c41e305fedf32d373c732c0ac",
   "entries": [
     {
       "name": "app-store-connect-cli-skills",
@@ -276,6 +276,366 @@
       ]
     },
     {
+      "name": "axiom",
+      "kind": "collection",
+      "repo": "https://github.com/CharlesWiltgen/Axiom.git",
+      "ref": "main",
+      "resolved_commit": "8f27104744cb4bc587ed5171208bab2d09b216b6",
+      "runtime_path": "axiom",
+      "source_tree_digest": "sha256:2dfae5baf8603f65037f06fd894ea580d612099d3c784cc6d9625bce49c8da3e",
+      "runtime_tree_digest": "sha256:d8acb6a10e1c6e4e0cb9fd8c05aa9b3569eca26d5f7ce34d8c526e4776ec8979",
+      "file_count": 416,
+      "byte_count": 7147788,
+      "skill_leaves": [
+        {
+          "name": "axiom-accessibility",
+          "path": "axiom/axiom-accessibility/SKILL.md",
+          "digest": "sha256:58425409117b4c72b1ba613f87dde081885953af6119553f8159d963419ac533"
+        },
+        {
+          "name": "axiom-ai",
+          "path": "axiom/axiom-ai/SKILL.md",
+          "digest": "sha256:879863d27c8c17a08d75e796e8a0cb17f503a204b25379c11e94277132e0e0e2"
+        },
+        {
+          "name": "axiom-analyze-crash",
+          "path": "axiom/axiom-analyze-crash/SKILL.md",
+          "digest": "sha256:19ff69c2fd4812797ab213277f2973d24552c566dc7aecd196c9492d67623c81"
+        },
+        {
+          "name": "axiom-analyze-swift-performance",
+          "path": "axiom/axiom-analyze-swift-performance/SKILL.md",
+          "digest": "sha256:39f85fddc5e34412de59f8e368fe2911b431a02594945cf32812f6127f54893a"
+        },
+        {
+          "name": "axiom-analyze-swiftui-performance",
+          "path": "axiom/axiom-analyze-swiftui-performance/SKILL.md",
+          "digest": "sha256:a4380c9342f543868d309f66b83e14a19db889f1d09dbb3bfa7dd048a9b70c33"
+        },
+        {
+          "name": "axiom-analyze-test-failures",
+          "path": "axiom/axiom-analyze-test-failures/SKILL.md",
+          "digest": "sha256:f80b72cc0673966434be6b9cbbcbc1f4694d8ad07937e1375f361e0a59ea1f56"
+        },
+        {
+          "name": "axiom-analyze-triage",
+          "path": "axiom/axiom-analyze-triage/SKILL.md",
+          "digest": "sha256:9ed28aefdb10e0a0c2b821699d8b5a112e6c36e8ab94d72458ea9780ce80a845"
+        },
+        {
+          "name": "axiom-apple-docs",
+          "path": "axiom/axiom-apple-docs/SKILL.md",
+          "digest": "sha256:b933d4013f204c266e361e862885000a1f3cf5d411d9a99ebacb8f7bb96f088c"
+        },
+        {
+          "name": "axiom-audit-accessibility",
+          "path": "axiom/axiom-audit-accessibility/SKILL.md",
+          "digest": "sha256:eb9f6cf11b7cb51f16cd320fb5d5702524cf1245c62dafde28fc9a5556b6c114"
+        },
+        {
+          "name": "axiom-audit-camera",
+          "path": "axiom/axiom-audit-camera/SKILL.md",
+          "digest": "sha256:ba63c8bc4f68e36789d2b35d6ad9a84ab29129db85557b768482d1a5c92f3163"
+        },
+        {
+          "name": "axiom-audit-codable",
+          "path": "axiom/axiom-audit-codable/SKILL.md",
+          "digest": "sha256:ac5d8c946dca15ad6d8cd2e6b49320401c9ed0bc5e27d638164953b584471fd9"
+        },
+        {
+          "name": "axiom-audit-concurrency",
+          "path": "axiom/axiom-audit-concurrency/SKILL.md",
+          "digest": "sha256:d9a617c5225fbc670d653bbd53d9f0a01027f87e7318f2db5a1c50f19f3f3c41"
+        },
+        {
+          "name": "axiom-audit-core-data",
+          "path": "axiom/axiom-audit-core-data/SKILL.md",
+          "digest": "sha256:8cba1b4fbfa84b3280649ff6121df53f50b8024487a343036e5f4bea05e6c795"
+        },
+        {
+          "name": "axiom-audit-database-schema",
+          "path": "axiom/axiom-audit-database-schema/SKILL.md",
+          "digest": "sha256:9013ea7b5c7ab1864f7261607f8c0fea631dff50a5e3575818e2bb5cfa09983a"
+        },
+        {
+          "name": "axiom-audit-energy",
+          "path": "axiom/axiom-audit-energy/SKILL.md",
+          "digest": "sha256:5a9c44732e2dad09dcb806cb8eb4f5cc4b93d78802fa60eaa21027704808ec87"
+        },
+        {
+          "name": "axiom-audit-foundation-models",
+          "path": "axiom/axiom-audit-foundation-models/SKILL.md",
+          "digest": "sha256:798fc5a94644ce14a47339462ef5004dd076dcfde4790da34cf3f1b8a984e62f"
+        },
+        {
+          "name": "axiom-audit-grdb-performance",
+          "path": "axiom/axiom-audit-grdb-performance/SKILL.md",
+          "digest": "sha256:df5bb1166448f2d8a4125aa4d9bb4fcc4582128a47f69b5796db6e6e928e381d"
+        },
+        {
+          "name": "axiom-audit-iap",
+          "path": "axiom/axiom-audit-iap/SKILL.md",
+          "digest": "sha256:a4acafbd95c3023a76b5c23a078e1dedd86cc77d7ac83f98d95c1ec0d4887e78"
+        },
+        {
+          "name": "axiom-audit-icloud",
+          "path": "axiom/axiom-audit-icloud/SKILL.md",
+          "digest": "sha256:03c33404802b3fad0d3bed826b1e868d0edbcfc20584c8dab55a3094cbf2b0fa"
+        },
+        {
+          "name": "axiom-audit-liquid-glass",
+          "path": "axiom/axiom-audit-liquid-glass/SKILL.md",
+          "digest": "sha256:fbc12473712630fc286e951c716e92a9ca96fbd9e9fc15ddc035c247bacd4edb"
+        },
+        {
+          "name": "axiom-audit-memory",
+          "path": "axiom/axiom-audit-memory/SKILL.md",
+          "digest": "sha256:3dbad17c14558b2c44df3a6fb6874746e5d7345554168addbb9f58db21e7dc0b"
+        },
+        {
+          "name": "axiom-audit-networking",
+          "path": "axiom/axiom-audit-networking/SKILL.md",
+          "digest": "sha256:ba77a6b996079f2dfe493abebb6c811fd036c2904c9c17635202f66b9b2e0fa8"
+        },
+        {
+          "name": "axiom-audit-resize",
+          "path": "axiom/axiom-audit-resize/SKILL.md",
+          "digest": "sha256:0d07c262a6853c349322ecaa48af0ca1c5e77b816ada8259b99e828fd40aff97"
+        },
+        {
+          "name": "axiom-audit-spritekit",
+          "path": "axiom/axiom-audit-spritekit/SKILL.md",
+          "digest": "sha256:56b08cdddcff1e1978163b09e9a71ee2b35803ae782ce95a28cfed7ce0f6f539"
+        },
+        {
+          "name": "axiom-audit-storage",
+          "path": "axiom/axiom-audit-storage/SKILL.md",
+          "digest": "sha256:1e3b62caa780750fb2f327c185dac6939134d510a241fb11772bda91e6e79f4e"
+        },
+        {
+          "name": "axiom-audit-swiftdata",
+          "path": "axiom/axiom-audit-swiftdata/SKILL.md",
+          "digest": "sha256:f37b73022440af8bdf72e9e064fb6b1f120543913a1d26506bb836bc9b87114b"
+        },
+        {
+          "name": "axiom-audit-swiftui-architecture",
+          "path": "axiom/axiom-audit-swiftui-architecture/SKILL.md",
+          "digest": "sha256:4bc161a6c0154dc20f7488db49d4909466485f90a4a9ee504a34a0d2a9b4519c"
+        },
+        {
+          "name": "axiom-audit-swiftui-layout",
+          "path": "axiom/axiom-audit-swiftui-layout/SKILL.md",
+          "digest": "sha256:571b929e6a83c9026361aa2f40db8c115a794928902922eb554e46d0579b0e65"
+        },
+        {
+          "name": "axiom-audit-swiftui-nav",
+          "path": "axiom/axiom-audit-swiftui-nav/SKILL.md",
+          "digest": "sha256:5f3bd749eb164f0cde3b202b51cb2a12272f270eae9477201c4f1de6c4ef4f17"
+        },
+        {
+          "name": "axiom-audit-testing",
+          "path": "axiom/axiom-audit-testing/SKILL.md",
+          "digest": "sha256:3b1bfbd7d9a33c5ef192b6b5b4bc2cf000bc2d2b0b77a8e5e03dc179834db945"
+        },
+        {
+          "name": "axiom-audit-textkit",
+          "path": "axiom/axiom-audit-textkit/SKILL.md",
+          "digest": "sha256:c61d80f59284335526359c942c37cef6f4618f613778dde7a09c2b495b31d85d"
+        },
+        {
+          "name": "axiom-audit-ux-flow",
+          "path": "axiom/axiom-audit-ux-flow/SKILL.md",
+          "digest": "sha256:202e202701c6e64e6198a0e44977483319bf7aae56ef6e449fec154278e74eec"
+        },
+        {
+          "name": "axiom-build",
+          "path": "axiom/axiom-build/SKILL.md",
+          "digest": "sha256:d4c8f9dd9aeda2f6e21c3590a4f742f93cc565fff25674dae910e4849ed1fa0f"
+        },
+        {
+          "name": "axiom-concurrency",
+          "path": "axiom/axiom-concurrency/SKILL.md",
+          "digest": "sha256:15505d6455b4d445629fc3e431bd7948e59a48a7b63aadb7113793b1850cb7d2"
+        },
+        {
+          "name": "axiom-data",
+          "path": "axiom/axiom-data/SKILL.md",
+          "digest": "sha256:83d1b3088caf3147ab341f1f5309679534e8b9cc548570673a4f47bd45cea293"
+        },
+        {
+          "name": "axiom-debug-tests",
+          "path": "axiom/axiom-debug-tests/SKILL.md",
+          "digest": "sha256:ed7608a6a928fdb0743b8d6aa18cd843450d241f56bdf5680962d625fd0d39df"
+        },
+        {
+          "name": "axiom-design",
+          "path": "axiom/axiom-design/SKILL.md",
+          "digest": "sha256:9075632173da88ba2a7de99743ce0a9d2f82e24984a210ad6355658c08ad3a43"
+        },
+        {
+          "name": "axiom-fix-build",
+          "path": "axiom/axiom-fix-build/SKILL.md",
+          "digest": "sha256:478b4f8e6195b44bbc4b33b283149d90d513b361ca22165744310be4cca580ba"
+        },
+        {
+          "name": "axiom-games",
+          "path": "axiom/axiom-games/SKILL.md",
+          "digest": "sha256:f3f3b72aa3bd89e6c1fca6aa4648b5281ad7d2bce69f06ea09bb3ca0b330dc87"
+        },
+        {
+          "name": "axiom-graphics",
+          "path": "axiom/axiom-graphics/SKILL.md",
+          "digest": "sha256:30418694cb436e0620b9b6b85430586bc5e3daeb2b14944313499c71d35725d9"
+        },
+        {
+          "name": "axiom-health-check",
+          "path": "axiom/axiom-health-check/SKILL.md",
+          "digest": "sha256:4d9128eb03ee783ceec98367227ab804ce8de797b9192d80d58aabe620eb02f1"
+        },
+        {
+          "name": "axiom-health",
+          "path": "axiom/axiom-health/SKILL.md",
+          "digest": "sha256:336799b004dd4b3212580894302f287d3539184b76969394027d5a9d8b71a929"
+        },
+        {
+          "name": "axiom-implement-iap",
+          "path": "axiom/axiom-implement-iap/SKILL.md",
+          "digest": "sha256:04c246041339b708fc2ceb7c9ec5a569981932665b54b350f1d4f1b003f01b4e"
+        },
+        {
+          "name": "axiom-integration",
+          "path": "axiom/axiom-integration/SKILL.md",
+          "digest": "sha256:e6121919fe9132498eab1cd9b2ce599b8567dc5019386230a436f9201e50b460"
+        },
+        {
+          "name": "axiom-location",
+          "path": "axiom/axiom-location/SKILL.md",
+          "digest": "sha256:462be87344779c8831a34949bc29605b203f50cba4172829e2618bf0eea66819"
+        },
+        {
+          "name": "axiom-macos",
+          "path": "axiom/axiom-macos/SKILL.md",
+          "digest": "sha256:5025d31c19a2b9c278c83c72a49a9c015914c9522ad55a3b778fb8426808b937"
+        },
+        {
+          "name": "axiom-media",
+          "path": "axiom/axiom-media/SKILL.md",
+          "digest": "sha256:b60efc5b271de3ba4ad1a06ed23569d3c0b4d0ffd81d349c6f5f600e57cbb726"
+        },
+        {
+          "name": "axiom-modernize",
+          "path": "axiom/axiom-modernize/SKILL.md",
+          "digest": "sha256:76f91aac84bd16b45dd26118762fd560199bb063553db9ffe14b76e23c854a3b"
+        },
+        {
+          "name": "axiom-networking",
+          "path": "axiom/axiom-networking/SKILL.md",
+          "digest": "sha256:6dbafd38febf0aaa386ca8a24658d762faf4e087f77e69598ae66e77188b4f5f"
+        },
+        {
+          "name": "axiom-optimize-build",
+          "path": "axiom/axiom-optimize-build/SKILL.md",
+          "digest": "sha256:45b962c44d5ea3db474d4c178b279b2650096b3db4536adea2d8cc6f75e4d4a5"
+        },
+        {
+          "name": "axiom-payments",
+          "path": "axiom/axiom-payments/SKILL.md",
+          "digest": "sha256:87cb7f2442e221177b366b38961b84652f6a1a49155e85f2a1f620d34bc50a27"
+        },
+        {
+          "name": "axiom-performance",
+          "path": "axiom/axiom-performance/SKILL.md",
+          "digest": "sha256:6f35e897be270169926a2af600bc6d74c3123d7a03ec0708aa6a651669d0cc8a"
+        },
+        {
+          "name": "axiom-profile-performance",
+          "path": "axiom/axiom-profile-performance/SKILL.md",
+          "digest": "sha256:5c44d756ab3c2e2ff1dd1139e0500eb9cf64cf2040164ac477519695d4676395"
+        },
+        {
+          "name": "axiom-resolve-spm",
+          "path": "axiom/axiom-resolve-spm/SKILL.md",
+          "digest": "sha256:ea049e0d7b8d5916a7e1b9d613d649515794906cafe1a5f79b034731c804c943"
+        },
+        {
+          "name": "axiom-run-tests",
+          "path": "axiom/axiom-run-tests/SKILL.md",
+          "digest": "sha256:e727bd80eddbbd0f9369ea1464ca399790ac3a9d7c8ed805cee817a6ab4c04fa"
+        },
+        {
+          "name": "axiom-scan-security-privacy",
+          "path": "axiom/axiom-scan-security-privacy/SKILL.md",
+          "digest": "sha256:4c1bc1d82f2df24484bd6e8d117a506ebdf81f98a137e5502a72f0ee1603f79f"
+        },
+        {
+          "name": "axiom-security",
+          "path": "axiom/axiom-security/SKILL.md",
+          "digest": "sha256:25f0ea34ff86af3e1ee7dd22a6e5175d48e2606275f53cb005db8592497402a1"
+        },
+        {
+          "name": "axiom-shipping",
+          "path": "axiom/axiom-shipping/SKILL.md",
+          "digest": "sha256:e57fe20fc482d4d99977e71612b5aa09903a8e4e3015f42c8f99b44433f3c770"
+        },
+        {
+          "name": "axiom-swift-simplifier",
+          "path": "axiom/axiom-swift-simplifier/SKILL.md",
+          "digest": "sha256:1875f21596c683a37a4b90abd1e9dca4cffdabcb0fb0e27f5cd7e614b773a439"
+        },
+        {
+          "name": "axiom-swift",
+          "path": "axiom/axiom-swift/SKILL.md",
+          "digest": "sha256:f776729b253ac2f0358f58f24475db9c4d43bcf4bc505d0c77815f9423557fdb"
+        },
+        {
+          "name": "axiom-swiftui",
+          "path": "axiom/axiom-swiftui/SKILL.md",
+          "digest": "sha256:2951386aadb9e7363b00d91e939e0dbd2b8449226fb1aecfc67f53cf24521ade"
+        },
+        {
+          "name": "axiom-test-simulator",
+          "path": "axiom/axiom-test-simulator/SKILL.md",
+          "digest": "sha256:affb397a48c440b67b6d5552dd80396adbdc8dbea0e6cd0f866209700899381a"
+        },
+        {
+          "name": "axiom-testing",
+          "path": "axiom/axiom-testing/SKILL.md",
+          "digest": "sha256:263e61035e23e1249e8ec7a78cfbe8f033c1749f0ef0bc0985733c07bc9ea1da"
+        },
+        {
+          "name": "axiom-tools",
+          "path": "axiom/axiom-tools/SKILL.md",
+          "digest": "sha256:d4189509e6369aa506a7273ab45ab5924a4347ee6fcf3adf05228c9a4550b8ff"
+        },
+        {
+          "name": "axiom-uikit",
+          "path": "axiom/axiom-uikit/SKILL.md",
+          "digest": "sha256:f8acaff0eb09546b9cdb2b7989f90d9aa824e107a4aab0d90ad8f9408706c55a"
+        },
+        {
+          "name": "axiom-validate-screenshots",
+          "path": "axiom/axiom-validate-screenshots/SKILL.md",
+          "digest": "sha256:0876572dd6c3ffc7648bb6a4a32b22797017877d2643689942a05d94e9cc4cc1"
+        },
+        {
+          "name": "axiom-vision",
+          "path": "axiom/axiom-vision/SKILL.md",
+          "digest": "sha256:2bb40fabe7a37720e32542fc34d0741ae557a64f9404db5691b7dae39a32d569"
+        },
+        {
+          "name": "axiom-watchos",
+          "path": "axiom/axiom-watchos/SKILL.md",
+          "digest": "sha256:a815b763acd497091dca653c420785a433556a952d501edf98cd0d1f632393ce"
+        },
+        {
+          "name": "axiom-xcode-mcp",
+          "path": "axiom/axiom-xcode-mcp/SKILL.md",
+          "digest": "sha256:5e0df0332ddb1c9a5a5fa12fff7401b70b9a239821b51a0015b54cdc953c0978"
+        }
+      ],
+      "note": "Lazy Codex skill content only, with nested references. Parent plugin, hooks and MCP configuration are not installed. Tool-dependent workflows require their tools separately."
+    },
+    {
       "name": "bun-runtime",
       "kind": "single",
       "repo": "https://github.com/affaan-m/everything-claude-code.git",
@@ -465,6 +825,81 @@
           "digest": "sha256:bb0cbafd6083bd35e904941aff83264fd6edef8814ba1d629bdc55292b16ef50"
         }
       ]
+    },
+    {
+      "name": "emil-kowalski",
+      "kind": "collection",
+      "repo": "https://github.com/emilkowalski/skills.git",
+      "ref": "main",
+      "resolved_commit": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "runtime_path": "emil-kowalski",
+      "source_tree_digest": "sha256:ab21f68210c01a191e8abb2d074b85d5af136faf814a2191a6931ccc936a3359",
+      "runtime_tree_digest": "sha256:000b4caa035ec43cf4f6cce851aa360113baba3426670bbf7a3beb7736c983c0",
+      "file_count": 22,
+      "byte_count": 241570,
+      "skill_leaves": [
+        {
+          "name": "animate-expo",
+          "path": "emil-kowalski/animate-expo/SKILL.md",
+          "digest": "sha256:2121fc72ffa476492c1b91ccf96c7b26aade9d1a332dc5834ba3526e1102b00d"
+        },
+        {
+          "name": "animate",
+          "path": "emil-kowalski/animate/SKILL.md",
+          "digest": "sha256:f6317335da2662e92270dc0a6128bea95d7216cd751f86628e3ac6b72804e805"
+        },
+        {
+          "name": "animation-vocabulary",
+          "path": "emil-kowalski/animation-vocabulary/SKILL.md",
+          "digest": "sha256:d718b48fe3c7898804d588f050a2e266d82c9f5ef51da256c8cb8b5951527757"
+        },
+        {
+          "name": "apple-design",
+          "path": "emil-kowalski/apple-design/SKILL.md",
+          "digest": "sha256:11840b24a11d7f94f39c6aaab074750ae4e4de4ef54ee4b1dd97e16ebd485e61"
+        },
+        {
+          "name": "ask-sonner",
+          "path": "emil-kowalski/ask-sonner/SKILL.md",
+          "digest": "sha256:be1b04511aadb4d7d81aa8cd2b55c260a626aae534983bc8ae3fbe26bbf48632"
+        },
+        {
+          "name": "emil-design-eng",
+          "path": "emil-kowalski/emil-design-eng/SKILL.md",
+          "digest": "sha256:e71de849347050c2c573c1cf24d742d5a13459557ecffa6e562f08006f46b5b7"
+        },
+        {
+          "name": "find-animation-opportunities",
+          "path": "emil-kowalski/find-animation-opportunities/SKILL.md",
+          "digest": "sha256:91c1243164057fbf824088d12faea937878a757a7ac653e8288b775e8b27b882"
+        },
+        {
+          "name": "improve-animations",
+          "path": "emil-kowalski/improve-animations/SKILL.md",
+          "digest": "sha256:68f17bbc4671593d2f43dba26a679243e2153ba5f26965fb7d59df52842534ff"
+        },
+        {
+          "name": "pick-ui-library",
+          "path": "emil-kowalski/pick-ui-library/SKILL.md",
+          "digest": "sha256:4b889bd6c08358499ac4a7202b8af71ffbd3485d2468f7b09d0613bbe7b24bf4"
+        },
+        {
+          "name": "prototype",
+          "path": "emil-kowalski/prototype/SKILL.md",
+          "digest": "sha256:2ad8401c4deaddb54947fb65247f790e7b3d8784e35312bcbedbfb1d59cd89ce"
+        },
+        {
+          "name": "review-animations",
+          "path": "emil-kowalski/review-animations/SKILL.md",
+          "digest": "sha256:61cf8ac0c4c8e1f63385298c546b16c65ca9aec34abddcd04e821c16712d671d"
+        },
+        {
+          "name": "write-swift",
+          "path": "emil-kowalski/write-swift/SKILL.md",
+          "digest": "sha256:2579cb2684245f75a261cbb13aa4a12f7f9441dabdfe3bc2e72dc2f04ec5e9fd"
+        }
+      ],
+      "note": "Complete lazy collection with support files. Existing active Emil skills retain their separate installation ownership."
     },
     {
       "name": "expo-skills",
@@ -862,6 +1297,26 @@
           "digest": "sha256:bf0fa90420cab12722b312f215fcde192f588822ae5fa9a49a098eb348e0d736"
         }
       ]
+    },
+    {
+      "name": "impeccable",
+      "kind": "single",
+      "repo": "https://github.com/pbakaus/impeccable.git",
+      "ref": "main",
+      "resolved_commit": "0a4e72a254f3b175c95b36b82e5f2e60fa63f116",
+      "runtime_path": "impeccable",
+      "source_tree_digest": "sha256:15b8d053f7fef4cfae3392f0a8477f6f5ec17c5f23671544117156ce7b372693",
+      "runtime_tree_digest": "sha256:9096caa93c056dc644d4580c5f9aa91d8a86fb3b401b96da20333074e6bef0de",
+      "file_count": 55,
+      "byte_count": 2172722,
+      "skill_leaves": [
+        {
+          "name": "impeccable",
+          "path": "impeccable/SKILL.md",
+          "digest": "sha256:b71863a370c38c6afdf2ec401118b4c68ebdac4b1527d6920e8d849d8cb15c24"
+        }
+      ],
+      "note": "Lazy content and supporting launcher only. Installer not run; no hooks, MCP or slash commands registered. Launcher may download its engine on first use."
     },
     {
       "name": "inference-video-skills",

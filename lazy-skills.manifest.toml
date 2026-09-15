@@ -328,3 +328,33 @@ kind = "collection"
 repo = "https://github.com/wshobson/agents.git"
 ref = "main"
 runtime_path = "wshobson-agents"
+
+[[source]]
+name = "axiom"
+kind = "collection"
+repo = "https://github.com/CharlesWiltgen/Axiom.git"
+ref = "main"
+runtime_path = "axiom"
+source_path = "axiom-codex/skills"
+include = ["**"]
+note = "Lazy Codex skill content only, with nested references. Parent plugin, hooks and MCP configuration are not installed. Tool-dependent workflows require their tools separately."
+
+[[source]]
+name = "emil-kowalski"
+kind = "collection"
+repo = "https://github.com/emilkowalski/skills.git"
+ref = "main"
+runtime_path = "emil-kowalski"
+source_path = "skills"
+include = ["**"]
+note = "Complete lazy collection with support files. Existing active Emil skills retain their separate installation ownership."
+
+[[source]]
+name = "impeccable"
+kind = "single"
+repo = "https://github.com/pbakaus/impeccable.git"
+ref = "main"
+runtime_path = "impeccable"
+source_path = "plugin/skills/impeccable"
+include = ["**"]
+note = "Lazy content and supporting launcher only. Installer not run; no hooks, MCP or slash commands registered. Launcher may download its engine on first use."
