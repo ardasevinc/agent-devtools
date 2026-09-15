@@ -2,7 +2,7 @@
 name: lazy-skill
 description: Browse and load skills on-demand from ~/.agents/lazy-skills without exposing every skill description to the base agent. Use when the user explicitly asks for a lazy skill or a capability that should be loaded only on demand.
 argument-hint: [search query or blank to browse]
-version: 1.2.2
+version: 1.2.3
 ---
 
 # Lazy Skill Loader
@@ -29,7 +29,6 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **swiftdata-pro**: swiftdata, persistence, cloudkit - SwiftData modeling, predicates, migrations, and CloudKit
 - **app-store-connect-cli-skills** [collection]: appstoreconnect, asc, testflight - asc CLI workflows for App Store shipping
 - **wshobson-agents** [collection]: patterns, architecture, mobile - Broad engineering pattern library including React Native design and architecture
-- **threejs-skills** [collection]: threejs, 3d, webgl, graphics - "Three.js skills for 3D graphics (10 skills)"
 - **astro**: astro, ssr, islands - Astro project and framework guidance
 - **cloudflare-skills** [collection]: cloudflare, workers, pages - Official Cloudflare Workers, Pages, storage, Wrangler, and platform guidance
 - **cloudflare-opennext**: opennext, cloudflare, pages - Deploy OpenNext applications on Cloudflare
@@ -110,24 +109,24 @@ Agent: [Reads ~/.agents/lazy-skills/swiftui-pro/SKILL.md]
 
 **Collection with a clear task:**
 ```
-User: /lazy-skill threejs, help me set up a scene and camera
+User: /lazy-skill cloudflare, help me configure Wrangler
 
-Agent: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
-[Selects and reads threejs-fundamentals/SKILL.md, then helps with scene setup.]
+Agent: [Reads ~/.agents/lazy-skills/cloudflare-skills/README.md]
+[Selects and reads wrangler/SKILL.md, then helps configure Wrangler.]
 ```
 
 **Collection browsing without a task:**
 ```
-User: /lazy-skill threejs
+User: /lazy-skill cloudflare
 
-Agent: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
-Available skills include fundamentals (scene setup and cameras), geometry,
-and materials. Which one would you like to load?
+Agent: [Reads ~/.agents/lazy-skills/cloudflare-skills/README.md]
+Available skills include Wrangler (CLI configuration), Durable Objects,
+and Workers best practices. Which one would you like to load?
 
-User: fundamentals
+User: wrangler
 
-Agent: [Reads ~/.agents/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
-Loaded threejs-fundamentals.
+Agent: [Reads ~/.agents/lazy-skills/cloudflare-skills/skills/wrangler/SKILL.md]
+Loaded wrangler.
 ```
 
 <instructions>$ARGUMENTS</instructions>

@@ -24,12 +24,17 @@ include = [
   "skills/**/rules/**",
   "skills/**/assets/**",
   "skills/**/scripts/**",
+  "skills/**/template.sh",
+  "skills/**/dependency-cruiser.config.cjs",
+  "skills/**/lib/queries.mjs",
   "plugins/**/skills/**/SKILL.md",
   "plugins/**/skills/**/*.md",
   "plugins/**/skills/**/references/**",
   "plugins/**/skills/**/rules/**",
   "plugins/**/skills/**/assets/**",
   "plugins/**/skills/**/scripts/**",
+  "plugins/**/agents/eval-judge.md",
+  "plugins/**/agents/eval-orchestrator.md",
   "references/**",
   "rules/**",
   "assets/**",
@@ -99,6 +104,13 @@ include = [
   "tech-debt/**",
   "testing-strategy/**"
 ]
+
+[[source.parts]]
+repo = "https://github.com/anthropics/knowledge-work-plugins.git"
+ref = "main"
+from = "engineering"
+to = "."
+include = ["CONNECTORS.md"]
 
 [[source.parts]]
 repo = "https://github.com/github/awesome-copilot.git"
@@ -187,7 +199,7 @@ runtime_path = "golang-skills"
 [[source]]
 name = "hono"
 kind = "single"
-repo = "https://github.com/yusukebe/hono-skill.git"
+repo = "https://github.com/honojs/skills.git"
 ref = "main"
 runtime_path = "hono"
 source_path = "skills/hono"
