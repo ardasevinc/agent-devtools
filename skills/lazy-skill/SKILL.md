@@ -2,7 +2,7 @@
 name: lazy-skill
 description: Browse and load skills on-demand from ~/.agents/lazy-skills without exposing every skill description to the base agent. Use when the user explicitly asks for a lazy skill or a capability that should be loaded only on demand.
 argument-hint: [search query or blank to browse]
-version: 1.2.1
+version: 1.2.2
 ---
 
 # Lazy Skill Loader
@@ -56,10 +56,9 @@ Keep this index sparse. It is a card catalog, not mini documentation. Avoid long
 
 ### On Invocation
 
-1. If `$ARGUMENTS` provided, filter index to matching keywords
-2. If blank, show full index
-3. **Always ask user** which skill to load before reading - never read all skills
-4. Use Read tool to load the selected skill file
+- Use `$ARGUMENTS` and the current task to find the requested skill. If the user named it or the intended match is clear, read it immediately; do not ask for confirmation to load it.
+- For browsing without a task or query, show the index. Ask which skill to load only when the choice remains materially ambiguous.
+- Read only the selected skill and the discovery material needed to find it, never all skill bodies.
 
 ### Path Resolution
 
@@ -74,8 +73,8 @@ Resolve the lazy skills root in this order:
 2. `<lazy-root>/<name>/SKILL.md`
 
 **Collections** (marked with `[collection]` in index):
-1. Read `<lazy-root>/<name>/README.md` to show available skills
-2. Ask user which specific skill to load
+1. If the requested member is already identifiable, resolve it directly. Otherwise, read `<lazy-root>/<name>/README.md` to discover the available skills.
+2. Select the member that clearly matches the request or current task. If several remain plausible, show the relevant choices and ask which one the user means.
 3. Resolve the selected skill by either:
    - folder path: `<lazy-root>/<name>/skills/<skill-name>/SKILL.md`
    - frontmatter name: recursively search `<lazy-root>/<name>/**/SKILL.md` for `name: <skill-name>`
@@ -101,48 +100,34 @@ Then place the skill file at either:
 
 ## Examples
 
-**Single skill:**
+**Named skill:**
 ```
-User: /lazy-skill stripe
+User: /lazy-skill swiftui-pro, review this view
 
-Claude: Found 1 matching skill:
-- **stripe**: payments, billing, checkout - "Stripe API operations"
-
-Want me to load it?
-
-User: yes
-
-Claude: [Reads ~/.agents/lazy-skills/stripe.md]
-Loaded stripe skill. What would you like to do?
+Agent: [Reads ~/.agents/lazy-skills/swiftui-pro/SKILL.md]
+[Uses the loaded guidance to review the view.]
 ```
 
-**Collection:**
+**Collection with a clear task:**
+```
+User: /lazy-skill threejs, help me set up a scene and camera
+
+Agent: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
+[Selects and reads threejs-fundamentals/SKILL.md, then helps with scene setup.]
+```
+
+**Collection browsing without a task:**
 ```
 User: /lazy-skill threejs
 
-Claude: Found 1 matching collection:
-- **threejs-skills** [collection]: threejs, 3d, webgl - "Three.js skills (10 skills)"
-
-Want me to show the available skills in this collection?
-
-User: yes
-
-Claude: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
-
-Available skills in threejs-skills:
-| Skill | Description |
-|-------|-------------|
-| threejs-fundamentals | Scene setup, cameras, renderer |
-| threejs-geometry | Shapes, BufferGeometry, instancing |
-| threejs-materials | PBR, shader materials |
-... (7 more)
-
-Which one should I load?
+Agent: [Reads ~/.agents/lazy-skills/threejs-skills/README.md]
+Available skills include fundamentals (scene setup and cameras), geometry,
+and materials. Which one would you like to load?
 
 User: fundamentals
 
-Claude: [Reads ~/.agents/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
-Loaded threejs-fundamentals. Ready to help with Three.js scene setup.
+Agent: [Reads ~/.agents/lazy-skills/threejs-skills/skills/threejs-fundamentals/SKILL.md]
+Loaded threejs-fundamentals.
 ```
 
 <instructions>$ARGUMENTS</instructions>
