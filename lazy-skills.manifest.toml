@@ -358,3 +358,12 @@ runtime_path = "impeccable"
 source_path = "plugin/skills/impeccable"
 include = ["**"]
 note = "Lazy content and supporting launcher only. Installer not run; no hooks, MCP or slash commands registered. Launcher may download its engine on first use."
+
+[[source]]
+name = "apple-xcode"
+kind = "xcode"
+source_path = "lazy-skills/apple-xcode"
+runtime_path = "apple-xcode"
+include = ["**"]
+update_policy = "Refresh from selected Xcode after upgrades; review vendor diff and compatibility notes before applying."
+note = "Local Apple plugin export with unchanged vendor skills and separate agent-devtools guidance. Requires Xcode for refresh; does not install MCP."

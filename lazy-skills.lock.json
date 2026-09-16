@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "2026-09-15T12:24:03.323Z",
+  "generated_at": "2026-09-16T11:55:06.917Z",
   "runtime_root": "~/.agents/lazy-skills",
-  "manifest_digest": "sha256:8b02a96cfa7e85c282d23f23b6975b8419e6423c41e305fedf32d373c732c0ac",
+  "manifest_digest": "sha256:3ecc30cd4b344637740fa1892de4d70fdedbc8d43ea5a47dc098bd870e54286f",
   "entries": [
     {
       "name": "app-store-connect-cli-skills",
@@ -142,6 +142,95 @@
           "digest": "sha256:41e3504f7b4c054e12873989ac784fafb8129458ee2c35aa59e3cda552841224"
         }
       ]
+    },
+    {
+      "name": "apple-xcode",
+      "kind": "xcode",
+      "xcode_version": "27.0",
+      "xcode_build": "27A266a",
+      "runtime_path": "apple-xcode",
+      "source_tree_digest": "sha256:f3815eed651450cfeb6e0dd7423fe0be90a3fc90c9280de0d8cba1ffec2ec612",
+      "runtime_tree_digest": "sha256:2931f869c61d5ae7368fcf89d06b5bcc6ef815ea1c4a0a3e553a7beb03e0da23",
+      "file_count": 157,
+      "byte_count": 1800736,
+      "skill_leaves": [
+        {
+          "name": "accessibility-dynamic-type-specialist",
+          "path": "apple-xcode/skills/accessibility-dynamic-type-specialist/SKILL.md",
+          "digest": "sha256:50eef76bb30334207e37ab6f637dd5d9a5f3a4c691e4a983356d046b8dc6f788"
+        },
+        {
+          "name": "accessibility-sufficient-contrast-specialist",
+          "path": "apple-xcode/skills/accessibility-sufficient-contrast-specialist/SKILL.md",
+          "digest": "sha256:3992214215d77b5d04e0bd0e4d9c685a2315ce35844a456a9c33f5740e6758c9"
+        },
+        {
+          "name": "accessibility-voiceover-specialist",
+          "path": "apple-xcode/skills/accessibility-voiceover-specialist/SKILL.md",
+          "digest": "sha256:d395d53a018b034d80dd4b8d5214fda3dae5b5b01536b26d61c207841f4301f6"
+        },
+        {
+          "name": "adopt-c-bounds-safety",
+          "path": "apple-xcode/skills/adopt-c-bounds-safety/SKILL.md",
+          "digest": "sha256:98fb9ce2e581a2a70cbf233eba0d01058e034ae467ec209c5382739da0c6f772"
+        },
+        {
+          "name": "app-intents-specialist",
+          "path": "apple-xcode/skills/app-intents-specialist/SKILL.md",
+          "digest": "sha256:b89f4c353e73af5288c383542a90d29c44d0095db0ed8ece6a0973148e5b370e"
+        },
+        {
+          "name": "app-intents-whats-new-27",
+          "path": "apple-xcode/skills/app-intents-whats-new-27/SKILL.md",
+          "digest": "sha256:afb6b74d5ce53f3328fd7e6b67b6c0b83d171995935e7fbce7e873687963cad8"
+        },
+        {
+          "name": "audit-xcode-security-settings",
+          "path": "apple-xcode/skills/audit-xcode-security-settings/SKILL.md",
+          "digest": "sha256:96bb69548c26e3d3772e4daabe70cefb8d670ff3111dbbbe547df6bbdcbd1786"
+        },
+        {
+          "name": "building-document-based-swiftui-applications",
+          "path": "apple-xcode/skills/building-document-based-swiftui-applications/SKILL.md",
+          "digest": "sha256:f069ccb6740baa6837163aa9886dc6f964233d1a77329e1ef1fd026fbe553d5c"
+        },
+        {
+          "name": "device-interaction",
+          "path": "apple-xcode/skills/device-interaction/SKILL.md",
+          "digest": "sha256:fa6cc5115c15f43fd5b2718c8705bec6cc0d6932309bf0df47ede28c0592b044"
+        },
+        {
+          "name": "modernize-tests",
+          "path": "apple-xcode/skills/modernize-tests/SKILL.md",
+          "digest": "sha256:880f46b4b39ca7d895f78857230e0082c299d481f74461ee977cd14f3315cfb3"
+        },
+        {
+          "name": "swiftui-specialist",
+          "path": "apple-xcode/skills/swiftui-specialist/SKILL.md",
+          "digest": "sha256:1222786ea81aabd7bf18052d7fe5e688687c63059c6cfbcb1342d1d1b6c08093"
+        },
+        {
+          "name": "swiftui-whats-new-27",
+          "path": "apple-xcode/skills/swiftui-whats-new-27/SKILL.md",
+          "digest": "sha256:2b0fea2d9fe5215cb2f6335a1c2bf98aff613e7d83c4cff57aa529ded9b040e8"
+        },
+        {
+          "name": "translation-coordinator",
+          "path": "apple-xcode/skills/translation-coordinator/SKILL.md",
+          "digest": "sha256:ae2dea38472a5a7852d5dffde324daa3b8d259b438885e9dd4a5343bb85ac74a"
+        },
+        {
+          "name": "translation",
+          "path": "apple-xcode/skills/translation/SKILL.md",
+          "digest": "sha256:3bfdcf16ed418a37b898b43eeb7c6a19c1b617ae4a29a15d663ad1d3c1d969b3"
+        },
+        {
+          "name": "uikit-app-modernization",
+          "path": "apple-xcode/skills/uikit-app-modernization/SKILL.md",
+          "digest": "sha256:3eaffffb97461381f298b23e31195ec135383b444cf98ccfe1313144718d91e0"
+        }
+      ],
+      "note": "Local Apple plugin export with unchanged vendor skills and separate agent-devtools guidance. Requires Xcode for refresh; does not install MCP."
     },
     {
       "name": "architecture-wise-tree",

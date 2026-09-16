@@ -194,6 +194,21 @@ bun scripts/sync-lazy-skills.ts --all
 The runtime directory `~/.agents/lazy-skills/` should stay `.git`-free. Source
 mirrors live under `~/.agents/lazy-skill-sources/`.
 
+### Apple Xcode collection
+
+`apple-xcode` uses the locally selected Xcode's Codex plugin export, rather than
+GitHub. Its vendor skills stay outside this repository; our compatibility notes
+and adapter are tracked here. See [collection guidance](lazy-skills/apple-xcode/README.md).
+
+```sh
+bun scripts/sync-lazy-skills.ts --dry-run --only apple-xcode
+bun scripts/sync-lazy-skills.ts --only apple-xcode
+```
+
+Review changed instructions after an Xcode update. Exporting may launch Xcode;
+a dry-run stages the export but does not replace the lazy collection. Updating
+`lazy-skill` through `bunx skills` only refreshes the loader, not Apple content.
+
 ### Supported Structures
 
 ```

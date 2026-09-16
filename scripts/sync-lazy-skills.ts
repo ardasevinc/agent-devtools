@@ -21,7 +21,7 @@ import { $ } from "bun";
 
 $.throws(true);
 
-type EntryKind = "collection" | "single" | "curated" | "local" | "local-adopted";
+type EntryKind = "collection" | "single" | "curated" | "local" | "local-adopted" | "xcode";
 
 interface RuntimeConfig {
   root: string;
@@ -75,6 +75,8 @@ interface LockEntry {
   repo?: string;
   ref?: string;
   resolved_commit?: string;
+  xcode_version?: string;
+  xcode_build?: string;
   runtime_path: string;
   source_tree_digest?: string;
   runtime_tree_digest: string;
@@ -96,6 +98,8 @@ interface StagedEntry {
   entry: ManifestEntry;
   stagedRoot: string;
   resolvedCommit?: string;
+  xcodeVersion?: string;
+  xcodeBuild?: string;
   sourceDigest?: string;
   runtimeDigest: string;
   leaves: SkillLeaf[];
@@ -331,6 +335,87 @@ async function checkoutMirror(mirror: string, ref: string, tempRoot: string): Pr
   return { root: checkoutRoot, commit };
 }
 
+type CommandRunner = (command: string, args: string[]) => Promise<string>;
+
+async function runCommand(command: string, commandArgs: string[]): Promise<string> {
+  const proc = (() => {
+    try {
+      return Bun.spawn([command, ...commandArgs], { stdout: "pipe", stderr: "pipe" });
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      throw new Error(`${command} ${commandArgs.join(" ")} failed: ${detail}`);
+    }
+  })();
+  const [stdout, stderr, exitCode] = await Promise.all([
+    new Response(proc.stdout).text(),
+    new Response(proc.stderr).text(),
+    proc.exited,
+  ]);
+  if (exitCode !== 0) {
+    const detail = stderr.trim() || stdout.trim() || `exit ${exitCode}`;
+    throw new Error(`${command} ${commandArgs.join(" ")} failed: ${detail}`);
+  }
+  return stdout;
+}
+
+export async function stageXcodeSource(
+  entry: ManifestEntry,
+  stagedRoot: string,
+  include: string[],
+  exclude: string[],
+  commandRunner: CommandRunner = runCommand,
+  repoRoot: string = REPO_ROOT,
+): Promise<{ version: string; build: string; sourceDigest: string }> {
+  const versionOutput = await commandRunner("xcodebuild", ["-version"]);
+  const version = versionOutput.match(/^Xcode\s+(.+)$/m)?.[1]?.trim();
+  const build = versionOutput.match(/^Build version\s+(.+)$/m)?.[1]?.trim();
+  if (!version || !build) {
+    throw new Error(`${entry.name}: could not parse selected Xcode version/build from xcodebuild -version`);
+  }
+
+  console.error(`${entry.name}: exporting Xcode Codex skills (Xcode may launch)`);
+  const exportOutput = await commandRunner("xcrun", ["agent", "plugin", "path", "--plugin-format", "codex"]);
+  const exportPath = exportOutput.trim().split(/\r?\n/).filter(Boolean).at(-1);
+  if (!exportPath) throw new Error(`${entry.name}: Xcode exporter returned no plugin path`);
+  const exportedSkills = join(resolve(exportPath), "skills");
+  if (!(await pathExists(exportedSkills))) {
+    throw new Error(`${entry.name}: Xcode Codex export has no skills directory: ${exportedSkills}`);
+  }
+
+  const stagedSkills = join(stagedRoot, "skills");
+  await mkdir(stagedSkills, { recursive: true });
+  await copySelectedFiles(exportedSkills, stagedSkills, ["**"], []);
+  const sourceDigest = (await treeDigest(stagedSkills)).digest;
+
+  if (entry.source_path) {
+    const overlayRoot = join(repoRoot, entry.source_path);
+    if (!(await pathExists(overlayRoot))) {
+      throw new Error(`${entry.name}: Xcode overlay source_path not found: ${entry.source_path}`);
+    }
+    const overlayFiles = await walkFiles(overlayRoot);
+    if (overlayFiles.some((file) => file === "skills" || file.startsWith("skills/"))) {
+      throw new Error(`${entry.name}: Xcode overlay may not modify vendor skills/**`);
+    }
+    await copySelectedFiles(overlayRoot, stagedRoot, include, exclude);
+  }
+
+  return { version, build, sourceDigest };
+}
+
+export async function xcodeUnavailableReason(
+  platform: string = process.platform,
+  commandRunner: CommandRunner = runCommand,
+): Promise<string | null> {
+  if (platform !== "darwin") return `unsupported host ${platform}; Xcode sources require macOS`;
+  try {
+    await commandRunner("xcodebuild", ["-version"]);
+    await commandRunner("xcrun", ["--find", "agent"]);
+    return null;
+  } catch (error) {
+    return error instanceof Error ? error.message : String(error);
+  }
+}
+
 async function stageEntry(
   manifest: Manifest,
   entry: ManifestEntry,
@@ -346,6 +431,8 @@ async function stageEntry(
   const exclude = entry.exclude ?? manifest.defaults?.exclude ?? [];
   let resolvedCommit: string | undefined;
   let sourceDigest: string | undefined;
+  let xcodeVersion: string | undefined;
+  let xcodeBuild: string | undefined;
 
   if (entry.parts?.length) {
     const commits: string[] = [];
@@ -371,6 +458,14 @@ async function stageEntry(
     }
     resolvedCommit = commits.join(",");
     sourceDigest = (await treeDigest(stagedRoot)).digest;
+  } else if (entry.kind === "xcode") {
+    if (process.platform !== "darwin") {
+      throw new Error(`${entry.name}: Xcode sources require macOS with Xcode selected`);
+    }
+    const xcode = await stageXcodeSource(entry, stagedRoot, include, exclude);
+    xcodeVersion = xcode.version;
+    xcodeBuild = xcode.build;
+    sourceDigest = xcode.sourceDigest;
   } else if (entry.kind === "local-adopted") {
     const currentRoot = join(runtimeRoot, entry.runtime_path);
     if (!(await pathExists(currentRoot))) throw new Error(`${entry.name}: adopted runtime path missing`);
@@ -396,7 +491,7 @@ async function stageEntry(
     await copySelectedFiles(selectedRoot, stagedRoot, ["**"], []);
   }
 
-  await writeProvenance(stagedRoot, entry, resolvedCommit, sourceDigest);
+  await writeProvenance(stagedRoot, entry, resolvedCommit, sourceDigest, xcodeVersion, xcodeBuild);
   await validateEntry(entry, stagedRoot);
   const runtimeStats = await treeDigest(stagedRoot);
   const leaves = await skillLeaves(stagedRoot, entry.runtime_path);
@@ -405,6 +500,8 @@ async function stageEntry(
     entry,
     stagedRoot,
     resolvedCommit,
+    xcodeVersion,
+    xcodeBuild,
     sourceDigest,
     runtimeDigest: runtimeStats.digest,
     leaves,
@@ -433,6 +530,8 @@ async function writeProvenance(
   entry: ManifestEntry,
   resolvedCommit?: string,
   sourceDigest?: string,
+  xcodeVersion?: string,
+  xcodeBuild?: string,
 ) {
   const provenance = {
     managed_by: "agent-devtools.lazy-skills",
@@ -441,6 +540,8 @@ async function writeProvenance(
     repo: entry.repo,
     ref: entry.ref,
     resolved_commit: resolvedCommit,
+    xcode_version: xcodeVersion,
+    xcode_build: xcodeBuild,
     runtime_path: entry.runtime_path,
     source_path: entry.source_path,
     source_tree_digest: sourceDigest,
@@ -468,6 +569,8 @@ async function lockEntryFromStage(stage: StagedEntry): Promise<LockEntry> {
     repo: stage.entry.repo,
     ref: stage.entry.ref,
     resolved_commit: stage.resolvedCommit,
+    xcode_version: stage.xcodeVersion,
+    xcode_build: stage.xcodeBuild,
     runtime_path: stage.entry.runtime_path,
     source_tree_digest: stage.sourceDigest,
     runtime_tree_digest: stage.runtimeDigest,
@@ -648,13 +751,57 @@ async function assertRuntimeClean(lock: Lockfile | null, runtimeRoot: string, en
   }
 }
 
-async function replaceRuntimeEntry(runtimeRoot: string, stage: StagedEntry) {
+export async function replaceRuntimeEntry(
+  runtimeRoot: string,
+  sourceCache: string,
+  stage: StagedEntry,
+  renamePath: typeof rename = rename,
+) {
   const target = join(runtimeRoot, stage.entry.runtime_path);
   const backup = `${target}.backup-${Date.now()}`;
-  if (await pathExists(target)) await rename(target, backup);
-  await mkdir(dirname(target), { recursive: true });
-  await rename(stage.stagedRoot, target);
-  if (await pathExists(backup)) await rm(backup, { recursive: true, force: true });
+  const targetExists = await pathExists(target);
+  let backupMoved = false;
+  let newInstalled = false;
+  let snapshotTemp: string | undefined;
+  let snapshotTarget: string | undefined;
+  let snapshotBackup: string | undefined;
+  let previousSnapshotMoved = false;
+  if (targetExists && stage.entry.kind === "xcode") {
+    const cacheRoot = join(sourceCache, "xcode", stage.entry.name);
+    const nextSnapshot = join(cacheRoot, `.previous-${Date.now()}`);
+    snapshotTemp = nextSnapshot;
+    snapshotTarget = join(cacheRoot, "previous");
+    snapshotBackup = join(cacheRoot, `.previous-backup-${Date.now()}`);
+    await mkdir(nextSnapshot, { recursive: true });
+    await copySelectedFiles(target, nextSnapshot, ["**"], []);
+  }
+
+  try {
+    if (targetExists) {
+      await renamePath(target, backup);
+      backupMoved = true;
+    }
+    await mkdir(dirname(target), { recursive: true });
+    await renamePath(stage.stagedRoot, target);
+    newInstalled = true;
+    if (snapshotTemp && snapshotTarget && snapshotBackup) {
+      if (await pathExists(snapshotTarget)) {
+        await renamePath(snapshotTarget, snapshotBackup);
+        previousSnapshotMoved = true;
+      }
+      await renamePath(snapshotTemp, snapshotTarget);
+      await rm(snapshotBackup, { recursive: true, force: true }).catch(() => undefined);
+    }
+    if (await pathExists(backup)) await rm(backup, { recursive: true, force: true }).catch(() => undefined);
+  } catch (error) {
+    if (newInstalled && (await pathExists(target))) await rm(target, { recursive: true, force: true });
+    if (backupMoved && (await pathExists(backup))) await renamePath(backup, target);
+    if (previousSnapshotMoved && snapshotTarget && snapshotBackup && !(await pathExists(snapshotTarget)) && (await pathExists(snapshotBackup))) {
+      await renamePath(snapshotBackup, snapshotTarget);
+    }
+    if (snapshotTemp && (await pathExists(snapshotTemp))) await rm(snapshotTemp, { recursive: true, force: true });
+    throw error;
+  }
 }
 
 async function commandSync(manifest: Manifest, lock: Lockfile | null) {
@@ -664,10 +811,23 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
   const offline = args.has("--offline");
   const repair = args.has("--repair");
   const json = args.has("--json");
-  const entries = selectedEntries(manifest);
+  const requestedEntries = selectedEntries(manifest);
+  const skippedNames = new Set<string>();
+  const entries: ManifestEntry[] = [];
+  for (const entry of requestedEntries) {
+    if (entry.kind === "xcode" && args.has("--all")) {
+      const reason = await xcodeUnavailableReason();
+      if (reason) {
+        console.error(`skipping ${entry.name}: ${reason}`);
+        skippedNames.add(entry.name);
+        continue;
+      }
+    }
+    entries.push(entry);
+  }
   const oldLockByName = new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
   const nextLockByName = args.has("--all")
-    ? new Map<string, LockEntry>()
+    ? new Map((lock?.entries ?? []).filter((entry) => skippedNames.has(entry.name)).map((entry) => [entry.name, entry]))
     : new Map((lock?.entries ?? []).map((entry) => [entry.name, entry]));
   const report: unknown[] = [];
   let replaced = 0;
@@ -689,6 +849,10 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
       kind: entry.kind,
       old_commit: old?.resolved_commit,
       new_commit: stage.resolvedCommit,
+      old_xcode_version: old?.xcode_version,
+      new_xcode_version: stage.xcodeVersion,
+      old_xcode_build: old?.xcode_build,
+      new_xcode_build: stage.xcodeBuild,
       old_skills: old?.skill_leaves.length,
       new_skills: stage.leaves.length,
       old_digest: old?.runtime_tree_digest,
@@ -703,7 +867,13 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
 
     if (!json) {
       console.log(entry.name);
-      console.log(`  commit: ${shortCommit(old?.resolved_commit)} -> ${shortCommit(stage.resolvedCommit)}`);
+      if (entry.kind === "xcode") {
+        console.log(
+          `  Xcode: ${old?.xcode_version ?? "unknown"} (${old?.xcode_build ?? "unknown"}) -> ${stage.xcodeVersion} (${stage.xcodeBuild})`,
+        );
+      } else {
+        console.log(`  commit: ${shortCommit(old?.resolved_commit)} -> ${shortCommit(stage.resolvedCommit)}`);
+      }
       console.log(`  skills: ${old?.skill_leaves.length ?? "unknown"} -> ${stage.leaves.length}`);
       console.log(`  digest: ${shortDigest(old?.runtime_tree_digest)} -> ${shortDigest(stage.runtimeDigest)}`);
       console.log(`  size: ${old?.byte_count ? formatBytes(old.byte_count) : "unknown"} -> ${formatBytes(stage.byteCount)}`);
@@ -723,7 +893,7 @@ async function commandSync(manifest: Manifest, lock: Lockfile | null) {
     for (const stage of stages) {
       const current = await currentRuntimeEntry(runtimeRoot, stage.entry);
       if (current?.runtime_tree_digest !== stage.runtimeDigest) {
-        await replaceRuntimeEntry(runtimeRoot, stage);
+        await replaceRuntimeEntry(runtimeRoot, sourceCache, stage);
         replaced += 1;
       }
     }
