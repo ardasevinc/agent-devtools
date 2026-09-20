@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-09-16T11:55:06.917Z",
+  "generated_at": "2026-09-20T10:33:50.765Z",
   "runtime_root": "~/.agents/lazy-skills",
   "manifest_digest": "sha256:3ecc30cd4b344637740fa1892de4d70fdedbc8d43ea5a47dc098bd870e54286f",
   "entries": [
@@ -920,72 +920,77 @@
       "kind": "collection",
       "repo": "https://github.com/emilkowalski/skills.git",
       "ref": "main",
-      "resolved_commit": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "resolved_commit": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
       "runtime_path": "emil-kowalski",
-      "source_tree_digest": "sha256:ab21f68210c01a191e8abb2d074b85d5af136faf814a2191a6931ccc936a3359",
-      "runtime_tree_digest": "sha256:000b4caa035ec43cf4f6cce851aa360113baba3426670bbf7a3beb7736c983c0",
-      "file_count": 22,
-      "byte_count": 241570,
+      "source_tree_digest": "sha256:2e45df805df694041d14f62580f18d145203704609ed2118196bcc216a79c174",
+      "runtime_tree_digest": "sha256:a8cacde2dff5a72891378dc62fa8b3fd17719edf1210fd10fed3bf6ee9bee54c",
+      "file_count": 23,
+      "byte_count": 261891,
       "skill_leaves": [
         {
           "name": "animate-expo",
           "path": "emil-kowalski/animate-expo/SKILL.md",
-          "digest": "sha256:2121fc72ffa476492c1b91ccf96c7b26aade9d1a332dc5834ba3526e1102b00d"
+          "digest": "sha256:9a01a91701e6563c67677dde6b66ab30f066a5341d42c21a90ba51d99679274a"
         },
         {
           "name": "animate",
           "path": "emil-kowalski/animate/SKILL.md",
-          "digest": "sha256:f6317335da2662e92270dc0a6128bea95d7216cd751f86628e3ac6b72804e805"
+          "digest": "sha256:b8ede161270458e6ae2e45e8a1985373515d4c63de5568ddb0f9012d7634356c"
         },
         {
           "name": "animation-vocabulary",
           "path": "emil-kowalski/animation-vocabulary/SKILL.md",
-          "digest": "sha256:d718b48fe3c7898804d588f050a2e266d82c9f5ef51da256c8cb8b5951527757"
+          "digest": "sha256:40d2b27adfdfeb0570a9f20e7d0255109d9233c50603878bcd0dcd04c923fd94"
         },
         {
           "name": "apple-design",
           "path": "emil-kowalski/apple-design/SKILL.md",
-          "digest": "sha256:11840b24a11d7f94f39c6aaab074750ae4e4de4ef54ee4b1dd97e16ebd485e61"
+          "digest": "sha256:77bb63b7043bb93aca2ff4ab040c249484eef35682bb6ff7163433c31d30adc7"
         },
         {
           "name": "ask-sonner",
           "path": "emil-kowalski/ask-sonner/SKILL.md",
-          "digest": "sha256:be1b04511aadb4d7d81aa8cd2b55c260a626aae534983bc8ae3fbe26bbf48632"
+          "digest": "sha256:39f3ee185b3aa2cf70a689052ff078953ce7ba5915ed7a9391d232e9d4dcf57f"
         },
         {
           "name": "emil-design-eng",
           "path": "emil-kowalski/emil-design-eng/SKILL.md",
-          "digest": "sha256:e71de849347050c2c573c1cf24d742d5a13459557ecffa6e562f08006f46b5b7"
+          "digest": "sha256:ffbe68e6007fb42cb8149f089b400a1ca007d59ba23e8948e2be4476f3175939"
         },
         {
           "name": "find-animation-opportunities",
           "path": "emil-kowalski/find-animation-opportunities/SKILL.md",
-          "digest": "sha256:91c1243164057fbf824088d12faea937878a757a7ac653e8288b775e8b27b882"
+          "digest": "sha256:d52a377819b84a71930f0c822cfe2849f40301605a2d5c7eccbfa3b257700df2"
         },
         {
           "name": "improve-animations",
           "path": "emil-kowalski/improve-animations/SKILL.md",
-          "digest": "sha256:68f17bbc4671593d2f43dba26a679243e2153ba5f26965fb7d59df52842534ff"
+          "digest": "sha256:73962447464433476343e2c12cd08ab39cc99a9e5f3c118c5fb54ed897574ef6"
+        },
+        {
+          "name": "mobile-native",
+          "path": "emil-kowalski/mobile-native/SKILL.md",
+          "digest": "sha256:888b7651d66d66dbac4e72b7c554638eb19bd971d686d6cbdf030a5ef3788f55"
         },
         {
           "name": "pick-ui-library",
           "path": "emil-kowalski/pick-ui-library/SKILL.md",
-          "digest": "sha256:4b889bd6c08358499ac4a7202b8af71ffbd3485d2468f7b09d0613bbe7b24bf4"
+          "digest": "sha256:675fdce308683256ed617351a9b74d23457a5fbd0a562d9831b9c764b8c5e682"
         },
         {
           "name": "prototype",
           "path": "emil-kowalski/prototype/SKILL.md",
-          "digest": "sha256:2ad8401c4deaddb54947fb65247f790e7b3d8784e35312bcbedbfb1d59cd89ce"
+          "digest": "sha256:bba39c955eb1871c5a02733976ceec5d0324198e0812e667604756489c89f7b9"
         },
         {
           "name": "review-animations",
           "path": "emil-kowalski/review-animations/SKILL.md",
-          "digest": "sha256:61cf8ac0c4c8e1f63385298c546b16c65ca9aec34abddcd04e821c16712d671d"
+          "digest": "sha256:6ff590d29e436766135aa3d137be1fac2a867165c7257fc315b189361f1873af"
         },
         {
           "name": "write-swift",
           "path": "emil-kowalski/write-swift/SKILL.md",
-          "digest": "sha256:2579cb2684245f75a261cbb13aa4a12f7f9441dabdfe3bc2e72dc2f04ec5e9fd"
+          "digest": "sha256:16a4b6adb74e338e55e704ce5753ad54d825438b8a63930eeaede9f3c04c9447"
         }
       ],
       "note": "Complete lazy collection with support files. Existing active Emil skills retain their separate installation ownership."
@@ -995,12 +1000,12 @@
       "kind": "collection",
       "repo": "https://github.com/expo/skills.git",
       "ref": "main",
-      "resolved_commit": "c180b05b2f6f4d414f1f58a05fca2cf6751495df",
+      "resolved_commit": "39708666ce7014def1f8e34f3d8c93e8d3f588bb",
       "runtime_path": "expo-skills",
-      "source_tree_digest": "sha256:810b560cb137a89570a3b907043205910aec6ceb95e00ad93482eaed6f9ec4e8",
-      "runtime_tree_digest": "sha256:2cf477e3c09513f1f12e821b1c51bbf1777b1910287103ca17ea7b8042269a8b",
+      "source_tree_digest": "sha256:e4ef17f7bb68ff5f6aa21b2566659e01b4933fd2cacff7aee0aa89c9f91a641f",
+      "runtime_tree_digest": "sha256:0491716eb54fe345fd84a06570510f5a2633c576a2d747f6384b596d677e647a",
       "file_count": 99,
-      "byte_count": 747814,
+      "byte_count": 751474,
       "skill_leaves": [
         {
           "name": "eas-app-stores",
@@ -1020,7 +1025,7 @@
         {
           "name": "eas-simulator",
           "path": "expo-skills/skills/eas-simulator/SKILL.md",
-          "digest": "sha256:96d32ea55fad8f87f154ee3e43d380d566385934bfb3a35b6011f75030f0113d"
+          "digest": "sha256:457b2429e7230778faedbbe2a5ee96dc4160608b0c0ef5bdd2bdbc8e90370e6b"
         },
         {
           "name": "eas-update-insights",
