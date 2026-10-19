@@ -5,17 +5,32 @@ import { $ } from "bun"
 $.throws(false)
 
 // --- Types ---
+// Field contract: https://code.claude.com/docs/en/statusline
+// Most fields can be absent or null; never assume a context size.
+
+interface Window {
+  used_percentage?: number | null
+  resets_at?: number | null
+}
 
 interface ClaudeInput {
-  workspace?: { current_dir?: string }
+  cwd?: string
+  workspace?: { current_dir?: string; git_worktree?: string }
   model?: { display_name?: string; id?: string }
+  effort?: { level?: string }
+  fast_mode?: boolean
   context_window?: {
-    context_window_size?: number
-    current_usage?: {
-      input_tokens?: number
-      cache_read_input_tokens?: number
-      cache_creation_input_tokens?: number
-    }
+    context_window_size?: number | null
+    used_percentage?: number | null
+  }
+  prompt_cache?: {
+    warm?: boolean
+    expires_at?: number | null
+    hit_ratio?: number | null
+  }
+  rate_limits?: {
+    five_hour?: Window
+    seven_day?: Window
   }
 }
 
@@ -31,40 +46,84 @@ async function readStdin(): Promise<ClaudeInput | null> {
   }
 }
 
-// --- Context ---
+// --- Colors ---
 
-function calcContextUsed(input: ClaudeInput): number | null {
-  const usage = input.context_window?.current_usage
-  const size = input.context_window?.context_window_size ?? 200_000
-  if (!usage) return null
+const RESET = "\x1b[0m"
+const DIM = "\x1b[2m"
+const YELLOW = "\x1b[33m"
+const RED = "\x1b[31m"
 
-  const total =
-    (usage.input_tokens ?? 0) +
-    (usage.cache_read_input_tokens ?? 0) +
-    (usage.cache_creation_input_tokens ?? 0)
-
-  return Math.round((total / size) * 100)
+function heat(pct: number, text: string): string {
+  if (pct >= 90) return RED + text + RESET
+  if (pct >= 70) return YELLOW + text + RESET
+  return text
 }
 
 // --- Model ---
 
 function formatModel(input: ClaudeInput): string | null {
-  const display = input.model?.display_name
-  if (!display) return null
+  // "claude-opus-5-5" → "opus-5.5", "claude-haiku-4-5-20251001" → "haiku-4.5"
+  const id = input.model?.id
+  const match = id?.match(/^claude-([a-z]+)-(\d+)(?:-(\d{1,2}))?(?:-\d{8})?/)
+  let model = match
+    ? `${match[1]}-${match[2]}${match[3] ? "." + match[3] : ""}`
+    : input.model?.display_name?.toLowerCase()
+  if (!model) return null
 
-  // "Claude Sonnet 4" → "sonnet-4"
-  // "Claude Opus 4.5" → "opus-4.5"
-  const match = display.match(/Claude\s+(\w+)\s+([\d.]+)/i)
-  if (match) {
-    return `${match[1].toLowerCase()}-${match[2]}`
+  const effort = input.effort?.level
+  if (effort) model += ` ${effort}`
+  if (input.fast_mode) model += " ⚡"
+  return model
+}
+
+// --- Context ---
+
+function formatTokens(n: number): string {
+  if (n >= 1_000_000) return `${+(n / 1_000_000).toFixed(1)}M`
+  return `${Math.round(n / 1000)}k`
+}
+
+function formatContext(input: ClaudeInput): string | null {
+  const pct = input.context_window?.used_percentage
+  if (pct == null) return null
+  const size = input.context_window?.context_window_size
+  const rounded = Math.round(pct)
+  const text = size ? `ctx ${rounded}%/${formatTokens(size)}` : `ctx ${rounded}%`
+  return heat(rounded, text)
+}
+
+// --- Prompt cache ---
+
+function formatCache(input: ClaudeInput): string | null {
+  const cache = input.prompt_cache
+  if (!cache) return null
+  const left = cache.expires_at ? Math.floor((cache.expires_at * 1000 - Date.now()) / 60_000) : null
+  if (!cache.warm || (left !== null && left <= 0)) return YELLOW + "cache cold" + RESET
+  let text = left !== null ? `cache ${left}m` : "cache warm"
+  if (cache.hit_ratio != null) text += ` ${DIM}${Math.round(cache.hit_ratio * 100)}%hit${RESET}`
+  return text
+}
+
+// --- Rate limits ---
+
+function formatLimits(input: ClaudeInput): string | null {
+  const parts: string[] = []
+  const windows: [string, Window | undefined][] = [
+    ["5h", input.rate_limits?.five_hour],
+    ["7d", input.rate_limits?.seven_day],
+  ]
+  for (const [label, window] of windows) {
+    if (window?.used_percentage == null) continue
+    const pct = Math.round(window.used_percentage)
+    parts.push(heat(pct, `${label} ${pct}%`))
   }
-  return display
+  return parts.length ? parts.join(" · ") : null
 }
 
 // --- Directory ---
 
 function getShortDir(input: ClaudeInput): string {
-  const cwd = input.workspace?.current_dir ?? process.cwd()
+  const cwd = input.workspace?.current_dir ?? input.cwd ?? process.cwd()
   const home = process.env.HOME ?? ""
   const display = cwd.startsWith(home) ? "~" + cwd.slice(home.length) : cwd
   const parts = display.split("/").filter(Boolean)
@@ -73,11 +132,11 @@ function getShortDir(input: ClaudeInput): string {
 
 // --- Git ---
 
-async function getGitInfo(): Promise<string> {
-  // 2 lock-free git calls in parallel (down from 7 sequential calls)
+async function getGitInfo(cwd: string): Promise<string> {
+  // 2 lock-free git calls in parallel
   const [statusOut, revParseOut] = await Promise.all([
-    $`git --no-optional-locks status --porcelain=v2 --branch --ahead-behind`.text(),
-    $`git --no-optional-locks rev-parse --git-dir --git-common-dir`.text(),
+    $`git --no-optional-locks status --porcelain=v2 --branch --ahead-behind`.cwd(cwd).text(),
+    $`git --no-optional-locks rev-parse --git-dir --git-common-dir`.cwd(cwd).text(),
   ])
 
   if (!statusOut) return ""
@@ -142,24 +201,20 @@ async function getHostname(): Promise<string> {
 // --- Main ---
 
 async function main() {
-  const input = await readStdin() ?? {}
-  const parts: string[] = []
+  const input = (await readStdin()) ?? {}
+  const cwd = input.workspace?.current_dir ?? input.cwd ?? process.cwd()
+  const [host, git] = await Promise.all([getHostname(), getGitInfo(cwd)])
 
-  parts.push(await getHostname())
-  parts.push(getShortDir(input))
-
-  const git = await getGitInfo()
-  if (git) parts.push(git)
-
-  const ctx = calcContextUsed(input)
-  if (ctx !== null) {
-    parts.push(`ctx:${ctx}%`)
-  }
-
-  const model = formatModel(input)
-  if (model) parts.push(model)
-
-  parts.push(getDateTime())
+  const parts = [
+    host,
+    getShortDir(input),
+    git,
+    formatModel(input),
+    formatContext(input),
+    formatCache(input),
+    formatLimits(input),
+    getDateTime(),
+  ].filter(Boolean)
 
   console.log(parts.join(" │ "))
 }

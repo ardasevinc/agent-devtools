@@ -88,16 +88,22 @@ Custom statusline showing:
 - Hostname
 - Current directory (last 2 path components)
 - Git info: branch, worktree indicator (⎇), dirty (*), ahead (↑n), behind (↓n)
-- Context usage percentage (parsed from session JSONL)
-- Model name (e.g., opus-4.5, sonnet-4)
+- Model + effort (e.g., `opus-5.5 medium`, ⚡ in fast mode)
+- Context usage against the real window size (e.g., `ctx 41%/1M`); hidden while unknown
+- Prompt cache: minutes until expiry and hit ratio, or `cache cold`
+- Max rate limits: `5h` and `7d` usage (yellow ≥70%, red ≥90%)
 - DateTime (yyyymmdd HH:MM)
+
+All values come from the statusline stdin JSON
+(https://code.claude.com/docs/en/statusline); absent fields are skipped.
 
 **Setup:** Symlink to `~/.claude/statusline.ts` and configure in settings:
 ```json
 "statusLine": {
   "type": "command",
   "command": "bun ~/.claude/statusline.ts",
-  "padding": 0
+  "padding": 0,
+  "refreshInterval": 30
 }
 ```
 
