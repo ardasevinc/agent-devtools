@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "2026-10-19T22:53:34.379Z",
+  "generated_at": "2026-10-19T22:58:16.989Z",
   "runtime_root": "~/.agents/lazy-skills",
-  "manifest_digest": "sha256:3ecc30cd4b344637740fa1892de4d70fdedbc8d43ea5a47dc098bd870e54286f",
+  "manifest_digest": "sha256:7231ca53b37f2e2684dd9517ae870321d8832c06a01b7549ecd86ebd432d639a",
   "entries": [
     {
       "name": "app-store-connect-cli-skills",
@@ -1438,6 +1438,40 @@
       ]
     },
     {
+      "name": "imagegen-skills",
+      "kind": "collection",
+      "repo": "https://github.com/Leonxlnx/imagegen-skills.git",
+      "ref": "main",
+      "resolved_commit": "beb16b0d0f4dae9a6f5cb04ea41e97b93a54ab8e",
+      "runtime_path": "imagegen-skills",
+      "source_tree_digest": "sha256:2990a2d177ac7848b9a141f3ddb634dae6db0772ca510a8b48f348e3f4726c3a",
+      "runtime_tree_digest": "sha256:85a35e6c67e527a3c2f3d37d82e5f9cd61b9c4c329580f8245ed5a516da3bf07",
+      "file_count": 8,
+      "byte_count": 140449,
+      "skill_leaves": [
+        {
+          "name": "brandkit",
+          "path": "imagegen-skills/skills/brandkit/SKILL.md",
+          "digest": "sha256:9584a127e535c90b686c8dcb5a707ede586dac6791fbf92cfd118c5fea96f9a0"
+        },
+        {
+          "name": "image-to-code",
+          "path": "imagegen-skills/skills/image-to-code/SKILL.md",
+          "digest": "sha256:4c060a8064a8b13380bc2ef3d6e6a1d0b1e316aa093cd9807d0ce9e4eeb037fa"
+        },
+        {
+          "name": "imagegen-frontend-mobile",
+          "path": "imagegen-skills/skills/imagegen-frontend-mobile/SKILL.md",
+          "digest": "sha256:8a33389979f3074fa0926678e266ad2eb9234624472254469fc1ad916b9caa24"
+        },
+        {
+          "name": "imagegen-frontend-web",
+          "path": "imagegen-skills/skills/imagegen-frontend-web/SKILL.md",
+          "digest": "sha256:6b5c2256522fdba1e3313eafa3d743b960a7b13ec029d3e6586e04b23327c1f8"
+        }
+      ]
+    },
+    {
       "name": "impeccable",
       "kind": "single",
       "repo": "https://github.com/pbakaus/impeccable.git",
@@ -2226,6 +2260,55 @@
           "name": "design-taste-frontend",
           "path": "taste-skill/skills/taste-skill/SKILL.md",
           "digest": "sha256:d955dae4ba8ab2d994f4bb06b4bf412a1d9875433a8597939c391f4bae91dd7a"
+        }
+      ]
+    },
+    {
+      "name": "taste-skill-classics",
+      "kind": "collection",
+      "repo": "https://github.com/Leonxlnx/taste-skill-classics.git",
+      "ref": "main",
+      "resolved_commit": "5e08c9383dc4ad7fc0df70e1ac8cfa09ec356305",
+      "runtime_path": "taste-skill-classics",
+      "source_tree_digest": "sha256:b7aec6289facd87c9e70582acba46eab51d3f6a41264dc5e4ed1f2f6cbca8269",
+      "runtime_tree_digest": "sha256:53d1dc567f6ae88c3cdd3ab93dfa6757ab577135e3a69920e14b76442c5e7dad",
+      "file_count": 12,
+      "byte_count": 178033,
+      "skill_leaves": [
+        {
+          "name": "industrial-brutalist-ui",
+          "path": "taste-skill-classics/skills/brutalist-skill/SKILL.md",
+          "digest": "sha256:8b96e9a6fedd905066f6acd3fdbf157dd5510074fbefde331e26a7132fe1b99b"
+        },
+        {
+          "name": "gpt-taste",
+          "path": "taste-skill-classics/skills/gpt-tasteskill/SKILL.md",
+          "digest": "sha256:7d630a777b980971521c4a7619a631aa67dd6f713592e57c12473a8caa505238"
+        },
+        {
+          "name": "minimalist-ui",
+          "path": "taste-skill-classics/skills/minimalist-skill/SKILL.md",
+          "digest": "sha256:5746722f8f0e70154790123247efc3f4711c301cbfc1bf2400d5c6d7ab042f99"
+        },
+        {
+          "name": "high-end-visual-design",
+          "path": "taste-skill-classics/skills/soft-skill/SKILL.md",
+          "digest": "sha256:b981812482285acffba3a8d4d762c2af3d3e7b88350cb6816fdbd583e825e973"
+        },
+        {
+          "name": "stitch-design-taste",
+          "path": "taste-skill-classics/skills/stitch-skill/SKILL.md",
+          "digest": "sha256:c8b140c2db87e23a7bfe06b1bac891b95dcb5f1401560d6a2f8f7dc70a3f4cbd"
+        },
+        {
+          "name": "design-taste-frontend-v1",
+          "path": "taste-skill-classics/skills/taste-skill-v1/SKILL.md",
+          "digest": "sha256:37251703683f2f5407062b822133d379e4a020612940561eb4fba89a750d2328"
+        },
+        {
+          "name": "design-taste-frontend-v2-experimental",
+          "path": "taste-skill-classics/skills/taste-skill-v2-experimental/SKILL.md",
+          "digest": "sha256:2298b5a24b44fc8e6aeed996a48c2beebe2f9b89f7c1eb924824b92b79341971"
         }
       ]
     },

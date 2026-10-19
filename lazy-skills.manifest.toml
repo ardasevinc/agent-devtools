@@ -316,6 +316,20 @@ ref = "main"
 runtime_path = "taste-skill"
 
 [[source]]
+name = "taste-skill-classics"
+kind = "collection"
+repo = "https://github.com/Leonxlnx/taste-skill-classics.git"
+ref = "main"
+runtime_path = "taste-skill-classics"
+
+[[source]]
+name = "imagegen-skills"
+kind = "collection"
+repo = "https://github.com/Leonxlnx/imagegen-skills.git"
+ref = "main"
+runtime_path = "imagegen-skills"
+
+[[source]]
 name = "vercel-agent-skills"
 kind = "collection"
 repo = "https://github.com/vercel-labs/agent-skills.git"

@@ -2,7 +2,7 @@
 name: lazy-skill
 description: Browse and load skills on-demand from ~/.agents/lazy-skills without exposing every skill description to the base agent. Use when the user explicitly asks for a lazy skill or a capability that should be loaded only on demand.
 argument-hint: [search query or blank to browse]
-version: 1.2.5
+version: 1.2.6
 ---
 
 # Lazy Skill Loader
@@ -21,7 +21,9 @@ Skills available for lazy loading (name: sparse keywords - short description):
 - **axiom** [collection]: apple, healthkit, swift, xcode - Apple platform development, diagnostics, testing, and native APIs
 - **emil-kowalski** [collection]: design, animation, expo, swift - Emil Kowalski’s web/native design engineering and motion guidance
 - **impeccable**: design, critique, typography, layout - Interface design and refinement with supporting on-demand tooling
-- **taste-skill** [collection]: taste, frontend, imagegen - Anti-generic frontend design, image-to-code, and premium UI direction
+- **taste-skill** [collection]: taste, frontend, redesign, dashboards - tasteskill v2: anti-slop art direction for pages and app screens, with a browser inspector
+- **taste-skill-classics** [collection]: taste, minimalist, brutalist, soft - Older taste styles (minimalist, brutalist, soft, stitch, gpt-taste, v1, v2-experimental); call by name
+- **imagegen-skills** [collection]: imagegen, image-to-code, brandkit - Image-generation-led frontend: web/mobile mockups, image-to-code, brand kits
 - **shadcn-ui** [collection]: shadcn, components, registry - Official shadcn/ui component and registry workflow
 - **next-skills** [collection]: nextjs, rsc, cache - Next.js best practices, upgrades, and Cache Components
 - **vercel-agent-skills** [collection]: react, vercel, performance - Vercel React/Next/RN performance and composition guidance
