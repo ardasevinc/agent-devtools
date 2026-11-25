@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-02T09:47:59.293Z",
+  "generated_at": "2026-11-25T19:56:30.066Z",
   "runtime_root": "~/.agents/lazy-skills",
   "manifest_digest": "sha256:7231ca53b37f2e2684dd9517ae870321d8832c06a01b7549ecd86ebd432d639a",
   "entries": [
@@ -9,12 +9,12 @@
       "kind": "collection",
       "repo": "https://github.com/rorkai/app-store-connect-cli-skills.git",
       "ref": "main",
-      "resolved_commit": "7de1ef7cc831f62d205dfa589063f3831f66391b",
+      "resolved_commit": "13194595ab6e438f3d2695101d654510c527731d",
       "runtime_path": "app-store-connect-cli-skills",
-      "source_tree_digest": "sha256:4233f0854a6dfd7522080c2f120fdf176f6d2f172590b74e68a9652930cddc3e",
-      "runtime_tree_digest": "sha256:9895b19d2a14fe0e7389860ed4143d149676fb1c52387a98bfd60261109a0968",
+      "source_tree_digest": "sha256:9c28e91a8b79ec11870893a8ec801cec11cd1d263734ab0a2e9dd216c525336e",
+      "runtime_tree_digest": "sha256:c64306f4a09cf9800a8e2b2c55ddc29dc45ebd4e6320b57e987be27b5ed88dd8",
       "file_count": 43,
-      "byte_count": 298671,
+      "byte_count": 306550,
       "skill_leaves": [
         {
           "name": "asc-ad-hoc-distribution",
@@ -34,7 +34,7 @@
         {
           "name": "asc-apple-ads",
           "path": "app-store-connect-cli-skills/skills/asc-apple-ads/SKILL.md",
-          "digest": "sha256:2dd8b220d439d2120f676469bcd86788b378e096a90ab7884a4d8d4ae518d60a"
+          "digest": "sha256:a9a0b76270b69c38c8102c63e92918a9401d794bab6c48d41f685a031fb0fa58"
         },
         {
           "name": "asc-aso-audit",
@@ -49,7 +49,7 @@
         {
           "name": "asc-cli-usage",
           "path": "app-store-connect-cli-skills/skills/asc-cli-usage/SKILL.md",
-          "digest": "sha256:3898741a21970abfc0d9c4b8fa8a270c48344088940320ae27fc407530bae284"
+          "digest": "sha256:887b9138e47da5d43349f564930220d51ed7843ad90c36386bd7e7b36dfb22e0"
         },
         {
           "name": "asc-crash-triage",
@@ -59,7 +59,7 @@
         {
           "name": "asc-id-resolver",
           "path": "app-store-connect-cli-skills/skills/asc-id-resolver/SKILL.md",
-          "digest": "sha256:44c892e57e89c28448103e1294a190cfc48cc0b8f162bb34ec068ddad808ea60"
+          "digest": "sha256:3d2e714a5e628889e5cb8b26eb118ce0a6e725010358343a5ad3ea6fd10c9c3f"
         },
         {
           "name": "asc-in-app-events",
@@ -74,7 +74,7 @@
         {
           "name": "asc-metadata-sync",
           "path": "app-store-connect-cli-skills/skills/asc-metadata-sync/SKILL.md",
-          "digest": "sha256:95a53c4d08691bdc272171544f1a4a9e5a997f6c5efd6712cd40d9db8625d5f9"
+          "digest": "sha256:f71e69b5848a808668d8d0fe05d096754cd3fc4e8e90860ae530268f475a32d0"
         },
         {
           "name": "asc-notarization",
@@ -84,47 +84,47 @@
         {
           "name": "asc-ppp-pricing",
           "path": "app-store-connect-cli-skills/skills/asc-ppp-pricing/SKILL.md",
-          "digest": "sha256:1a3ef6ab4870d6dd1968f0d7749968036bc92b130cc885752765812e30767c94"
+          "digest": "sha256:c2a1202d0d3947d26b53280cc4d7f7fb76615d632c5226f835582bb178583cb3"
         },
         {
           "name": "asc-release-flow",
           "path": "app-store-connect-cli-skills/skills/asc-release-flow/SKILL.md",
-          "digest": "sha256:0d8132e6cc1828aa5a2d0e10795a11951b9c913cebf68a4f37d91801abd04b97"
+          "digest": "sha256:3f1de3ab7625c6cd63a9c5703312ea9921e197cbc730aeea3bb5ec8c1be7d53c"
         },
         {
           "name": "asc-revenuecat-catalog-sync",
           "path": "app-store-connect-cli-skills/skills/asc-revenuecat-catalog-sync/SKILL.md",
-          "digest": "sha256:45364bcd0c3147b983944143106d23c7688ddf42e8253f8de32c69f4d8e53fbc"
+          "digest": "sha256:8bda9bea088dbf87fe7ce787405bf8f6f986784f79268824e111d0b3b974c30e"
         },
         {
           "name": "asc-screenshot-resize",
           "path": "app-store-connect-cli-skills/skills/asc-screenshot-resize/SKILL.md",
-          "digest": "sha256:311b549c07d90ef5d0710217fb1936370714250e8edf7e1c74c76156e6a19637"
+          "digest": "sha256:c2ee7bee346e960f1897387aaec06b32e7b6df48af6ac67d3706eee309df000b"
         },
         {
           "name": "asc-shots-pipeline",
           "path": "app-store-connect-cli-skills/skills/asc-shots-pipeline/SKILL.md",
-          "digest": "sha256:e373b45622b525027b46eb2c322a83b8ce3a3bcd972ada2892d0cd41fbdbd11f"
+          "digest": "sha256:05d69f9108f138f33a5a47908715e426df176027de77a826413f4d2725711dec"
         },
         {
           "name": "asc-signing-setup",
           "path": "app-store-connect-cli-skills/skills/asc-signing-setup/SKILL.md",
-          "digest": "sha256:7197b0780904541a62e3ae4949c89425d2dab276b2486285922775de6a81d16a"
+          "digest": "sha256:c641b31e59962650f713641edc960aa1cf2e748e8757bfcbdd1e620e46a86310"
         },
         {
           "name": "asc-submission-health",
           "path": "app-store-connect-cli-skills/skills/asc-submission-health/SKILL.md",
-          "digest": "sha256:8075d8932196e213d20e2a5e68746504c98277f5f62dee63f378ac8177ac51a0"
+          "digest": "sha256:da25395583d17497cdabf06e5f6f884823db448a6090a18c6b0755e3bb0bbf8f"
         },
         {
           "name": "asc-subscription-localization",
           "path": "app-store-connect-cli-skills/skills/asc-subscription-localization/SKILL.md",
-          "digest": "sha256:c9ddd3b9a8290db5ceaf3d1b432c8e49ddb0d48c463912f512a70b005929fcf8"
+          "digest": "sha256:5e06bbf384003b22a41244137a92ba65d3f7fed37d39733bc2a9c04d8a374b61"
         },
         {
           "name": "asc-testflight-orchestration",
           "path": "app-store-connect-cli-skills/skills/asc-testflight-orchestration/SKILL.md",
-          "digest": "sha256:bc191064d77e8a37746d92aa872b3b088000553a8757d074fcde261b8df303f6"
+          "digest": "sha256:e6390dcb3ff246d4c9443dcbf20366a681e6f000b2236ebb5c53ed06c5ff8b8f"
         },
         {
           "name": "asc-wall-submit",
@@ -139,7 +139,7 @@
         {
           "name": "asc-workflow",
           "path": "app-store-connect-cli-skills/skills/asc-workflow/SKILL.md",
-          "digest": "sha256:ba607f8e533b86fa9b08246615ae15d9daa58bf4d61896d9d7a05f7ef9002922"
+          "digest": "sha256:679bafcb935f14a3716bb6c6814857e4f65c54e7ca80bc387d23ab5f4cd22a81"
         },
         {
           "name": "asc-xcode-build",
@@ -151,13 +151,13 @@
     {
       "name": "apple-xcode",
       "kind": "xcode",
-      "xcode_version": "27.1",
-      "xcode_build": "27A9275",
+      "xcode_version": "27.2",
+      "xcode_build": "27B52",
       "runtime_path": "apple-xcode",
-      "source_tree_digest": "sha256:a56829c95709be11a220a04401e09fda62282084a84b69edf983c0c2b571a7e3",
-      "runtime_tree_digest": "sha256:4bef75c9d0aa87ab9e6e2cb3f0524060353a0d784115323aeedd3988f4569f5e",
-      "file_count": 158,
-      "byte_count": 1846186,
+      "source_tree_digest": "sha256:5ccf96781fe98dbbfd61c3f70d0abf6fc116eb08a9195ea5f52fd5b1fbe0aba3",
+      "runtime_tree_digest": "sha256:45a58f62329be17fb7a29cb766872820d1decd38d978749970cec742f08ea8b5",
+      "file_count": 161,
+      "byte_count": 1888780,
       "skill_leaves": [
         {
           "name": "accessibility-dynamic-type-specialist",
@@ -177,7 +177,7 @@
         {
           "name": "adopt-c-bounds-safety",
           "path": "apple-xcode/skills/adopt-c-bounds-safety/SKILL.md",
-          "digest": "sha256:01db75935079967b79dda0b606d445133130f68d55c3f6d18b71e3514ce3076d"
+          "digest": "sha256:7d9376bb20d8f004843c9283fe469f2bbbe7e8c1dc3ae0f9db1fdd2b683b0688"
         },
         {
           "name": "app-intents-specialist",
@@ -227,12 +227,17 @@
         {
           "name": "translation-coordinator",
           "path": "apple-xcode/skills/translation-coordinator/SKILL.md",
-          "digest": "sha256:218adfc2fe4accfef9489b281aade261a85ed4ab87ce7d45ac6efe7ca9165a11"
+          "digest": "sha256:553d18addaa56999972b346bb895203b474416dd9bae3de89002281370fc0c16"
         },
         {
           "name": "translation",
           "path": "apple-xcode/skills/translation/SKILL.md",
-          "digest": "sha256:3bfdcf16ed418a37b898b43eeb7c6a19c1b617ae4a29a15d663ad1d3c1d969b3"
+          "digest": "sha256:b7a36bd2bce68ca0c0754c4f054e1615195c6c37c856fe019eeff8ca922032f5"
+        },
+        {
+          "name": "xctrace",
+          "path": "apple-xcode/skills/xctrace/SKILL.md",
+          "digest": "sha256:83e272cae6ed0542e9f9f7bf24c699e77eb63540e63b64c70d635a4d824dd9b7"
         }
       ],
       "note": "Local Apple plugin export with unchanged vendor skills and separate agent-devtools guidance. Requires Xcode for refresh; does not install MCP."
@@ -240,10 +245,10 @@
     {
       "name": "architecture-wise-tree",
       "kind": "curated",
-      "resolved_commit": "local:lazy-skills/architecture-wise-tree,https://github.com/addyosmani/agent-skills.git#b76534301587b9e75ad9cf5fdc1cd6cbe6318da3,https://github.com/anthropics/knowledge-work-plugins.git#2574e29377c7173d0cecffef29a6ecbd7f8ccb5d,https://github.com/anthropics/knowledge-work-plugins.git#2574e29377c7173d0cecffef29a6ecbd7f8ccb5d,https://github.com/github/awesome-copilot.git#61fa1fa8fcc63d6dbd2f07a75aeb8e214df5acfb,https://github.com/wondelai/skills.git#4d322538be8b9ce98fca29b0eef26d67bff1fe82",
+      "resolved_commit": "local:lazy-skills/architecture-wise-tree,https://github.com/addyosmani/agent-skills.git#b76534301587b9e75ad9cf5fdc1cd6cbe6318da3,https://github.com/anthropics/knowledge-work-plugins.git#5e504ae11498f2b8daa30d86b7dab97b2ecd8092,https://github.com/anthropics/knowledge-work-plugins.git#5e504ae11498f2b8daa30d86b7dab97b2ecd8092,https://github.com/github/awesome-copilot.git#93fc8b9ee3ef56b9b5e7261e6ce92d314cb2c1cf,https://github.com/wondelai/skills.git#4d322538be8b9ce98fca29b0eef26d67bff1fe82",
       "runtime_path": "architecture-wise-tree",
       "source_tree_digest": "sha256:8b2d6359b79190392e2d404ae83d6306ab2ff4b2039234a75e17123f4478dad8",
-      "runtime_tree_digest": "sha256:3b93c6351ba46c37d46d59f75498eacb68e25ee9b57c9435990966980986988e",
+      "runtime_tree_digest": "sha256:9cd2c3374fe9fb8ba515d66844a555eab4d6a599ae61d4bef29949d8a11773cf",
       "file_count": 72,
       "byte_count": 809662,
       "skill_leaves": [
@@ -374,12 +379,12 @@
       "kind": "collection",
       "repo": "https://github.com/CharlesWiltgen/Axiom.git",
       "ref": "main",
-      "resolved_commit": "58ae15ac93b1fa59db628f634a6c257e86e794b2",
+      "resolved_commit": "ffafd3b3e0dbaaa60b753ca4a835ae6603b873e1",
       "runtime_path": "axiom",
-      "source_tree_digest": "sha256:a4c415d37a1566ca4921cbb2bd2fce1a19612fad7aeeed0799c5e8eb8a46e996",
-      "runtime_tree_digest": "sha256:192f90f4b7e2eaac918a68850d391517ec56e5bee85e5aadaa85edeaf5e189f0",
-      "file_count": 428,
-      "byte_count": 7808202,
+      "source_tree_digest": "sha256:a26dc99969253fc61f1b180c02c7d24f90e41af7c99f2facd02a46724123ff3c",
+      "runtime_tree_digest": "sha256:54cff22ebda72748437b23c4489d365d79b5ece50ca20b58a7dfebe3dbc97113",
+      "file_count": 434,
+      "byte_count": 7963587,
       "skill_leaves": [
         {
           "name": "axiom-accessibility",
@@ -389,7 +394,7 @@
         {
           "name": "axiom-ai",
           "path": "axiom/axiom-ai/SKILL.md",
-          "digest": "sha256:4d123d286ebd847a63014da34de3373b616b3ba1eb37c0004038ccdcd48306b8"
+          "digest": "sha256:8c5acf1f860ac8558c34d043e8bf9231afa838750be360538524f29f1affeb30"
         },
         {
           "name": "axiom-analyze-crash",
@@ -424,7 +429,7 @@
         {
           "name": "axiom-audit-accessibility",
           "path": "axiom/axiom-audit-accessibility/SKILL.md",
-          "digest": "sha256:d4586996ff4207a8fd7c07898427cdbca5dc2d3cc8465c06c446ac0e60851721"
+          "digest": "sha256:0726fef2bf0ef08732a604369578128662511c8341d8512adbd42bcc8166a7a1"
         },
         {
           "name": "axiom-audit-camera",
@@ -495,6 +500,11 @@
           "name": "axiom-audit-resize",
           "path": "axiom/axiom-audit-resize/SKILL.md",
           "digest": "sha256:53e0c2b1e463ff234043d9f17de929809dd3173154acaaf3f8ca66fd632e1c8d"
+        },
+        {
+          "name": "axiom-audit-siri-ai",
+          "path": "axiom/axiom-audit-siri-ai/SKILL.md",
+          "digest": "sha256:d0377c816b0ce253d24eb683efca616f8ec1bf05daf823ae4cf98b494bb7c681"
         },
         {
           "name": "axiom-audit-spritekit",
@@ -589,7 +599,7 @@
         {
           "name": "axiom-health-check",
           "path": "axiom/axiom-health-check/SKILL.md",
-          "digest": "sha256:b0c02baebe584d8d9f48969b27381c1c690467cab9ceacec6e782a6b580e6373"
+          "digest": "sha256:929945558d0024e3cc9337835e0b8f9f4d4a2fb802e60ba8fc21a27a9fffdcc9"
         },
         {
           "name": "axiom-health",
@@ -604,7 +614,7 @@
         {
           "name": "axiom-integration",
           "path": "axiom/axiom-integration/SKILL.md",
-          "digest": "sha256:381411820a2264adfe5c60f77705d75166b0f1f18f14d044cd3d48d0628d6755"
+          "digest": "sha256:566edf6da419294e454be2e190c932ecd99c27da4e8c5df57d21a0d2a8f5c64b"
         },
         {
           "name": "axiom-location",
@@ -694,12 +704,12 @@
         {
           "name": "axiom-test-simulator",
           "path": "axiom/axiom-test-simulator/SKILL.md",
-          "digest": "sha256:8b6f3c1fa0cbcddd3cddda3611cbf3da0bcfdd2da86bf03e81c9b1336251e4de"
+          "digest": "sha256:26b20e79a020750c78eaa6f3bc3f28bb1c1c45d60168005d7032de350f038a4c"
         },
         {
           "name": "axiom-testing",
           "path": "axiom/axiom-testing/SKILL.md",
-          "digest": "sha256:057484c8221e333657a7dafefcd1193edf9d7e3cef878bc20655a89d01a1ddbe"
+          "digest": "sha256:1ecbcb079a7fd2468696206e4b24183c26379ef2efa228faefda06f658a0f8a5"
         },
         {
           "name": "axiom-tools",
@@ -739,12 +749,12 @@
       "kind": "single",
       "repo": "https://github.com/affaan-m/everything-claude-code.git",
       "ref": "main",
-      "resolved_commit": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+      "resolved_commit": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53",
       "runtime_path": "bun-runtime",
-      "source_tree_digest": "sha256:c7ae581946558fbaeaff3475dace071d57a01d389b4570797bb48007a4b83fe7",
-      "runtime_tree_digest": "sha256:f731f08b52bb8a7faa9f6650a8831ca0d37eb65579acbd6d02955b012947950a",
+      "source_tree_digest": "sha256:0ac2b5eb33604c70ade99e15f720f31ca46c1e4df3d7f04628695d8634ca3ea0",
+      "runtime_tree_digest": "sha256:1f4aaa3bb2e470a33b349a97bfd5fe9c0d478bf775b72627cf70f064d6db2b86",
       "file_count": 5,
-      "byte_count": 124155,
+      "byte_count": 125953,
       "skill_leaves": [
         {
           "name": "bun-runtime",
@@ -851,12 +861,12 @@
       "kind": "collection",
       "repo": "https://github.com/cloudflare/skills.git",
       "ref": "main",
-      "resolved_commit": "1a33048817d06df12882cb881dfc754e7039954a",
+      "resolved_commit": "ff191de7d903788eceaf516a514ae7d3b56b924a",
       "runtime_path": "cloudflare-skills",
-      "source_tree_digest": "sha256:400b1322c5bd986130c009ba3b1e32eed49cfb32f20428a4d013af7f5c4d8393",
-      "runtime_tree_digest": "sha256:3ae33176eaf4d79f60001269fa86cfef7a63469d935cfe3fb7bf2b0782883c09",
-      "file_count": 234,
-      "byte_count": 752778,
+      "source_tree_digest": "sha256:f76ec3e817add9c3dbd3cd498102b0fc2df98cd7b3d83bbb7d7ec2d19b3c2438",
+      "runtime_tree_digest": "sha256:afe46033332a3d5a0230c53975aa4f773bfae9afa3dd4a135053ae77eaba1af0",
+      "file_count": 239,
+      "byte_count": 794315,
       "skill_leaves": [
         {
           "name": "agents-sdk",
@@ -864,14 +874,24 @@
           "digest": "sha256:9bda4bd3adc5ab09e30c19ea6b9a0bf673f0a4b190bf7624fc1b0dc5f1fcf9c1"
         },
         {
+          "name": "artifacts",
+          "path": "cloudflare-skills/skills/artifacts/SKILL.md",
+          "digest": "sha256:a3e54df0140ca6e1e5abdb12d53b8bf86fe97a4d050950c0448f222b60e7ca53"
+        },
+        {
           "name": "basin",
           "path": "cloudflare-skills/skills/basin/SKILL.md",
-          "digest": "sha256:8c1f7d30fbb3def0894db05903235a54793dcc93f68d6ada60d7e069eebd6a69"
+          "digest": "sha256:5f62ae9b86544c352db2829e1f28009b1e97e9549e10bb3081a09a08d060ef1e"
         },
         {
           "name": "cf-cli",
           "path": "cloudflare-skills/skills/cf-cli/SKILL.md",
           "digest": "sha256:868b100095aefbaa83d8f08892044e2a6f2428760bdc12490517aab98c289bce"
+        },
+        {
+          "name": "cloudflare-app-bootstrap",
+          "path": "cloudflare-skills/skills/cloudflare-app-bootstrap/SKILL.md",
+          "digest": "sha256:0e844a5d3fc39f922a51b906b4e48892610132a207c5e994521a8b0eb7535d91"
         },
         {
           "name": "cloudflare-email-service",
@@ -886,17 +906,27 @@
         {
           "name": "cloudflare-one",
           "path": "cloudflare-skills/skills/cloudflare-one/SKILL.md",
-          "digest": "sha256:2981cc98ebb9d4188de2e68fa5aa75fb104f2acd38016242c688c9568698b855"
+          "digest": "sha256:5e9b81bfe4ebd1737346123679eaca0004b9d3ab9a0239729103b442e0f89614"
         },
         {
           "name": "cloudflare",
           "path": "cloudflare-skills/skills/cloudflare/SKILL.md",
-          "digest": "sha256:4ae6ab64ba0c08d3f469bd33ed7ea18166288fcc03f34d114dc2394b534bd153"
+          "digest": "sha256:42635e09c9bfae76366ba72d7876b441fee48c67f4915ec7356c721ecb759322"
         },
         {
           "name": "durable-objects",
           "path": "cloudflare-skills/skills/durable-objects/SKILL.md",
           "digest": "sha256:ef690603d7d998a25ba9748c79f399bb75d943fe1955ba258167116c101ef98c"
+        },
+        {
+          "name": "flagship",
+          "path": "cloudflare-skills/skills/flagship/SKILL.md",
+          "digest": "sha256:5ed54edad5aa5be529b9307351d4b4fc89201801dfbea1eb402997c9210c61b2"
+        },
+        {
+          "name": "frameworks-on-cloudflare",
+          "path": "cloudflare-skills/skills/frameworks-on-cloudflare/SKILL.md",
+          "digest": "sha256:0edfc9c8090988c32b76a0be007264073a67be1c8623b72c172976d510eccda4"
         },
         {
           "name": "gateway-workers",
@@ -906,7 +936,7 @@
         {
           "name": "k2",
           "path": "cloudflare-skills/skills/k2/SKILL.md",
-          "digest": "sha256:b1e621615e7c73bd9c5966f79b965380b4f73418cbe1ed98bb9d953853168d66"
+          "digest": "sha256:94c199923bd4d3eb836dbdd360a37d254b2249ed9f1cb3e20421ed2d34996587"
         },
         {
           "name": "nextjs-on-cloudflare",
@@ -944,6 +974,11 @@
           "digest": "sha256:01c452fd0b6b3caeb4c3b06f87893e52d8e95e32f691911c1644060e00dafa0e"
         },
         {
+          "name": "workers-development",
+          "path": "cloudflare-skills/skills/workers-development/SKILL.md",
+          "digest": "sha256:322df9f4013457c2a3ff2790ab7b553e301c418d8de7e5b6e2d560e5ac800b1e"
+        },
+        {
           "name": "workers-profiling",
           "path": "cloudflare-skills/skills/workers-profiling/SKILL.md",
           "digest": "sha256:fec05a080c90f019e1e93e5e1ca3416bb89362655dfc158458301f461cb29839"
@@ -960,92 +995,112 @@
       "kind": "collection",
       "repo": "https://github.com/emilkowalski/skills.git",
       "ref": "main",
-      "resolved_commit": "f1090bec277140d02ed202440185ad9d02ac1490",
+      "resolved_commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
       "runtime_path": "emil-kowalski",
-      "source_tree_digest": "sha256:17a48b3f4a6e41d5793c884a12fe240dbfa94ce1a58b72728c3f58c1d1275330",
-      "runtime_tree_digest": "sha256:00175de6ebe1a89500e16b8e83da49f2f45a8a3985955364249780e32448657e",
-      "file_count": 27,
-      "byte_count": 311677,
+      "source_tree_digest": "sha256:00cb3764ec6e5fc2b4a47b026b4ab8409ba8f052dadf13d50f1e1f9e52810992",
+      "runtime_tree_digest": "sha256:80a5e07cb22380149772a64c7dcac30bf117b5eac8c238ff18ab9b847bb6661e",
+      "file_count": 33,
+      "byte_count": 368628,
       "skill_leaves": [
         {
           "name": "animate-expo",
           "path": "emil-kowalski/animate-expo/SKILL.md",
-          "digest": "sha256:9a01a91701e6563c67677dde6b66ab30f066a5341d42c21a90ba51d99679274a"
+          "digest": "sha256:67e5d2ebe23b3edf52ce9d399532f2ead2bd7eff127919dd1c3bbe489b04dd4d"
         },
         {
           "name": "animate",
           "path": "emil-kowalski/animate/SKILL.md",
-          "digest": "sha256:39138996033e0dbe53e73217514116eaeca774bae84a0687c80d445a4e0cc3a6"
+          "digest": "sha256:4ce49ea635ec175b45552bae070ea07b2d6aa5367047994250c1c095b71c8585"
         },
         {
           "name": "animation-performance",
           "path": "emil-kowalski/animation-performance/SKILL.md",
-          "digest": "sha256:6c60f45ab416ff3f7d7765a5427beead77fab0d82487fe610d2a298397558d0a"
+          "digest": "sha256:6481e7a611b54c0d1d229ac3ac516c05648e63aa79de88c0a1bdc5ae2666ab80"
         },
         {
           "name": "animation-vocabulary",
           "path": "emil-kowalski/animation-vocabulary/SKILL.md",
-          "digest": "sha256:40d2b27adfdfeb0570a9f20e7d0255109d9233c50603878bcd0dcd04c923fd94"
+          "digest": "sha256:42df33f1583483cc441fcd76693b3399148602705d2e9b8a26665d6b1951cd0b"
         },
         {
           "name": "apple-design",
           "path": "emil-kowalski/apple-design/SKILL.md",
-          "digest": "sha256:77bb63b7043bb93aca2ff4ab040c249484eef35682bb6ff7163433c31d30adc7"
+          "digest": "sha256:7fbacf928637e136da6d475358d0639667a3637ba772f03f8e815bb4c0b86946"
+        },
+        {
+          "name": "ask-emil",
+          "path": "emil-kowalski/ask-emil/SKILL.md",
+          "digest": "sha256:b14d6fec27af1ce59e48c5444520c08abc3ae90e93e1843e19ca382512ac6233"
         },
         {
           "name": "ask-sonner",
           "path": "emil-kowalski/ask-sonner/SKILL.md",
-          "digest": "sha256:39f3ee185b3aa2cf70a689052ff078953ce7ba5915ed7a9391d232e9d4dcf57f"
+          "digest": "sha256:4350ebfef0437875de80cc989059900b21ad621ea09f4709cc2917e7dee82d46"
         },
         {
           "name": "break-ui",
           "path": "emil-kowalski/break-ui/SKILL.md",
-          "digest": "sha256:e7eec1d70ac56a04255e9c0dbe98084ea3d544cc04aaad34f32c95d6fa9dff5e"
+          "digest": "sha256:fb126d176f3b6bf7dfe71f2ae6620ab3dd81e6282c672a1801720055addfce18"
+        },
+        {
+          "name": "choreograph",
+          "path": "emil-kowalski/choreograph/SKILL.md",
+          "digest": "sha256:0a6802bb2fd5a3993842d48332b8ab56ae5bab369ffa8700f85f6fcff56b8478"
         },
         {
           "name": "emil-design-eng",
           "path": "emil-kowalski/emil-design-eng/SKILL.md",
-          "digest": "sha256:965cc3108047a1f68e504977ae7816c66115b202a32e7509c0b8305314839c54"
+          "digest": "sha256:cdbfe467e6c9a4940c3a19e795cecf1ba659378d7412e06c245c6ae49da47da6"
         },
         {
           "name": "find-animation-opportunities",
           "path": "emil-kowalski/find-animation-opportunities/SKILL.md",
-          "digest": "sha256:d52a377819b84a71930f0c822cfe2849f40301605a2d5c7eccbfa3b257700df2"
+          "digest": "sha256:331479e0d867f90d637ef3ef1bdbbd38498d144ab493442afdfbc138abc751b4"
+        },
+        {
+          "name": "gestures",
+          "path": "emil-kowalski/gestures/SKILL.md",
+          "digest": "sha256:1928c86cce924a2a178ddd156ba5ed0f184665a1f95b549724ffb5ae703e994f"
         },
         {
           "name": "improve-animations",
           "path": "emil-kowalski/improve-animations/SKILL.md",
-          "digest": "sha256:73962447464433476343e2c12cd08ab39cc99a9e5f3c118c5fb54ed897574ef6"
+          "digest": "sha256:632be90e04261192112571b05abd5708fbb846808a4a7780717ee206daa6c6f6"
+        },
+        {
+          "name": "learn-taste",
+          "path": "emil-kowalski/learn-taste/SKILL.md",
+          "digest": "sha256:d624b8cd475eec24c5dc3f49b0380b56c8dab8399df11b92d7c9685aa8d4d33e"
         },
         {
           "name": "mobile-native",
           "path": "emil-kowalski/mobile-native/SKILL.md",
-          "digest": "sha256:888b7651d66d66dbac4e72b7c554638eb19bd971d686d6cbdf030a5ef3788f55"
+          "digest": "sha256:705e267bc47ea61e4c6f94d121efeebdb994055f482673b8a72f4a0dd62f1968"
         },
         {
           "name": "pick-ui-library",
           "path": "emil-kowalski/pick-ui-library/SKILL.md",
-          "digest": "sha256:675fdce308683256ed617351a9b74d23457a5fbd0a562d9831b9c764b8c5e682"
+          "digest": "sha256:db10dc6b2a0c340d873f69e35140ceb3c929e15664b33fcacd1ecb25c5574df3"
         },
         {
           "name": "prototype",
           "path": "emil-kowalski/prototype/SKILL.md",
-          "digest": "sha256:bba39c955eb1871c5a02733976ceec5d0324198e0812e667604756489c89f7b9"
+          "digest": "sha256:30def86c5a5a0794a954b2a046d24c847c7129f316d79892abff73d54d79adc0"
         },
         {
           "name": "remove-animations",
           "path": "emil-kowalski/remove-animations/SKILL.md",
-          "digest": "sha256:dea95b7a7ef81cba312c7f70a3c5c67d7e06a287cb16b16d2f90f2b1fb0afff9"
+          "digest": "sha256:228d98a3d05637f2ff8fc2d1c2bd88c14783c8c901105cac39a7ae24a4d3e408"
         },
         {
           "name": "review-animations",
           "path": "emil-kowalski/review-animations/SKILL.md",
-          "digest": "sha256:5f9fb98b69cace7107af8b393a4196fd42fa42d98bce0e5afc1f866ff3b8a41c"
+          "digest": "sha256:9ceb5072ce5d5e51b07efa60817c66d06fc6492b7900b44dff5ff0f8f7bcf188"
         },
         {
           "name": "write-swift",
           "path": "emil-kowalski/write-swift/SKILL.md",
-          "digest": "sha256:16a4b6adb74e338e55e704ce5753ad54d825438b8a63930eeaede9f3c04c9447"
+          "digest": "sha256:ad8f3af70b627c165ecd73ecdba49449e35301dd845c397cf813f06582bbdac2"
         }
       ],
       "note": "Complete lazy collection with support files. Existing active Emil skills retain their separate installation ownership."
@@ -1055,127 +1110,127 @@
       "kind": "collection",
       "repo": "https://github.com/expo/skills.git",
       "ref": "main",
-      "resolved_commit": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+      "resolved_commit": "c5e536273b6b4a7a3ad5dd9d74b6098c15138b21",
       "runtime_path": "expo-skills",
-      "source_tree_digest": "sha256:17f7b3d0f92ac9d0edb7a02e4b02d3ce76c1ad29a809679fac02b286a1e12402",
-      "runtime_tree_digest": "sha256:d6b4b02a0583488e26d29eb8c31db19259664fb9a78a50aba85190a4588daac9",
-      "file_count": 98,
-      "byte_count": 763334,
+      "source_tree_digest": "sha256:660157f1a8e3c7a968e84c62a5883b72a428f1b88e4839246c935a4af307f5b2",
+      "runtime_tree_digest": "sha256:7a34a5126abe3b455856cda7579338a1c52563c3d667cf21fd263892ebfc4285",
+      "file_count": 99,
+      "byte_count": 802052,
       "skill_leaves": [
         {
           "name": "eas-app-stores",
           "path": "expo-skills/skills/eas-app-stores/SKILL.md",
-          "digest": "sha256:1c7ee5a20438b30566321d4605baa9f813da8c7f846cc524a1ef5bfc4651aecc"
+          "digest": "sha256:d313c7799b893378f490e5e0092baa98851772f723c5136d11c5e1e76ce213ea"
         },
         {
           "name": "eas-hosting",
           "path": "expo-skills/skills/eas-hosting/SKILL.md",
-          "digest": "sha256:be26ce05ecd047a07faa3a716daccc9839b31563246461ec19a60591bd62be72"
+          "digest": "sha256:8ef5368f022f5c807f6ed8697bbab86bfbb66ffaa7a2fe1587af258dca0a7a11"
         },
         {
           "name": "eas-observe",
           "path": "expo-skills/skills/eas-observe/SKILL.md",
-          "digest": "sha256:cbf8dd83f7c22231745cdcf3fbde86688cda570dd1c8d4ce00943a8462e564a4"
+          "digest": "sha256:4c80833647b06ccf484df61f6b5aa1b2dc05d829a0cc164d536edc0f485bc773"
         },
         {
           "name": "eas-simulator",
           "path": "expo-skills/skills/eas-simulator/SKILL.md",
-          "digest": "sha256:3d877b85363d234ce31f88fe6f778b4c45ce171561ba0d21a80c792a6a556a48"
+          "digest": "sha256:0e23ef7920cd6757802ba6c1ba7a75079c1d232a4b4baef5d42536c18ffe5959"
         },
         {
           "name": "eas-update-insights",
           "path": "expo-skills/skills/eas-update-insights/SKILL.md",
-          "digest": "sha256:d03adcb55463e879b3c27a52ed74046bac70cd6c2370657a531c0d2c149f14bd"
+          "digest": "sha256:c4d703b2e966cffacc4071c04eb94b628d56be2ecd087d64feb31bca682af933"
         },
         {
           "name": "eas-update",
           "path": "expo-skills/skills/eas-update/SKILL.md",
-          "digest": "sha256:6e3967847770513aca0e8281a5bb834f00224ab624684b40e4b016944ed1250a"
+          "digest": "sha256:297471543f5c68c0dd22f6f70d457e12c9fb4c46ebe6575399d0d36c4f24cfab"
         },
         {
           "name": "eas-workflows",
           "path": "expo-skills/skills/eas-workflows/SKILL.md",
-          "digest": "sha256:d5a31e9b4f228c74c54c79d2e377c9a72e907267ebbe4ba3d75037ae271121cd"
+          "digest": "sha256:9b4242b651e19808512bf2f14643233e298e3b1656cc1d7f0805ae3435197e6a"
         },
         {
           "name": "expo-animation",
           "path": "expo-skills/skills/expo-animation/SKILL.md",
-          "digest": "sha256:7af0f5e9aa4ae6887fc7938cb9ec08f8cfa922a5154e15c355d1ac53e8d659fe"
+          "digest": "sha256:69709ea8089d17773983d0dd947cfefe7b5ec3636c8e357daca9a5b542fa9ed1"
         },
         {
           "name": "expo-app-clip",
           "path": "expo-skills/skills/expo-app-clip/SKILL.md",
-          "digest": "sha256:255408614f6ea3f295ec4cc7ea88e181b9744da8ff7ae7a453deea56ba631d3f"
+          "digest": "sha256:858e08921e470addd46c34b49abcf6eb8b042b54aec81613a779d38309e2b783"
         },
         {
           "name": "expo-brownfield",
           "path": "expo-skills/skills/expo-brownfield/SKILL.md",
-          "digest": "sha256:5aa41e452cd7783df1c49ff901d2ab10a642c16be523641ecc0e93cdc024ace8"
+          "digest": "sha256:c577634e6855372a08f7bc2c99d4c71b4b0ef65b1672f16fe48e913c046d862e"
         },
         {
           "name": "expo-data-fetching",
           "path": "expo-skills/skills/expo-data-fetching/SKILL.md",
-          "digest": "sha256:b592a1d7ad181af36ad99209007659b20e6ae05f34f25b95b3b3d30e19c65e51"
+          "digest": "sha256:868f06c0254081ceb3bd74e42a4dd7ab8d75cb49e2f708ef31d5b14acce2c624"
         },
         {
           "name": "expo-design-system",
           "path": "expo-skills/skills/expo-design-system/SKILL.md",
-          "digest": "sha256:f2f3c6137869b6d4024c372fa608467aa44042b7e25bd5839097213d77f3d138"
+          "digest": "sha256:102e7d2cee193dc4e1dd06796a142106c7d5cc5a435791a031e3036e8200e635"
         },
         {
           "name": "expo-dev-client",
           "path": "expo-skills/skills/expo-dev-client/SKILL.md",
-          "digest": "sha256:aef70e6f0fcfb9c80337f2e529da19d440ba0627622376cdc61ab2563525651b"
+          "digest": "sha256:088808364a5436f835332da4b251f90b42dc8c4248ba100bfef91073cf567211"
         },
         {
           "name": "expo-dom",
           "path": "expo-skills/skills/expo-dom/SKILL.md",
-          "digest": "sha256:b4811b11869fd00ee4338c9ec97e0e1daf5f1c605ff46cb5c88a370d239ca23e"
+          "digest": "sha256:6b507ca56853c709d0ecd9005aac01f32153d0f61bee9653e2c9d1fa72038a4a"
         },
         {
           "name": "expo-examples",
           "path": "expo-skills/skills/expo-examples/SKILL.md",
-          "digest": "sha256:26b4aaa3f7f98009a041f2c6779127c5b34480c931ed05c2bd2aa865a9b512bd"
+          "digest": "sha256:00b041cb5cae6880dc45aa2c217abc86a97c5f9b51d1e36d2ac7e75c0bca1f0d"
         },
         {
           "name": "expo-module",
           "path": "expo-skills/skills/expo-module/SKILL.md",
-          "digest": "sha256:2ec4a460b9c09045b35fc6f1e18fdd2f41b43e072d07b475d6c57440e21e1475"
+          "digest": "sha256:20c65c08d83e1aa788929ca5ffca4fa469f1279f22c2a00eb9999d11435c3d57"
         },
         {
           "name": "expo-native-ui",
           "path": "expo-skills/skills/expo-native-ui/SKILL.md",
-          "digest": "sha256:a54ee681808bdeece32d9219ce74b5e4f86156d76cc6d00fb21ac2633f44c64f"
+          "digest": "sha256:7250962e166a8f4f7e36a359ff020bc852aeda5dd46679d5e261c6edc5fbb97e"
         },
         {
           "name": "expo-overview",
           "path": "expo-skills/skills/expo-overview/SKILL.md",
-          "digest": "sha256:c63fb61657430f4d4e266ea9f037b4e63ebd78686b57b6a20f98a4047b144c55"
+          "digest": "sha256:73944809f23ede32f6ba9ab17c9fa6c67846ba74a6cc5522f997da9b2debcb5c"
         },
         {
           "name": "expo-project-structure",
           "path": "expo-skills/skills/expo-project-structure/SKILL.md",
-          "digest": "sha256:f644f8802b6d3b696401dab56c3bb6236531a9882747ed9529ddb14958562822"
+          "digest": "sha256:ec6221829186fea1672a86eac9c9f560aaa0d4929e9763e0a0e5c55504f23196"
         },
         {
           "name": "expo-router",
           "path": "expo-skills/skills/expo-router/SKILL.md",
-          "digest": "sha256:8f8c08dfdf3149baebe354c1e22f7e54c407d3c19ebe5c1d8b4c782017817f1f"
+          "digest": "sha256:876ce36e44c6d8d63faf8ffe20eca460339f0157a78479afdcf8fae1b24dd678"
         },
         {
           "name": "expo-ui",
           "path": "expo-skills/skills/expo-ui/SKILL.md",
-          "digest": "sha256:59c0a8c7469d380ddc8499f359a4de8dd53268d5f50dbab896c967f8359ec4d6"
+          "digest": "sha256:c859c225a553ea16adb5d42146db405983adf01325c8164f03686679931d79ab"
         },
         {
           "name": "expo-upgrade",
           "path": "expo-skills/skills/expo-upgrade/SKILL.md",
-          "digest": "sha256:8e9201265d48eba88d9e08a1a364466c8a90b09beb3d0fe5430d94bad38f51e0"
+          "digest": "sha256:32a77b18bba35cc155f047bdc24804dcd1890c847acf369358da2d28166ccfe0"
         },
         {
           "name": "expo-web-to-native",
           "path": "expo-skills/skills/expo-web-to-native/SKILL.md",
-          "digest": "sha256:0f13f605a8399b9253f93b0e63f786aabeb24381c4f8cef453c4206062efcd03"
+          "digest": "sha256:aab0eec3ae17cf9292f128f6c847b5abd1c75f34981125982e02d61078347a60"
         }
       ]
     },
@@ -1184,12 +1239,12 @@
       "kind": "collection",
       "repo": "https://github.com/samber/cc-skills-golang.git",
       "ref": "main",
-      "resolved_commit": "bb1d43d98a3f8ab639a0042f90d0ec524e39a477",
+      "resolved_commit": "d68d80aec298e1b74b37c2a472c002b5217248b3",
       "runtime_path": "golang-skills",
-      "source_tree_digest": "sha256:69e88f2ff583759276fa397bb9f6205cc2e1831658d87d2ba534e0744026f007",
-      "runtime_tree_digest": "sha256:4bdb1e3777d312e2b6e56e4826971ac222721c40494160c7a19f6a978e6e18ea",
-      "file_count": 262,
-      "byte_count": 1882322,
+      "source_tree_digest": "sha256:4a0d78d376389c85aa3e10ce403376da86c83b6326f569ea84f138ea8c83c496",
+      "runtime_tree_digest": "sha256:af809c7b975db78841d919ee3be4f743e41bca9c2ebd2d1e75abb8a1e3af97e9",
+      "file_count": 272,
+      "byte_count": 3086077,
       "skill_leaves": [
         {
           "name": "golang-benchmark",
@@ -1481,17 +1536,17 @@
       "kind": "single",
       "repo": "https://github.com/pbakaus/impeccable.git",
       "ref": "main",
-      "resolved_commit": "e89e3ada3e875a89ac2c5d33d11e65ebef6fe285",
+      "resolved_commit": "9e460a87ef338ee9d12c7beed8fedc597a5af5f7",
       "runtime_path": "impeccable",
-      "source_tree_digest": "sha256:b0c19b4c5598acbfb83fd9d87d317a2e04e7dbb0cec2d8c34a786127b442905f",
-      "runtime_tree_digest": "sha256:532d36c5f66de6a9163651e414bd7c378721a59cefb143777d062ae729ee1538",
-      "file_count": 61,
-      "byte_count": 2242424,
+      "source_tree_digest": "sha256:dd522a14744e910a0e87546639a240e80acda61e09b654ab20b159911483fc48",
+      "runtime_tree_digest": "sha256:b29efb19f0c10ed1d8b71358cfd3fe930fa11bd8e022c76b9385642c78162785",
+      "file_count": 66,
+      "byte_count": 2300734,
       "skill_leaves": [
         {
           "name": "impeccable",
           "path": "impeccable/SKILL.md",
-          "digest": "sha256:068987f99e59dfaa78288e0927b2a985a1237c4154de93baf03efbc544d06cb8"
+          "digest": "sha256:e960fda69afb99d1c8d0f9c2f542270e4854c0911d8f466e4f167930aa5a9b63"
         }
       ],
       "note": "Lazy content and supporting launcher only. Installer not run; no hooks, MCP or slash commands registered. Launcher may download its engine on first use."
@@ -1501,52 +1556,52 @@
       "kind": "curated",
       "repo": "https://github.com/inference-sh/skills.git",
       "ref": "main",
-      "resolved_commit": "0cbf91c26ada28702c79962406286f0c14292150",
+      "resolved_commit": "13ccb5ea05deaa3ff9c8ba5c78d1e37756cc14b5",
       "runtime_path": "inference-video-skills",
-      "source_tree_digest": "sha256:b3bc6d1ccd3888a3817b0e056ef8174ee83a83a0a48ff468c27a2a4a46cb9163",
-      "runtime_tree_digest": "sha256:d5a58ff13997cc8260854e644ad286baabc185a9fdf034d18e3da6c0a929fd4a",
-      "file_count": 17,
-      "byte_count": 125216,
+      "source_tree_digest": "sha256:6f68cd85302cba1926053117dea247c7dea6f1c7ec4c8c327af1f2c1e1b32bb5",
+      "runtime_tree_digest": "sha256:95c3ce39ef6c0269da53a0c14165b6862a3368c737e6cb44f3424c5b1672cda2",
+      "file_count": 22,
+      "byte_count": 179931,
       "skill_leaves": [
         {
           "name": "video-prompting-guide",
           "path": "inference-video-skills/guides/prompting/video-prompting-guide/SKILL.md",
-          "digest": "sha256:44f3c9087185adcccbad9e31f9f148662c8e0932fd1e69f7378133ec59a5eef8"
+          "digest": "sha256:bc2af640bcb923aa50ff0516f1858cf62d39ce0b555bacc8bc1f6d150c2c89b0"
         },
         {
           "name": "ai-marketing-videos",
           "path": "inference-video-skills/guides/video/ai-marketing-videos/SKILL.md",
-          "digest": "sha256:ceebb8d865aa7ca31084a5fd366e12e4ecf93efb92dda9c94e72a8d3d7f0ed33"
+          "digest": "sha256:8fcc52eb3699e4f69f6a6b12bc826fb409dc0670c626c1316690f1bdef85a4bf"
         },
         {
           "name": "explainer-video-guide",
           "path": "inference-video-skills/guides/video/explainer-video-guide/SKILL.md",
-          "digest": "sha256:ff18b4d1be4e68908cc38f4e8b7cc2be98f1acb5f4cf285783680426e629b378"
+          "digest": "sha256:5e4836b31990b2ddc20613d3cce639ba26eb0f2e8c0de6cc096c822b69fa7c89"
         },
         {
           "name": "storyboard-creation",
           "path": "inference-video-skills/guides/video/storyboard-creation/SKILL.md",
-          "digest": "sha256:c91fc8decd085367b6965c539e8b41d2da2b39ab2592b91cb73a9c3d3dd168b9"
+          "digest": "sha256:4e90214ee2f5a42e1aab8652f0e5714c590f8a7bf467b112c94efb495d800963"
         },
         {
           "name": "talking-head-production",
           "path": "inference-video-skills/guides/video/talking-head-production/SKILL.md",
-          "digest": "sha256:f69e2591aee308ff2c1af0fef23c99a57e6afc2914a31db525bb0e6a46ca2b19"
+          "digest": "sha256:6d103a3f1102fdf21ba2859ee9ae9b957cda62ccbb79b91d1ec7389e10314c47"
         },
         {
           "name": "video-ad-specs",
           "path": "inference-video-skills/guides/video/video-ad-specs/SKILL.md",
-          "digest": "sha256:7847af9eb81f5e05d72a3d9fd1e54bc4944c372c1bad22097bca68c1e40d7784"
+          "digest": "sha256:ba0a4af8640462ea668f66c594e79e25467b774d9efe737584a0fc98c6d984f3"
         },
         {
           "name": "ai-avatar-video",
           "path": "inference-video-skills/tools/video/ai-avatar-video/SKILL.md",
-          "digest": "sha256:d5a17a6bc341fa2375c16c6239d6d6051714faea439b818f41dfa3fc7725b4ee"
+          "digest": "sha256:1e1dfbce926fcca161707ce0d2f4e508205929b74410e5c6ea0cdb904192c311"
         },
         {
           "name": "ai-video-generation",
           "path": "inference-video-skills/tools/video/ai-video-generation/SKILL.md",
-          "digest": "sha256:30521e6262ed22b6f548c9dd636b667fee916bc3ce9c747a208b8daa46aff427"
+          "digest": "sha256:06f8d81020e4c172cc2690fc2eb4740d9b023a9ceeced7ff34ef157d65a74a6f"
         },
         {
           "name": "google-veo",
@@ -1556,22 +1611,37 @@
         {
           "name": "happyhorse",
           "path": "inference-video-skills/tools/video/happyhorse/SKILL.md",
-          "digest": "sha256:70446dfd99df3c7f5c4211427de2cf0a74715a5143da34d962d0a66b9e33c0b1"
+          "digest": "sha256:8eebec3e6c4a6a8435492bee455f8b36dabc90a7879c340c4cebf4e9f57a3019"
+        },
+        {
+          "name": "heygen",
+          "path": "inference-video-skills/tools/video/heygen/SKILL.md",
+          "digest": "sha256:03562a81be93117cf57466bab46de790f9ba6065021363aa5508df5929f9f8d2"
         },
         {
           "name": "image-to-video",
           "path": "inference-video-skills/tools/video/image-to-video/SKILL.md",
-          "digest": "sha256:1daeeac733e503f6dec5601899bdb18ef6d21dfdd926a92a954438b4e5997e67"
+          "digest": "sha256:fe2988368c2267e631c68e1df929ef8c31d1008283eb5ddc08b38f5bb62e6f89"
+        },
+        {
+          "name": "kling",
+          "path": "inference-video-skills/tools/video/kling/SKILL.md",
+          "digest": "sha256:face1e31b7a5f852a3ab795b58ab4a138ea4065a8cd3d93864ab2c6e37dbac91"
         },
         {
           "name": "p-video-avatar",
           "path": "inference-video-skills/tools/video/p-video-avatar/SKILL.md",
-          "digest": "sha256:7e6e39950d8b649a06b4dc1dbff00152a5435f642d65b5f1512eed40e3748496"
+          "digest": "sha256:8006e589b6496308ca7d68b089a51ea674feee7b0856eef407ad3f7004f5add8"
         },
         {
           "name": "p-video",
           "path": "inference-video-skills/tools/video/p-video/SKILL.md",
-          "digest": "sha256:28341f43d6f8340d9bf24d1f947e0801ad255332d7653670302dad30c952fc83"
+          "digest": "sha256:b996d9a94b242a1a4ca41213dcbfa72a1bd9e1ccef88793ee0363f57f47cd14e"
+        },
+        {
+          "name": "pixverse",
+          "path": "inference-video-skills/tools/video/pixverse/SKILL.md",
+          "digest": "sha256:98267f947a2c303011e6c4a5c89beec47b0fbf61af21ba29a3dd9dcdde821000"
         },
         {
           "name": "remotion-render",
@@ -1579,9 +1649,19 @@
           "digest": "sha256:27c9a0c03006db2a5eba5ef1783842b74edec38ffcccd3a239161f6a29bac246"
         },
         {
+          "name": "runway",
+          "path": "inference-video-skills/tools/video/runway/SKILL.md",
+          "digest": "sha256:56a5873a3d96e5aa115562ef4caeedbcc3581248c63541de8a0862679226d137"
+        },
+        {
           "name": "seedance",
           "path": "inference-video-skills/tools/video/seedance/SKILL.md",
-          "digest": "sha256:465d2df70c79e54e7e556f4fb512725f1351e36f963a1608e1f957ab0bb49a0c"
+          "digest": "sha256:d056af013c15791bda2797054ee51b9505576b013a69246ac1d85e4332a8baa1"
+        },
+        {
+          "name": "video-enhancement",
+          "path": "inference-video-skills/tools/video/video-enhancement/SKILL.md",
+          "digest": "sha256:46364c43ff7b56ea696213d1d0df57ec94567bb027de6d367771058091df5cc2"
         }
       ],
       "note": "Curated video subset from inference-sh/skills."
@@ -1591,12 +1671,12 @@
       "kind": "collection",
       "repo": "https://github.com/mattpocock/skills.git",
       "ref": "main",
-      "resolved_commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+      "resolved_commit": "6f7f7831a625f040a8e06a0e7954826b87ce775a",
       "runtime_path": "mattpocock-skills",
-      "source_tree_digest": "sha256:7af3b4ed2fa91adaa4d94ff7af08e214e2b8bdfd0a2365cb62d5082b71c5fdca",
-      "runtime_tree_digest": "sha256:82c32ca64cf2c21809e406acd29315e58f45077349667606509d5aa7b4d7c77a",
-      "file_count": 113,
-      "byte_count": 679927,
+      "source_tree_digest": "sha256:5d4323decd0bd26f667647cdb8550dcaa0f93d043826984a12f9f41a5ea37055",
+      "runtime_tree_digest": "sha256:4ab81a5bac94d17ede4a58647bee8c98dd62054c5fa2336ccc24a91ebdcc2e5a",
+      "file_count": 114,
+      "byte_count": 681866,
       "skill_leaves": [
         {
           "name": "ask-matt",
@@ -1701,7 +1781,7 @@
         {
           "name": "chief-of-staff",
           "path": "mattpocock-skills/skills/in-progress/chief-of-staff/SKILL.md",
-          "digest": "sha256:f4c1d6533edece6b275155911cb627154a6b13e2bc19934f77330f3afdd07987"
+          "digest": "sha256:1f508d8ebbdbad8704bb24c5016094897a4ebbfe5804e370434b5e5fbeb59c4a"
         },
         {
           "name": "claude-handoff",
@@ -1721,7 +1801,7 @@
         {
           "name": "software-factory",
           "path": "mattpocock-skills/skills/in-progress/software-factory/SKILL.md",
-          "digest": "sha256:645ab761b6cca61a480072b1b510eb05fe0fe5cde2ce0495b6fc234311692253"
+          "digest": "sha256:567326e926d5bab0548aad11effaa6aef3d4dfa1ed385af22413628f49a48285"
         },
         {
           "name": "writing-beats",
@@ -1870,77 +1950,82 @@
       "kind": "collection",
       "repo": "https://github.com/remotion-dev/skills.git",
       "ref": "main",
-      "resolved_commit": "c7cb2fdcacd134fb2ccb9b7a44f9ffa44e467271",
+      "resolved_commit": "a3f4098a2afd0e13f6a6f8c8760e275f75457ea9",
       "runtime_path": "remotion-skills",
-      "source_tree_digest": "sha256:64f356001f8bbbe97e0f661fa4e3cc957b71e2b67a6c737af9d0ade631fe1f50",
-      "runtime_tree_digest": "sha256:0227c3d0b02ba67d4ae3ba00b342f0ed5743028f7037e05477851153b61740f6",
-      "file_count": 271,
-      "byte_count": 2377335,
+      "source_tree_digest": "sha256:56ed1a6a3e11b2599b84e2ecb5540fcb934510bd7350f5e69f5433561613bc1a",
+      "runtime_tree_digest": "sha256:e380b82c56ce4ab9390fdffd754c5ff7fec86d7e5a9774c6d103473ded61c47b",
+      "file_count": 241,
+      "byte_count": 922280,
       "skill_leaves": [
         {
           "name": "remotion-best-practices",
           "path": "remotion-skills/skills/remotion-best-practices/SKILL.md",
-          "digest": "sha256:7104a4fac0ace27dff05ab88b1ae3a9dfc356e415bec710445279ebe50821d12"
+          "digest": "sha256:b65ec262485151a7d105dd73e4ecea9e27e058c2d2d97be0f68531fbda75cb29"
         },
         {
           "name": "remotion-captions",
           "path": "remotion-skills/skills/remotion-captions/SKILL.md",
-          "digest": "sha256:12bc60c9927edee35a9cfb3b27b6dba7796b5c5dda6dd3d4f5adbea7cfab6f20"
+          "digest": "sha256:38bd2166f3f1317929ec4d19b30fdc409283c0a44bfe123e42ed5ad87ee959ac"
         },
         {
           "name": "remotion-create",
           "path": "remotion-skills/skills/remotion-create/SKILL.md",
-          "digest": "sha256:8950d5f67d3e954bc8a27f2f1d558cc2dfd2a2ddfca8e45c61c9737c8a27c2b5"
+          "digest": "sha256:5a8182233d6e877a0cfae5908afc0dba5527316f95533da8a75b4c027fd09529"
         },
         {
           "name": "remotion-docs",
           "path": "remotion-skills/skills/remotion-docs/SKILL.md",
-          "digest": "sha256:233f22349fd4c4a596c4e1e94929684c4c7649b1f7b5fc539c1b1a92d9a007d0"
+          "digest": "sha256:7232d8305129fc10b3f79dab0d2daf59da882a7ea6bd5e4488bac9bad9bd1942"
+        },
+        {
+          "name": "remotion-elements",
+          "path": "remotion-skills/skills/remotion-elements/SKILL.md",
+          "digest": "sha256:1c59df33df279acbb639b84ca5e496a9e2de99884fb5d3a87bf48eef35dd496a"
         },
         {
           "name": "remotion-interactivity",
           "path": "remotion-skills/skills/remotion-interactivity/SKILL.md",
-          "digest": "sha256:7a9704d4b2d6aeb19252ef2051ab116199d928719e2de44959898dfc628f31cd"
+          "digest": "sha256:f71c24f8653ebd8c722d5cf0783b2cb748eee377cf68792869e9cf54091ef966"
         },
         {
           "name": "remotion-license",
           "path": "remotion-skills/skills/remotion-license/SKILL.md",
-          "digest": "sha256:1bdc998a8b182934c1947ee51f9094122d33c9f20e20f16a9000ebcc653e6adb"
+          "digest": "sha256:8a8cd18d2c8f2d25cdecdbdef85caf4c450f5f0b2a55e39e92beaa50bb7d6dd0"
         },
         {
           "name": "remotion-maps",
           "path": "remotion-skills/skills/remotion-maps/SKILL.md",
-          "digest": "sha256:76810603fd237b7db07e42796d7567db2192cb5f3ed3759f76d628eaba00b370"
+          "digest": "sha256:c2f762df21cf0fab80412138aa1918ddfcb4216dc7ef14c8c47d605a6bf19475"
         },
         {
           "name": "remotion-markup",
           "path": "remotion-skills/skills/remotion-markup/SKILL.md",
-          "digest": "sha256:a82594faec39d4d793c8dca8a0ac7e78da74e19526da2b35d7de149cab4b2754"
+          "digest": "sha256:0e263dcfa0c194eac05d7923c4bbca4c0f70af3823f922ecab942ade5ca97fa0"
         },
         {
           "name": "remotion-multimedia",
           "path": "remotion-skills/skills/remotion-multimedia/SKILL.md",
-          "digest": "sha256:c4be7eb52332771444462fd196656c5c1106a66a61d30027bea7825cd6e77d47"
+          "digest": "sha256:dc195ee6e8cbcb6aff814248709d4331038db1a713cd2ee611a6e5689343cc9e"
         },
         {
           "name": "remotion-render",
           "path": "remotion-skills/skills/remotion-render/SKILL.md",
-          "digest": "sha256:7b01ccedaa95d3f77e25374b706f9d6d074aa99b34c1c777f2d49c09c78a29ef"
+          "digest": "sha256:304a35da98a3498ea72b74b500cbff36f3fa449d767a11fa2796b4fe0e24f0b1"
         },
         {
           "name": "remotion-saas",
           "path": "remotion-skills/skills/remotion-saas/SKILL.md",
-          "digest": "sha256:b3fc86ea4ef8616a98c4f86e1c219e7d22dc7304e935510ad4a2d740e6f7d177"
+          "digest": "sha256:c8ab1de21645e4068a29ac679ae2f409dc0ff6511957765510c191e3c699b49a"
         },
         {
           "name": "remotion-studio",
           "path": "remotion-skills/skills/remotion-studio/SKILL.md",
-          "digest": "sha256:f63c9c2c8674ec44245f5f4151b672415c7e0d95542b01dc187eb6c7a331a17a"
+          "digest": "sha256:b6ffe3b9b7266f2fb1136db4ef37a11b512964e1333a4199d336ecba874b45ef"
         },
         {
           "name": "remotion-upgrade",
           "path": "remotion-skills/skills/remotion-upgrade/SKILL.md",
-          "digest": "sha256:bdc0063c603753b8a2490a8ff145ba6046e905aae5e8530d55f230c5e30c4fe3"
+          "digest": "sha256:0b72207a71a90000fc88ed4f38397e9e013305a8c441eeea5a391412581a1ca4"
         }
       ]
     },
@@ -2153,10 +2238,10 @@
       "kind": "collection",
       "repo": "https://github.com/shadcn-ui/ui.git",
       "ref": "main",
-      "resolved_commit": "4aaea19d9cff3e0908e12a8c1d504b8c5ec34610",
+      "resolved_commit": "0e5b2e621a9ee4cf6a604bbe6c5c0d5b70561eb4",
       "runtime_path": "shadcn-ui",
       "source_tree_digest": "sha256:fb5e8abd60a7d3dc91e83ffaa6d1814febc15142c7cea42e7028917c0a991024",
-      "runtime_tree_digest": "sha256:94736c8053f34ba014712721cae5a1c462b227f83e64e6e4b38e20b8a07c2ff3",
+      "runtime_tree_digest": "sha256:3f1990456af4f07edeb6c6267e908dccd63310deb26e16776d64f2a8415e2ea2",
       "file_count": 24,
       "byte_count": 160595,
       "skill_leaves": [
@@ -2259,17 +2344,17 @@
       "kind": "collection",
       "repo": "https://github.com/leonxlnx/taste-skill.git",
       "ref": "main",
-      "resolved_commit": "12af471f627f866411b4bd785b19646d3672784c",
+      "resolved_commit": "d1a2bb41d927083ac7118f60cfc9cdf711810ea0",
       "runtime_path": "taste-skill",
-      "source_tree_digest": "sha256:5f2197cd393891eadc0bb445f49cbd9aa48c64c7fcaa07458f4666e8c2ac8ca9",
-      "runtime_tree_digest": "sha256:3a15993bcf783bfba689dc5c6cd94d5b542fddcf3ac6b185b50a4d219e235190",
-      "file_count": 50,
-      "byte_count": 1048972,
+      "source_tree_digest": "sha256:1de7df8744142d7d4d3b91d9d5570424e0a967fc85cd5ed30842ba4cd181219b",
+      "runtime_tree_digest": "sha256:363d76eef2179dd80a59dcea6496bf02deda8da164de4abcf858c5eb1991540d",
+      "file_count": 1650,
+      "byte_count": 36877628,
       "skill_leaves": [
         {
           "name": "design-taste-frontend",
           "path": "taste-skill/skills/taste-skill/SKILL.md",
-          "digest": "sha256:3435ed963b15a1b6447746ec8844ab2cd38d8d2e8ead3451937f42df01e408c4"
+          "digest": "sha256:0c7a5852a5217be79cab422c6d58329b776f0c25bd6da8a7a01707ce75be6206"
         }
       ]
     },
@@ -2327,12 +2412,12 @@
       "kind": "collection",
       "repo": "https://github.com/vercel-labs/agent-skills.git",
       "ref": "main",
-      "resolved_commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "resolved_commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
       "runtime_path": "vercel-agent-skills",
-      "source_tree_digest": "sha256:7e1ecc4f6e728ee551c599ae4ec04b0c23b194708bb645beaaad13c3af0ee68e",
-      "runtime_tree_digest": "sha256:d9589458d00fa0bff90cd99de3515914dc3d821292d0ea116433b0de75755761",
-      "file_count": 226,
-      "byte_count": 956014,
+      "source_tree_digest": "sha256:fea8bd72ed9f7932332a505ccbeb0cd97028431a4974d5c7d4ac5ed2ab521212",
+      "runtime_tree_digest": "sha256:13f87fcbc23281ae07c900ffc3c9c94d394480e2963d3b3150c95c6da140d684",
+      "file_count": 227,
+      "byte_count": 964915,
       "skill_leaves": [
         {
           "name": "vercel-composition-patterns",
@@ -2372,7 +2457,7 @@
         {
           "name": "web-design-guidelines",
           "path": "vercel-agent-skills/skills/web-design-guidelines/SKILL.md",
-          "digest": "sha256:f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f"
+          "digest": "sha256:360b1240acfffa95e76373db9f837a1f28aba8f6d4c361e3d588be0eaefaa070"
         },
         {
           "name": "writing-guidelines",
@@ -2386,12 +2471,12 @@
       "kind": "collection",
       "repo": "https://github.com/wshobson/agents.git",
       "ref": "main",
-      "resolved_commit": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
+      "resolved_commit": "c96b5f6552dba32e4492307493ee613581430715",
       "runtime_path": "wshobson-agents",
-      "source_tree_digest": "sha256:5cdb89f55b989849b6dea8a7d8e628acc648ef00a77c2b25b4476d2a8a2d7bbb",
-      "runtime_tree_digest": "sha256:8f1dc77e3024a081d6ecaf5185b297726500a911a36ace088cef19dd13cdfefc",
-      "file_count": 465,
-      "byte_count": 3509634,
+      "source_tree_digest": "sha256:5562fcbcd9848448b62c8c567c45481911777934bc20376f5b6d9a95b87b5e01",
+      "runtime_tree_digest": "sha256:4847013566dc657d5c6cd3fa204a39adaa6db024e038355e9f7c361777a9e1aa",
+      "file_count": 467,
+      "byte_count": 3530938,
       "skill_leaves": [
         {
           "name": "screen-reader-testing",
@@ -2896,7 +2981,7 @@
         {
           "name": "rag-implementation",
           "path": "wshobson-agents/plugins/llm-application-dev/skills/rag-implementation/SKILL.md",
-          "digest": "sha256:0dc4aeb9a999127821fd938f07ddc3ca873324b1124f66c5d7ccb50f61a66ef0"
+          "digest": "sha256:d10cae11471ad26fcfa830ff25a345cda2fa99fd6c4fc56b5a64445c954c7045"
         },
         {
           "name": "similarity-search-patterns",
@@ -3001,7 +3086,7 @@
         {
           "name": "pci-compliance",
           "path": "wshobson-agents/plugins/payment-processing/skills/pci-compliance/SKILL.md",
-          "digest": "sha256:c9e9f09f66cf8faedfba24c5e611b8ccee4b103ff7dc91e759a06aee23f2ee16"
+          "digest": "sha256:4451071a83e8d6225504991d961ecf0c3bf3252e92662e911228d70e6fab8386"
         },
         {
           "name": "stripe-integration",
@@ -3041,7 +3126,7 @@
         {
           "name": "protect-mcp-setup",
           "path": "wshobson-agents/plugins/protect-mcp/skills/protect-mcp-setup/SKILL.md",
-          "digest": "sha256:dc42772a5a40832c82ebd673220fc5ac652c38cf13e8233d306b9c7d7c6da6d2"
+          "digest": "sha256:fceb6f9b6e282c36c35f475d807dfe2fbdb6eb7b4533923b118a613df6248d2c"
         },
         {
           "name": "async-python-patterns",
@@ -3156,7 +3241,7 @@
         {
           "name": "review-agent-setup",
           "path": "wshobson-agents/plugins/review-agent-governance/skills/review-agent-setup/SKILL.md",
-          "digest": "sha256:b8fcfdd74254b6b66e9f77e8f2e23efa70b2884997823bd25107cf4b725f09be"
+          "digest": "sha256:0a64764dcdd33bac719240a006c7f89a9923c7b0927d7f5b241297072c64855e"
         },
         {
           "name": "attack-tree-construction",
@@ -3206,7 +3291,7 @@
         {
           "name": "signed-audit-trails-recipe",
           "path": "wshobson-agents/plugins/signed-audit-trails/skills/signed-audit-trails-recipe/SKILL.md",
-          "digest": "sha256:7a027e3267f986bc3188ab0190f248d6f0eaf4d99906eba8a62d2a8f0dbcb50d"
+          "digest": "sha256:41515acebf0ffd305beb9767cf93e7fce358c195303fad0753e497e810b49998"
         },
         {
           "name": "ai-debt-detector",

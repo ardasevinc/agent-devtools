@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, expect, test } from "bun:test";
 import {
+  ensureCollectionIndex,
   matchesAny,
   replaceRuntimeEntry,
   stageXcodeSource,
@@ -269,4 +270,21 @@ include = ["**"]
   expect(currentProvenance.xcode_build).toBe("27B100");
   expect(previousProvenance.xcode_build).toBe("27A266a");
   expect(currentProvenance.source_tree_digest).toBe(previousProvenance.source_tree_digest);
+});
+
+test("collections without a README get a generated member index", async () => {
+  const root = await tempDir();
+  await mkdir(join(root, "alpha"), { recursive: true });
+  await mkdir(join(root, "beta"), { recursive: true });
+  await writeFile(join(root, "alpha/SKILL.md"), "---\nname: alpha\ndescription: Does alpha things. More detail here.\n---\n");
+  await writeFile(join(root, "beta/SKILL.md"), "---\nname: beta\ndescription: >\n  Folded beta\n  description.\n---\n");
+  await ensureCollectionIndex("demo", root);
+  const readme = await readFile(join(root, "README.md"), "utf8");
+  expect(readme).toContain("- **alpha** (`alpha/SKILL.md`): Does alpha things.");
+  expect(readme).not.toContain("More detail");
+  expect(readme).toContain("- **beta** (`beta/SKILL.md`): Folded beta description.");
+
+  await writeFile(join(root, "README.md"), "upstream");
+  await ensureCollectionIndex("demo", root);
+  expect(await readFile(join(root, "README.md"), "utf8")).toBe("upstream");
 });
